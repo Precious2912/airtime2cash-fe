@@ -5,9 +5,11 @@ import { LandingPage } from "../pages/LandingPage";
 import {RegisterPage} from '../pages/RegisterPage';
 import {LoginPage} from '../pages/LoginPage';
 import {DashboardPage} from '../pages/DashboardPage'
+import { Navbar } from '../components/Landing/Navbar';
 
 export const BaseRoute = () => {
   return (
+    <Navbar>
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/register" element={<RegisterPage />}></Route>
@@ -18,5 +20,6 @@ export const BaseRoute = () => {
             <Route path="/dashboard" element={<DashboardPage />}></Route>
       </Route>
     </Routes>
+    </Navbar>
   );
 }
