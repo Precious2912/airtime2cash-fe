@@ -16,9 +16,10 @@ export const BaseRoute = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+        {/* <Route path="/dashboard" element={<DashboardPage />}></Route> */}
 
         {/* Protected Routes */}
-        <Route path="/" element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<DashboardPage />}></Route>
         </Route>
       </Routes>
