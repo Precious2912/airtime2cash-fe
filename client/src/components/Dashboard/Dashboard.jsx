@@ -1,7 +1,18 @@
 import React from 'react'
+import { Header } from './Header'
+import { DashboardStyle } from '../../styles/dashboardStyle'
 
 export const Dashboard = () => {
   return (
-    <div>This is the user Dashboard</div>
+    <>
+    <Header dashboard />
+    <DashboardStyle>
+      <div className='top'></div>
+      <div className='dashboard'>
+        <h1>Dashboard</h1>
+        <div className='balance'></div>
+      </div>
+    </DashboardStyle>
+    </>
   )
 }
