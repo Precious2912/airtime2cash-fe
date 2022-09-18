@@ -1,7 +1,27 @@
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
- overflow-x: hidden;
+  margin:0 auto;
+  font-family:'Poppins', sans-serif;
 }
 
+code {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CAROUSEL SLIDER STYLES */
+.rec.rec-arrow {
+  background-color:#F5F5F5; 
+}
+
+.rec.rec-arrow:hover {
+  background-color:#bcb8b8 !important;
+
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
