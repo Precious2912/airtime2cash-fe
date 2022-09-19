@@ -21,7 +21,7 @@ export const Wrapper2 = styled.div`
   margin: 0 auto;
 `;
 
-export const Logo = styled.img`
+export const Logo = styled.img` 
   display: flex;
   flex-direction: row;
   padding: 0px;
