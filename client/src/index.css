@@ -8,14 +8,6 @@ code {
 }
 
 /* CAROUSEL SLIDER STYLES */
-.rec.rec-arrow {
-  background-color:#F5F5F5; 
-}
-
-.rec.rec-arrow:hover {
-  background-color:#bcb8b8 !important;
-
-}
 
 html {
   scroll-behavior: smooth;

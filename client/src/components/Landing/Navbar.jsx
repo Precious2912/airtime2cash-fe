@@ -12,17 +12,18 @@ export const Navbar=()=> {
     const [isLogin, setIsLogin] = useState(false)
   return ( 
     <Wrapper>
-    <Nav><a href='/'><Logo src={logo} alt="" /></a>
+    <Nav>
+      <a href='/'><Logo src={logo} alt="" /></a>
     <Hamburger onClick={()=> setOpen(!open)}>
         <span />
         <span />
         <span />
     </Hamburger> 
     <Menu open={open}>
-        <MenuLinks><a href='/'>Home</a></MenuLinks>
-        <MenuLinks><a  href='/#about'>About Us</a></MenuLinks>
-        <MenuLinks><a href='/#product'>Products</a></MenuLinks>
-        <MenuLinks><a href='/#contactUs'>Contact Us</a></MenuLinks>
+        <MenuLinks onClick={()=> setOpen(!open)}><a href='/'>Home</a></MenuLinks>
+         <MenuLinks onClick={()=> setOpen(!open)}><a  href='/#about'>About Us</a></MenuLinks>
+        <MenuLinks onClick={()=> setOpen(!open)}><a href='/#product'>Products</a></MenuLinks>
+        <MenuLinks onClick={()=> setOpen(!open)}><a href='/#contactUs'>Contact Us</a></MenuLinks>
         {isLogin ? <UserProfileNav setLogout={setIsLogin}/> : <StyleButton onClick={()=>setIsLogin(true)} width='20%'><Link to="/login">Login</Link></StyleButton>}
     </Menu>
     </Nav>
