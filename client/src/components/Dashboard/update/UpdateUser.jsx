@@ -16,7 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 // import { useAuth } from "../../context/auth/authState";
 
-const UpdateUser = () => {
+export const UpdateUserSetting = () => {
   // const [formData, setFormData] = useState({});
   const [modalState, setModalState] = useState(false);
 
@@ -50,10 +50,8 @@ const UpdateUser = () => {
           setModalState(false);
         }
       }
-      // Bind the event listener
       document.addEventListener("mousedown", handleClickOutside);
       return () => {
-        // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
       };
     }, [ref]);
@@ -174,5 +172,3 @@ const UpdateUser = () => {
     </UpdateUserPageStyle>
   );
 };
-
-export default UpdateUser;
