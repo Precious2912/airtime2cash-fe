@@ -12,17 +12,15 @@ export const DashboardStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3.75rem;
-    gap: 3.75rem;
+    /* padding: 3.75rem; */
+    /* gap: 3.75rem; */
     width: 42.438rem;
     height: 69.125rem;
-    margin: -8rem auto 0 auto;
+    margin: -7.5rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
 
     h1 {
-      width: 10.563rem;
-      height: 2.438rem;
       font-family: "Inter";
       font-style: normal;
       font-weight: 600;
@@ -37,13 +35,10 @@ export const DashboardStyle = styled.div`
       justify-content: center;
       align-items: center;
       padding: 1.5rem;
-      gap: 0.25rem;
-
       width: 34.438rem;
       height: 9.438rem;
-
       background: #de3d6d;
-      border-radius: 24px;
+      border-radius: 1.5rem;
     }
 
     .balance {
@@ -51,10 +46,46 @@ export const DashboardStyle = styled.div`
       flex-direction: column;
       align-items: center;
       padding: 0rem;
-      gap: 0.25rem;
+      /* gap: 0.25rem; */
 
-      width: 183px;
-      height: 106px;
+      width: 11.438rem;
+      /* height: 6.625rem; */
+
+      .text {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #ffffff;
+      }
+
+      .acct-bal {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 39px;
+
+        color: #ffffff;
+      }
+
+      button {
+        justify-content: center;
+        align-items: center;
+        padding: 8px 10px 8px 8px;
+        gap: 10px;
+        color: #ffffff;
+
+        /* width: 99px;
+        height: 28px; */
+
+        background: rgba(0, 0, 0, 0.05);
+        opacity: 0.8;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        border-radius: 100px;
+      }
     }
   }
 `;

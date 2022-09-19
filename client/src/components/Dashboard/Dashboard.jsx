@@ -12,7 +12,9 @@ export const Dashboard = () => {
         <h1>Dashboard</h1>
         <div className='balance-wrapper'>
           <div className="balance">
-            
+            <p className='text'>Wallet Balance</p>
+            <p className='acct-bal'>N21,350.00</p>
+            <button>Active is active</button>
           </div>
         </div>
       </div>
