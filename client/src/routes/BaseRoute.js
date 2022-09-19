@@ -10,7 +10,7 @@ export const BaseRoute = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/dashboard" element={<DashboardPage />}></Route>
