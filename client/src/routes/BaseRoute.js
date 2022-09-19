@@ -4,29 +4,30 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { LandingPage } from "../pages/LandingPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
-// import { DashboardPage } from "../pages/DashboardPage";
-import { Navbar } from "../components/Landing/Navbar";
-import { Footer } from "../components/Landing/Footer";
+
 import { UpdateUserSetting } from "../components/Dashboard/update/UpdateUser";
+
+import { DashboardPage } from "../pages/DashboardPage";
+
 export const BaseRoute = () => {
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route
-          path="/dashboard/UpdateUser"
-          element={<UpdateUserSetting />}
-        ></Route>
+
+      
 
         {/* Protected Routes */}
         <Route path="/" element={<ProtectedRoute />}>
-          {/* <Route path="/dashboard" element={<DashboardPage />}></Route> */}
+          <Route path="/dashboard" element={<DashboardPage />}></Route>
+         <Route path="/dashboard/UpdateUser" element={<UpdateUserSetting />}></Route>
         </Route>
+
+        {/* Error Route */}
+        <Route path="*" element={<h1>Error Page</h1>}></Route>
       </Routes>
-      <Footer />
     </div>
   );
 };

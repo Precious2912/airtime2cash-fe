@@ -7,6 +7,8 @@ import DashboardIcon from '../assets/icon/Dashboard.svg'
 import Spinning from '../assets/icon/Spinning.svg'
 import StyleButton from '../components/Button.styles.jsx'
 import SliderItem from '../components/Landing/SliderItem.jsx'
+import { Navbar} from '../components/Landing/Navbar'
+import { Footer } from '../components/Landing/Footer'
 
 export const LandingPage = () => {
  const slideData = [
@@ -31,6 +33,7 @@ export const LandingPage = () => {
   return (
     <div>
       {/* HEOR SECTION  */}
+      <Navbar landing/>
     <Hero> 
       <div className='heroText'>
         <p><b>Surplus Airtime? Don’t worry we got you covered</b></p>
@@ -87,6 +90,7 @@ export const LandingPage = () => {
     <TestimonialCardWrapper> 
         <SliderItem slideData={slideData}/>
     </TestimonialCardWrapper>
+    <Footer />
     </div>
   )
 }
