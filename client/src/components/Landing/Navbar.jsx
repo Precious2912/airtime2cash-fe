@@ -7,27 +7,34 @@ import StyleButton from '../Button.styles.jsx'
 import UserProfileNav from './UserProfileNav'
 import { Link } from 'react-router-dom'
 
-export const Navbar=()=> {
+export const Navbar=({landing, dashboard})=> {
+
+
     const [open, setOpen] = useState(false) 
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(true)
   return ( 
     <Wrapper>
     <Nav>
       <a href='/'><Logo src={logo} alt="" /></a>
+    
+    {landing && 
     <Hamburger onClick={()=> setOpen(!open)}>
         <span />
         <span />
         <span />
-    </Hamburger> 
-    <Menu open={open}>
-        <MenuLinks onClick={()=> setOpen(!open)}><a href='/'>Home</a></MenuLinks>
+    </Hamburger> }
+    {dashboard && <UserProfileNav dashboard setLogout={setIsLogin}/>}
+   
+    {landing && <Menu open={open}>
+          <MenuLinks onClick={()=> setOpen(!open)}><a href='/'>Home</a></MenuLinks>
          <MenuLinks onClick={()=> setOpen(!open)}><a  href='/#about'>About Us</a></MenuLinks>
         <MenuLinks onClick={()=> setOpen(!open)}><a href='/#product'>Products</a></MenuLinks>
         <MenuLinks onClick={()=> setOpen(!open)}><a href='/#contactUs'>Contact Us</a></MenuLinks>
-        {isLogin ? <UserProfileNav setLogout={setIsLogin}/> : <StyleButton onClick={()=>setIsLogin(true)} width='20%'><Link to="/login">Login</Link></StyleButton>}
-    </Menu>
+      {isLogin ? <UserProfileNav setLogout={setIsLogin}/> : <StyleButton onClick={()=>setIsLogin(true)} width='20%'><Link to="/login">Login</Link></StyleButton>}
+    </Menu>}
     </Nav>
     </Wrapper>
+
   )
 }
 

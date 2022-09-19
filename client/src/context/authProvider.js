@@ -22,6 +22,9 @@ function reducer(state, action) {
         ...state,
         token: localStorage.removeItem("token"),
       };
+
+      default:
+        throw new Error();
   }
 }
 

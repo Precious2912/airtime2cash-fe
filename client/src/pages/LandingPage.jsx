@@ -33,7 +33,7 @@ export const LandingPage = () => {
   return (
     <div>
       {/* HEOR SECTION  */}
-      <Navbar />
+      <Navbar landing/>
     <Hero> 
       <div className='heroText'>
         <p><b>Surplus Airtime? Don’t worry we got you covered</b></p>
