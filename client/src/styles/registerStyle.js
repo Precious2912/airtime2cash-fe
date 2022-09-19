@@ -4,31 +4,27 @@ export const Wrapper = styled.div`
   width: 100%;
   background: rgba(0, 0, 0, 0.05);
   min-height: 100vh;
+  padding: 5% 1%;
 `;
 
 export const Wrapper2 = styled.div`
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0px;
+  /* justify-content: center; */
+  padding: 6% 15%;
   background: #fff;
-  width: 50%;
+  width: calc(540px / 2);
+  /* width: 20%; */
+  /* max-width: 100%; */
   margin: 0 auto;
-  padding-top: 80px;
 `;
 
 export const Logo = styled.img`
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
-
   padding: 0px;
-  gap: 12px;
-  margin-top: 80px;
-
   width: 151px;
   height: 56px;
 
@@ -49,13 +45,11 @@ export const Back = styled.div`
   justify-content: center;
   align-items: center;
   padding: 8px;
-  gap: 8px;
-  font-weight: 400;
+  font-weight: lighter;
   color: #21334f;
   border: none;
-  width: 87px;
-  height: 32px;
-
+  width: 70px;
+  font-size: 12px;
   background: rgba(0, 0, 0, 0.05);
   border-radius: 50px;
 
@@ -65,25 +59,23 @@ export const Back = styled.div`
   order: 0;
   flex-grow: 0;
   margin-top: 40px;
+  & img {
+    margin-right: 10px;
+    width: 13;
+    height: 13;
+  }
 `;
 
 export const FormHeader = styled.div`
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
-  /* identical to box height */
 
   color: #21334f;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
 `;
 
 export const StyledLabel = styled.label`
-  width: 34px;
-  height: 15px;
-
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
@@ -97,15 +89,17 @@ export const StyledLabel = styled.label`
   order: 0;
   flex-grow: 0;
 `;
-
+export const FormStyle = styled.form`
+  margin: 0 ;
+  width: 100%;
+`;
 export const StyledInput = styled.input`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 8px 16px;
-  gap: 10px;
-  width: 320px;
+  padding: 10px;
+  width: 100%;
   height: 48px;
   background: #ffffff;
   border: 1px solid #d9d9d9;
@@ -125,7 +119,7 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledFooter = styled.div`
-  width: 15rem;
+
 
   font-style: normal;
   font-weight: 400;
@@ -139,27 +133,6 @@ export const StyledFooter = styled.div`
   a {
     color: #de3d6d;
     text-decoration: none;
+    font-weight: bold;
   }
-`;
-
-export const StyledFooterButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 16px;
-  width: 320px;
-  height: 48px;
-  background: linear-gradient(91.85deg, #de3d6d 49.47%, #f5844c 100.15%);
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-  margin-top: 8px;
-
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  color: #ffffff;
-  border: none;
 `;

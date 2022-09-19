@@ -2,6 +2,7 @@ import React from "react";
 import logo from "../../assets/icon/logo2.svg";
 import { Link } from "react-router-dom";
 import backicon from "../../assets/icon/backicon.svg";
+import StyleButton from '../../styles/Button.styles.js'
 import {
   Wrapper,
   Wrapper2,
@@ -9,10 +10,10 @@ import {
   HeaderAndButton,
   Back,
   FormHeader,
+  FormStyle,
   StyledLabel,
   StyledInput,
-  StyledFooter,
-  StyledFooterButton,
+  StyledFooter, 
 } from "../../styles/registerStyle";
 
 export const Register = () => {
@@ -22,21 +23,15 @@ export const Register = () => {
         <Logo src={logo} alt="logo" />
 
         <HeaderAndButton>
+          <Link to="/">
           <Back>
-            <img
-              src={backicon}
-              style={{
-                width: 13,
-                height: 13,
-              }}
-              alt="logo"
-            />{" "}
+            <img src={backicon} alt="logo" />
             Go back
           </Back>
+          </Link>
           <FormHeader>Create an account</FormHeader>
         </HeaderAndButton>
-
-        <form>
+        <FormStyle>
           <StyledLabel> Name</StyledLabel>
           <StyledInput placeholder="Enter your name"></StyledInput>
           <StyledLabel> Email</StyledLabel>
@@ -46,9 +41,10 @@ export const Register = () => {
           <StyledLabel> Password</StyledLabel>
           <StyledInput placeholder="Enter your password"></StyledInput>
           <StyledLabel> Confirm Password</StyledLabel>
-          <StyledInput placeholder="Confirm password"></StyledInput>
-          <StyledFooterButton>Sign Up</StyledFooterButton>
-        </form>
+          <StyledInput placeholder="Confirm password"></StyledInput> 
+        <StyleButton borderRadius='0px' height='48px' width='100%'>Sign Up</StyleButton>
+
+        </FormStyle>
         <StyledFooter>
           Already have an an account? <Link to="/login"> Sign In </Link>
         </StyledFooter>
