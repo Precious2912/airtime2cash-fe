@@ -11,7 +11,7 @@ export const Navbar=({landing, dashboard})=> {
 
 
     const [open, setOpen] = useState(false) 
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
   return ( 
     <Wrapper>
     <Nav>
