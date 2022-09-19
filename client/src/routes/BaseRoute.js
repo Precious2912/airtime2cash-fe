@@ -11,7 +11,6 @@ import { DashboardPage } from "../pages/DashboardPage";
 
 export const BaseRoute = () => {
   return (
-    <div>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
@@ -28,6 +27,5 @@ export const BaseRoute = () => {
         {/* Error Route */}
         <Route path="*" element={<h1>Error Page</h1>}></Route>
       </Routes>
-    </div>
   );
 };

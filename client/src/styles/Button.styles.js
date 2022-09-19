@@ -4,7 +4,7 @@ const Button = styled.button`
     background-color: #012A4A;
     color: #fff;
     padding: 10px;
-    border-radius: 5px;
+    border-radius:${({borderRadius}) => (borderRadius ? borderRadius : "5px")};
     border: none;
     cursor: pointer;
     font-size: 16px;

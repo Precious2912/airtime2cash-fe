@@ -2,8 +2,8 @@ import React from 'react'
 import logo from '../../assets/icon/logo2.svg'
 // import { NavLink } from 'react-router-dom'
 import {useState} from 'react'
-import {Wrapper, Nav, Logo,Hamburger,Menu,MenuLinks } from './LandingStyles'
-import StyleButton from '../Button.styles.jsx'
+import {Wrapper, Nav, Logo,Hamburger,Menu,MenuLinks } from '../../styles/LandingStyles'
+import StyleButton from '../../styles/Button.styles.js'
 import UserProfileNav from './UserProfileNav'
 import { Link } from 'react-router-dom'
 
@@ -11,7 +11,7 @@ export const Navbar=({landing, dashboard})=> {
 
 
     const [open, setOpen] = useState(false) 
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
   return ( 
     <Wrapper>
     <Nav>

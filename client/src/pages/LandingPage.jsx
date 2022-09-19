@@ -1,14 +1,15 @@
 import React from 'react'
-import { Hero, AboutSection, SideIndicator, AboutCardWrapper, AboutCard, ProductSection, TestimonialSection, TestimonialCardWrapper} from '../components/Landing/LandingStyles'
+import { Hero, AboutSection, SideIndicator, AboutCardWrapper, AboutCard, ProductSection, TestimonialSection, TestimonialCardWrapper} from '../styles/LandingStyles'
 import heroImage from '../assets/images/HeroImage.png'
 import rechargeImage from '../assets/images/Recharge.png'
 import loginIcon from '../assets/icon/Login.svg'
 import DashboardIcon from '../assets/icon/Dashboard.svg'
 import Spinning from '../assets/icon/Spinning.svg'
-import StyleButton from '../components/Button.styles.jsx'
+import StyleButton from '../styles/Button.styles.js'
 import SliderItem from '../components/Landing/SliderItem.jsx'
 import { Navbar} from '../components/Landing/Navbar'
 import { Footer } from '../components/Landing/Footer'
+import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {
  const slideData = [
@@ -37,8 +38,8 @@ export const LandingPage = () => {
     <Hero> 
       <div className='heroText'>
         <p><b>Surplus Airtime? Don’t worry we got you covered</b></p>
-        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada quam malesuada in ultrices augue ac maecenas.</small>
-        <StyleButton height='48px' width='185px'>Get Started</StyleButton>
+        <small>Excess recharge!, this is usually heartbreaking, worry no more.  Now you can exchange your excess airtime for cash value via this platform</small>
+        <Link to='/register'><StyleButton height='48px' width='185px'>Get Started</StyleButton></Link>
       </div>
       <div className='heroImage'><img src={heroImage} alt="" /></div>
     </Hero>
@@ -56,17 +57,17 @@ export const LandingPage = () => {
       <AboutCard backgroundColor='#FFF1F3'>
         <img src={loginIcon} alt=""/>
         <h4>Login or Register</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada quam malesuada in ultrices augue ac maecenas.</p>
+        <p>First step is to Register, or you can login if you already have an account with us. The registration steps is easy and straightforward .</p>
       </AboutCard>
       <AboutCard backgroundColor='#FFF1F3'>
         <img src={DashboardIcon} alt=""/>
         <h4>Deposit From Dashboard</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada quam malesuada in ultrices augue ac maecenas.</p>
+        <p>After successful registration and email verification, login to your dashboard to access your wallet where you can make deposit.</p>
       </AboutCard>
       <AboutCard backgroundColor='#F5FCF5'>
         <img src={Spinning} alt=""/>
         <h4>Convert</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada quam malesuada in ultrices augue ac maecenas.</p>
+        <p>Then on the dashboard you can convert your recharge card which to cash</p>
       </AboutCard>
     </AboutCardWrapper>
 
@@ -74,8 +75,8 @@ export const LandingPage = () => {
     <ProductSection id="product">
       <div className='productDescription'>
         <h2>The best platform for your convenient airtime exchange</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada quam malesuada in ultrices augue ac maecenas.</p>
-        <StyleButton height='48px' width='185px'>Get Started</StyleButton>
+        <p>You can also sell and buy recharge cards via this platform. The basis you need to do is verify you email </p>
+        <Link to='/register'><StyleButton height='48px' width='185px'>Get Started</StyleButton></Link>
       </div>
       <div className='productImage'><img src={rechargeImage} alt=""/></div>
     </ProductSection>
