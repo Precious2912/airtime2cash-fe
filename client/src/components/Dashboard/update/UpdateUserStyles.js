@@ -79,6 +79,31 @@ export const Container = styled.div`
     color: #21334f;
     margin-bottom: 2.5rem;
   }
+  .login-header-text {
+    font-weight: 700;
+    color: #21334f;
+  }
+
+  .create-account {
+    margin-top: 2rem;
+    width: 228px;
+    height: 15px;
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height */
+
+    color: #21334f;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
 
   .input-element {
     display: flex;
@@ -98,6 +123,24 @@ export const Container = styled.div`
     color: #ffffff;
     padding: 1rem 5.25rem;
     background-image: linear-gradient(to right, #de3d6d 80%, #f5844c 100%);
+  }
+  .login-btn {
+    margin-top: 1rem;
+    /* border: 1px solid red; */
+    color: #ffffff;
+    padding: 1rem 5.25rem;
+    background-image: linear-gradient(to right, #de3d6d 80%, #f5844c 100%);
+    width: 100%;
+  }
+  .create-btn {
+    margin-top: 1rem;
+    /* border: 1px solid red; */
+    color: #de3d6d;
+    // padding: 1rem 5.25rem;
+    // background-image: linear-gradient(to right, #de3d6d 80%, #f5844c 100%);
+    justify-content: center;
+    font-weight: 700;
+    margin-top: 4rem;
   }
 
   .avatar-upload {

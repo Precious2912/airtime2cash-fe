@@ -5,7 +5,6 @@ import {
   ModalStyle,
   UpdateUserPageStyle,
 } from "./UpdateUserStyles";
-// import logo from "./assets/updateLogo.svg";
 import logo from "../../../assets/icon/logo2.svg";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
@@ -14,7 +13,6 @@ import "react-toastify/dist/ReactToastify.css";
 // import axios from "axios";
 // import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { useAuth } from "../../context/auth/authState";
 
 export const UpdateUserSetting = () => {
   // const [formData, setFormData] = useState({});
@@ -158,7 +156,7 @@ export const UpdateUserSetting = () => {
               </div>
               <img src={logo} alt="logo" className="modal-logo" />
               <div className="upload-section">
-                <h3>Upload a Photo</h3>
+                <h3>Upload your Photo</h3>
                 <input type="file" name="" id="" className="modal-input" />
                 <p className="allowed-text">
                   *Allowed formats: jpeg, jpg, png and svg*{" "}
