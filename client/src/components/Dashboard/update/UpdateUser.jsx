@@ -26,6 +26,8 @@ export const UpdateUserSetting = () => {
     avatar: "",
   });
 
+  const { getUser } = UseAuth();
+
   const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);
 
