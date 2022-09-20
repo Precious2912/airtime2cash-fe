@@ -38,7 +38,7 @@ function reducer(state, action) {
 }
 
 export const AuthProvider = ({ children }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const register = async (formData) => {
@@ -60,15 +60,14 @@ export const AuthProvider = ({ children }) => {
             dispatch({ type: "REGISTER", payload: res.data });
             toast.success(res.data.message);
             setTimeout(() => {
-               navigate("/login");
-            }, 2000)
-            
+              navigate("/login");
+            }, 2000);
+
             return;
           }
         })
         .catch((err) => {
-        
-          toast.error(err.response.data.message)
+          toast.error(err.response.data.message);
         });
     } catch (err) {
       throw new Error(`${err}`);
@@ -88,6 +87,9 @@ export const AuthProvider = ({ children }) => {
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
+            localStorage.setItem("name", res.data.name);
+            localStorage.setItem("email", res.data.email);
+            localStorage.setItem("avatar", res.data.avatar);
             dispatch({ type: "LOGIN", payload: res.data });
             return;
           }
@@ -104,17 +106,38 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: "LOGOUT" });
   };
 
+  const getUser = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      await axios
+        .get(`http://localhost:7000/user/singleUser/${id}`)
+        .then((res) => {
+          if (res.status === 200) {
+            dispatch({ type: "LOGIN", payload: res.data });
+            return;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      throw new Error(`${err}`);
+    }
+  };
+
   const updateProfile = async (formData) => {
     try {
       const form = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        username: formData.username,
-        phoneNumber: formData.phoneNumber,
-        avatar: formData.avatar,
+        firstName: formData.firstName || "string",
+        lastName: formData.lastName || "string",
+        userName: formData.username || "string",
+        phoneNumber: formData.phoneNumber || "string",
+        avatar: formData.avatar || "string",
       };
+      const id = localStorage.getItem("id");
       await axios
-        .patch("http://localhost:7000/user/update/", form)
+        .patch(`http://localhost:7000/user/update/${id}`, form)
+        .set("Authorization", `Bearer ${localStorage.getItem("token")}`)
         .then((response) => {
           localStorage.setItem(
             "user",
@@ -123,7 +146,7 @@ export const AuthProvider = ({ children }) => {
               firstName: response.data.User.firstName,
               lastName: response.data.User.lastName,
               phoneNumber: response.data.User.phoneNumber,
-              username: response.data.User.username,
+              userName: response.data.User.username,
               avatar: response.data.User.avatar,
               email: response.data.User.email,
             })

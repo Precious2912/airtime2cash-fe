@@ -27,14 +27,16 @@ export const BaseRoute = () => {
             </ProtectedRoute>
           }
         />
-        <Route
+
+        <Route path="/dashboard/UpdateUser" element={<UpdateUserSetting />} />
+        {/* <Route
           path="/dashboard/UpdateUser"
-          element={
-            <ProtectedRoute>
-              <UpdateUserSetting />
-            </ProtectedRoute>
-          }
-        />
+          // element={
+          //   <ProtectedRoute>
+          //     <UpdateUserSetting />
+          //   </ProtectedRoute>
+          // }
+        /> */}
 
         {/* Error Route */}
         <Route path="*" element={<h1>Error Page</h1>}></Route>
