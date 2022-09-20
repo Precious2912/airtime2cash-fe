@@ -13,13 +13,13 @@ const UserProfileNav = ({setLogout, dashboard}) => {
     const [showDropdown, setShowDropdown] = React.useState(false)
   return (
     <Profile >
-         <Link to='/dashboard'><img src={UserImg} alt="" /></Link>
+         <Link to='/dashboard/UpdateUser'><img src={UserImg} alt="" /></Link>
         <span onClick={()=>setShowDropdown(!showDropdown)}>
         <span>Davids </span>
         {dashboard && <>
        <FiChevronDown />
         <Dropdown showDropdown={showDropdown}>
-        <Link to='update'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
+        <Link to='/dashboard/UpdateUser'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
             <DropdownItem>  <img src={SettingsIcon} alt="" /> <span>Settings</span> </DropdownItem>
             <DropdownItem>  <img src={HelpIcon} alt="" /> <span>Help Center</span> </DropdownItem>
             <DropdownItem onClick={()=>setLogout(false)}>  <img src={LogoutIcon} alt="" /> <span>Logout</span> </DropdownItem>

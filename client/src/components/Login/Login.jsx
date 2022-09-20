@@ -3,26 +3,28 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
+import { useNavigate } from "react-router-dom";
 import {
   BackDiv,
   Container,
   UpdateUserPageStyle,
 } from "../Dashboard/update/UpdateUserStyles";
+import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    emailOrUsername: "",
+    password: "",
+  });
+  const { login } = UseAuth();
 
-  const handleChange = (e) => {
-    switch (e.target.name) {
-      case "email":
-        setemail(e.target.value);
-        break;
-      case "password":
-        setpassword(e.target.value);
-        break;
-      default:
-    }
+  console.log(formData);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await login(formData);
+    navigate("/dashboard");
   };
 
   return (
@@ -30,19 +32,23 @@ export const Login = () => {
       <BackDiv />
       <Container>
         <div className="container">
-          <img src={logo} alt="logo" className="logo" />
+          <Link to="/"><img src={logo} alt="logo" className="logo" /></Link>
 
           <h2 className="login-header-text">Login</h2>
 
-          <form action="" className="form-group">
+          <form action="" className="form-group" onSubmit={handleLogin}>
             <div className="input-element">
-              <label htmlFor="">Email</label>
+              <label htmlFor="">Email/Username</label>
               <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={handleChange}
+                type="text"
+                name="emailOrUsername"
+                placeholder="Enter your email or username"
+                onChange={(e) => {
+                  setFormData({
+                    ...formData,
+                    emailOrUsername: e.target.value.trim(),
+                  });
+                }}
               />
             </div>
             <div className="input-element">
@@ -50,12 +56,29 @@ export const Login = () => {
               <input
                 type="password"
                 name="password"
-                placeholder="Phone Number"
-                value={password}
-                onChange={handleChange}
+                placeholder="Enter your password"
+                onChange={(e) => {
+                  setFormData({
+                    ...formData,
+                    password: e.target.value.trim(),
+                  });
+                }}
               />
             </div>
-
+            <Link to="/user/forgotpassword">
+            <p
+              style={{
+                color: "#4285F4",
+                fontStyle: "normal",
+                fontWeight: "400",
+                fontSize: "12px",
+                lineHeight: "15px",
+                cursor: 'pointer'
+              }}
+            >
+              Forgot Password?
+            </p>
+            </Link> 
             <button type="submit" className="login-btn">
               Login
             </button>

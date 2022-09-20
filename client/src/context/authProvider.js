@@ -1,11 +1,13 @@
 import { createContext, useReducer } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 export const AuthContext = createContext();
 
 const initialState = {
   loggedIn: false,
-  token: "",
+  token: localStorage.getItem("token") || "",
   user: {},
 };
 
@@ -21,7 +23,6 @@ function reducer(state, action) {
       return {
         ...state,
         loggedIn: true,
-        token: localStorage.getItem("token"),
         user: action.payload,
       };
 
@@ -37,6 +38,7 @@ function reducer(state, action) {
 }
 
 export const AuthProvider = ({ children }) => {
+    const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const register = async (formData) => {
@@ -51,31 +53,51 @@ export const AuthProvider = ({ children }) => {
         confirmPassword: formData.confirmPassword,
       };
 
-      const registernewUser = async () => {
-        await axios
-          .post(`http://localhost:7000/user/register`, registerUser)
-          .then((res) => {
-            if (res.status === 201) {
-              dispatch({ type: "REGISTER", payload: res.data });
-              return;
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-      registernewUser();
+      await axios
+        .post(`http://localhost:7000/user/register`, registerUser)
+        .then((res) => {
+          if (res.status === 201) {
+            dispatch({ type: "REGISTER", payload: res.data });
+            toast.success(res.data.message);
+            setTimeout(() => {
+               navigate("/login");
+            }, 2000)
+            
+            return;
+          }
+        })
+        .catch((err) => {
+        
+          toast.error(err.response.data.message)
+        });
     } catch (err) {
       throw new Error(`${err}`);
     }
   };
 
-  const login = (formData) => {
-    dispatch({ type: "LOGIN" });
-    const loginUser = {
-      email: formData.email,
-      password: formData.password,
-    };
+  const login = async (formData) => {
+    try {
+      const loginUser = {
+        emailOrUsername: formData.emailOrUsername,
+        password: formData.password,
+      };
+
+      await axios
+        .post(`http://localhost:7000/user/login`, loginUser)
+        .then((res) => {
+          if (res.status === 200) {
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("id", res.data.id);
+            dispatch({ type: "LOGIN", payload: res.data });
+            return;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      throw new Error(`${err}`);
+    }
   };
 
   const logout = () => {
