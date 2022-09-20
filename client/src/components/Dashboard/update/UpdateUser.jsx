@@ -16,76 +16,73 @@ import backicon from "../../../assets/icon/backicon.svg";
 
 export const UpdateUserSetting = () => {
   const navigate = useNavigate();
-
-  // const [formData, setFormData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   userName: "",
-  //   phoneNumber: "",
-  //   avatar: "",
-  // });
-
-  const { updateProfile } = UseAuth({});
-
   const [modalState, setModalState] = useState(false);
 
-  const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
-  const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
-  const [phoneNumber, setPhoneNumber] = useState(
-    localStorage.getItem("phoneNumber")
-  );
-  const [userName, setUserName] = useState(localStorage.getItem("userName"));
-  const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    phoneNumber: "",
+    avatar: "",
+  });
 
-  // const wrapperRef = useRef(null);
+  const { updateProfile } = UseAuth({});
+  const wrapperRef = useRef(null);
 
-  // function useOutsideAlerter(ref) {
-  //   useEffect(() => {
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         setModalState(false);
-  //       }
-  //     }
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, [ref]);
-  // }
-  // useOutsideAlerter(wrapperRef);
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setModalState(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  useOutsideAlerter(wrapperRef);
 
+  // const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
+  // const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
+  // const [phoneNumber, setPhoneNumber] = useState(
+  //   localStorage.getItem("phoneNumber")
+  // );
+  // const [userName, setUserName] = useState(localStorage.getItem("userName"));
+  // const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
 
-  const handleChange = (e) => {
-    switch (e.target.name) {
-      case "firstName":
-        setFirstName(e.target.value);
-        break;
-      case "lastName":
-        setLastName(e.target.value);
-        break;
-      case "phoneNumber":
-        setPhoneNumber(e.target.value);
-        break;
-      case "userName":
-        setUserName(e.target.value);
-        break;
-      case "avatar":
-        setAvatar(e.target.value);
-        break;
-      default:
-    }
-  };
+  // const handleChange = (e) => {
+  //   switch (e.target.name) {
+  //     case "firstName":
+  //       setFirstName(e.target.value);
+  //       break;
+  //     case "lastName":
+  //       setLastName(e.target.value);
+  //       break;
+  //     case "phoneNumber":
+  //       setPhoneNumber(e.target.value);
+  //       break;
+  //     case "userName":
+  //       setUserName(e.target.value);
+  //       break;
+  //     case "avatar":
+  //       setAvatar(e.target.value);
+  //       break;
+  //     default:
+  //   }
+  // };
 
-  const formData = {
-    firstName: firstName,
-    lastName: lastName,
-    userName: userName,
-    phoneNumber: phoneNumber,
-    avatar: avatar,
-  };
+  // const formData = {
+  //   firstName: firstName,
+  //   lastName: lastName,
+  //   userName: userName,
+  //   phoneNumber: phoneNumber,
+  //   avatar: avatar,
+  // };
   const handleUpdate = async (e) => {
     e.preventDefault();
-    
+
     await updateProfile(formData);
     navigate("/dashboard");
   };
@@ -115,8 +112,8 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="firstName"
                 placeholder="First Name"
-                value={firstName}
-                onChange={handleChange}
+                // value={firstName}
+                // onChange={handleChange}
 
                 // onChange={(e) =>
                 //   setFormData({
@@ -132,14 +129,14 @@ export const UpdateUserSetting = () => {
                 type="text"
                 placeholder="Last Name"
                 name="lastName"
-                value={lastName}
-                onChange={handleChange}
-                // onChange={(e) =>
-                //   setFormData({
-                //     ...formData,
-                //     lastName: e.target.value.trim(),
-                //   })
-                // }
+                // value={lastName}
+                // onChange={handleChange}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    lastName: e.target.value.trim(),
+                  })
+                }
               />
             </div>
             <div className="input-element">
@@ -148,14 +145,14 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="phoneNumber"
                 placeholder="Phone Number"
-                value={phoneNumber}
-                onChange={handleChange}
-                // onChange={(e) =>
-                //   setFormData({
-                //     ...formData,
-                //     lastName: e.target.value.trim(),
-                //   })
-                // }
+                // value={phoneNumber}
+                // onChange={handleChange}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    lastName: e.target.value.trim(),
+                  })
+                }
               />
             </div>
 
@@ -165,15 +162,15 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="userName"
                 placeholder="User Name"
-                value={userName}
-                onChange={handleChange}
+                // value={userName}
+                // onChange={handleChange}
 
-                // onChange={(e) =>
-                //   setFormData({
-                //     ...formData,
-                //     lastName: e.target.value.trim(),
-                //   })
-                // }
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    lastName: e.target.value.trim(),
+                  })
+                }
               />
             </div>
             <div className="input-element">
@@ -182,15 +179,15 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="avatar"
                 placeholder="Avatar"
-                value={avatar}
-                onChange={handleChange}
+                // value={avatar}
+                // onChange={handleChange}
 
-                // onChange={(e) =>
-                //   setFormData({
-                //     ...formData,
-                //     lastName: e.target.value.trim(),
-                //   })
-                // }
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    lastName: e.target.value.trim(),
+                  })
+                }
               />
             </div>
             {/* <div className="input-element">
