@@ -11,21 +11,23 @@ import { DashboardPage } from "../pages/DashboardPage";
 
 export const BaseRoute = () => {
   return (
-      <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
+    <Routes>
+      <Route path="/" element={<LandingPage />}></Route>
+      <Route path="/register" element={<RegisterPage />}></Route>
+      <Route path="/login" element={<LoginPage />}></Route>
 
-      
+      <Route
+        path="/dashboard/UpdateUser"
+        element={<UpdateUserSetting />}
+      ></Route>
 
-        {/* Protected Routes */}
-        <Route path="/" element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<DashboardPage />}></Route>
-         <Route path="/dashboard/UpdateUser" element={<UpdateUserSetting />}></Route>
-        </Route>
+      {/* Protected Routes */}
+      <Route path="/" element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<DashboardPage />}></Route>
+      </Route>
 
-        {/* Error Route */}
-        <Route path="*" element={<h1>Error Page</h1>}></Route>
-      </Routes>
+      {/* Error Route */}
+      <Route path="*" element={<h1>Error Page</h1>}></Route>
+    </Routes>
   );
 };
