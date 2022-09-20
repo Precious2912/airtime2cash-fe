@@ -5,3 +5,5 @@ export const Register = () => {
     <div>This is the Register Page</div>
   )
 }
+
+
