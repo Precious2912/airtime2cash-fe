@@ -5,10 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
 import { useNavigate } from "react-router-dom";
 import {
-  BackDiv,
   Container,
   UpdateUserPageStyle,
-} from "../Dashboard/update/UpdateUserStyles";
+  LogoWrapper
+} from "../../styles/UpdateUserStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
@@ -28,12 +28,15 @@ export const Login = () => {
   };
 
   return (
+   
     <UpdateUserPageStyle>
-      <BackDiv />
+      {/* <BackDiv /> */}
       <Container>
-        <div className="container">
-          <Link to="/"><img src={logo} alt="logo" className="logo" /></Link>
-
+          <Link to="/">
+            <LogoWrapper>
+            <img src={logo} alt="logo" className="logo" />
+            </LogoWrapper>
+            </Link>
           <h2 className="login-header-text">Login</h2>
 
           <form action="" className="form-group" onSubmit={handleLogin}>
@@ -70,7 +73,7 @@ export const Login = () => {
               style={{
                 color: "#4285F4",
                 fontStyle: "normal",
-                fontWeight: "400",
+                fontWeight: "lighter",
                 fontSize: "12px",
                 lineHeight: "15px",
                 cursor: 'pointer'
@@ -83,14 +86,13 @@ export const Login = () => {
               Login
             </button>
           </form>
-        </div>
         <p className="create-account">
-          Don't have an account ?
+          Don't have an account? &nbsp;
           <Link to="/register" className="create-btn">
             Create Account
           </Link>
         </p>
       </Container>
-    </UpdateUserPageStyle>
+     </UpdateUserPageStyle>
   );
 };

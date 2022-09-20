@@ -2,13 +2,18 @@ import { Formik, Form } from "formik";
 import { TextInput } from "../components/Forms";
 import { FiLock } from "react-icons/fi";
 import * as Yup from "yup";
+import StyleButton from '../styles/Button.styles.js'
+
 
 import {
   StyledContainer,
   StyledFormArea,
   StyledTitle,
-  StyledFormButton
+  StyledFormButton,
+  ResetPassword,
+  FormInput
 } from "../styles/resetPassStyle";
+import { RestForm } from "../styles/forgetPassStyle";
 
 export const ResetPasswordPage = () => {
   return (
@@ -42,25 +47,23 @@ export const ResetPasswordPage = () => {
             }}
           >
             {() => (
-              <Form>
-                <TextInput
+              <RestForm>
+                <label className="formLabel">New Password</label>
+                <FormInput
                   name="newPassword"
-                  type="password"
-                  label="New Password"
-                  placeholder="********"
-                  icon={<FiLock />}
+                  type="password" 
+                  placeholder="Enter new password"
                 />
-
-                <TextInput
+                <label className="formLabel">Confirm Password</label>
+                <FormInput
                   name="confirmPassword"
                   type="password"
-                  label="Confirm Password"
-                  placeholder="********"
-                  icon={<FiLock />}
+                  placeholder="Confirm password"
                 />
 
-                <StyledFormButton type="submit">Submit</StyledFormButton>
-              </Form>
+                <StyleButton width="100%" borderRadius="0" type="submit">
+                  <ResetPassword>Reset Password</ResetPassword></StyleButton>
+              </RestForm>
             )}
           </Formik>
         </StyledFormArea>

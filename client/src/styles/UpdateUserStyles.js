@@ -1,26 +1,38 @@
 import styled from "styled-components";
 
+export const UpdateUserPageStyle = styled.div`
+  /* display: relative; */
+  background-color: #e5e5e5;
+  height: 100vh;
+  /* padding: 10%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const BackDiv = styled.div`
   /* position: absolute; */
-  width: 100%;
-  height: 271px;
+  /* width: 100%; */
+  /* height: 271px; */
   /* left: 0px;
 top: 96px; */
 
-  background: rgba(222, 61, 109, 0.1);
+  /* background: rgba(222, 61, 109, 0.1); */
+  /* padding: 10%; */
 `;
 
 export const Container = styled.div`
-  width: 640px;
-  height: 710px;
-  margin: -12rem auto 15.75rem auto;
+  /* width: 640px; */
+  width: calc(640px / 2);
+
+  padding: 7% 15%;
   /* margin-bottom: 14rem; */
-  z-index: 1;
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+
+  /* justify-content: flex-start; */
 
   button,
   input[type="submit"],
@@ -28,14 +40,14 @@ export const Container = styled.div`
     background: none;
     color: inherit;
     border: none;
-    padding: 0;
+    /* padding: 0; */
     font: inherit;
     cursor: pointer;
     outline: inherit;
   }
 
   p {
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     padding: 0;
   }
 
@@ -54,25 +66,22 @@ export const Container = styled.div`
     padding: 1rem;
     outline: none;
     border: 1px solid #d9d9d9;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+    /* width: 100%; */
+    margin: 0 0 1rem 0;
   }
 
   input::placeholder {
     color: #c4c4c4;
   }
 
-  .container {
+  /* .container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 320px;
-    /* border: 1px solid black; */
-  }
-
-  .logo {
-    margin: 3.75rem 0;
-  }
+    justify-content: center;
+    width: 620px;
+    border:2px solid red;
+  } */
 
   .header-text {
     font-weight: 700;
@@ -80,8 +89,12 @@ export const Container = styled.div`
     margin-bottom: 2.5rem;
   }
   .login-header-text {
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 18px;
     color: #21334f;
+    line-height: 21.78px;
+    margin: 2.5rem 0;
+    width: 100%;
   }
 
   .create-account {
@@ -148,10 +161,15 @@ export const Container = styled.div`
   }
 `;
 
-export const UpdateUserPageStyle = styled.div`
-  display: relative;
-  background-color: #e5e5e5;
+export const LogoWrapper = styled.div`
+  width: 100%;
+  text-align: center;
+  & img {
+    width: 60%;
+  }
 `;
+
+// MODAL DESIGN
 
 export const ModalStyle = styled.div`
   position: fixed;

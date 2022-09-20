@@ -18,6 +18,7 @@ export const BaseRoute = () => {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/dashboard" element={<DashboardPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/forgottenpassword" element={<ForgottenPasswordPage />}></Route>
@@ -28,14 +29,14 @@ export const BaseRoute = () => {
 
 
         {/* Protected Routes */}
-        <Route
+        {/* <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <DashboardPage />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/dashboard/UpdateUser"
           element={

@@ -4,7 +4,7 @@ import {
   Container,
   ModalStyle,
   UpdateUserPageStyle,
-} from "./UpdateUserStyles";
+} from "../../../styles/UpdateUserStyles";
 import logo from "../../../assets/icon/logo2.svg";
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
