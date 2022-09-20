@@ -14,7 +14,8 @@ import { UseAuth } from "../../context/useAuth";
 export const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    emailOrUsername: "",
+    email: "",
+    userName: "",
     password: "",
   });
   const { login } = UseAuth();
@@ -32,7 +33,9 @@ export const Login = () => {
       <BackDiv />
       <Container>
         <div className="container">
-          <Link to="/"><img src={logo} alt="logo" className="logo" /></Link>
+          <Link to="/">
+            <img src={logo} alt="logo" className="logo" />
+          </Link>
 
           <h2 className="login-header-text">Login</h2>
 
@@ -66,19 +69,19 @@ export const Login = () => {
               />
             </div>
             <Link to="/user/forgotpassword">
-            <p
-              style={{
-                color: "#4285F4",
-                fontStyle: "normal",
-                fontWeight: "400",
-                fontSize: "12px",
-                lineHeight: "15px",
-                cursor: 'pointer'
-              }}
-            >
-              Forgot Password?
-            </p>
-            </Link> 
+              <p
+                style={{
+                  color: "#4285F4",
+                  fontStyle: "normal",
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                  cursor: "pointer",
+                }}
+              >
+                Forgot Password?
+              </p>
+            </Link>
             <button type="submit" className="login-btn">
               Login
             </button>

@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import UserImg from "../../assets/images/user.jpeg";
+// import UserImg from "../../assets/images/user.jpeg";
 import { FiChevronDown } from "react-icons/fi";
 import ProfileIcon from "../../assets/icon/UserIcon.svg";
 import SettingsIcon from "../../assets/icon/settings.svg";
 import HelpIcon from "../../assets/icon/help.svg";
 import LogoutIcon from "../../assets/icon/logout.svg";
 import { Link } from "react-router-dom";
-import { UseAuth } from "../../context/useAuth";
 
 const UserProfileNav = ({ setLogout, dashboard }) => {
-  const { getUser } = UseAuth();
-  const [data, setData] = useState();
+  //   const { getUser } = UseAuth();
+  //   const [data, setData] = useState();
+  const firstName = localStorage.getItem("firstName");
+  const avatar = localStorage.getItem("avatar");
 
   const [showDropdown, setShowDropdown] = React.useState(false);
   return (
     <Profile>
       <Link to="/dashboard/UpdateUser">
-        <img src={UserImg} alt="" />
+        <img src={avatar} alt="" />
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
-        <span>Davids </span>
+        <span>{firstName} </span>
         {dashboard && (
           <>
             <FiChevronDown />
