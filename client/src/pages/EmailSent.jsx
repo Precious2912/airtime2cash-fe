@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {
   StyledContainer,
@@ -11,7 +11,8 @@ import {
   colors
 } from "../styles/emailStyle";
 
-export const EmailSent = ({ logoutuser, user }) => {
+export const EmailSent = () => {
+
   return (
     <div>
       <StyledContainer>

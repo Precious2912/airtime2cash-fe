@@ -24,12 +24,20 @@ function reducer(state, action) {
         ...state,
         user: action.data,
       };
+
     case "LOGIN":
       return {
         ...state,
         loggedIn: true,
         user: action.payload,
       };
+
+    // case "FORGOT_PASSWORD":
+    //   return {
+    //     ...state,
+    //     loggedIn: false,
+    //     user: action.payload,
+    //   };
 
     case "LOGOUT":
       return {
@@ -65,7 +73,7 @@ export const AuthProvider = ({ children }) => {
             dispatch({ type: "REGISTER", payload: res.data });
             toast.success(res.data.message);
             setTimeout(() => {
-              navigate("/");
+              navigate("/emailsent");
             }, 2000);
 
             return res;
@@ -87,22 +95,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const verifyEmail = async (formData) => {
-    try {
-      const email = formData.email;
-      const token = "";
+  // const forgotPassword = async (formData) => {
+  //   try {
+  //     const email = formData.email
 
-      await axios
-        .patch(`http://localhost:7000/user/verify/${token}`, email)
-        .then((res) => {
-            if(res.status === 200){
-              navigate('/login')
-            }
-        });
-    } catch (err) {
-      throw new Error(`${err}`);
-    }
-  };
+  //     await axios
+  //       .post(`http://localhost:7000/user/forgetPassword`, email)
+  //       .then((res) => {
+  //         if (res.status === 200) {
+  //           console.log(res)
+  //           // add toastify promise here
+  //           console.log('sucess')
+  //           dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
+  //         }
+  //       });
+  //   } catch (err) {
+  //     console.log(err)
+  //     throw new Error(`${err}`);
+  //     // add toastify here
+  //   }
+  // };
 
   const login = async (formData) => {
     try {
