@@ -19,6 +19,11 @@ function reducer(state, action) {
         user: action.data,
       };
 
+    case "VERIFY_EMAIL":
+      return {
+        ...state,
+        user: action.data,
+      };
     case "LOGIN":
       return {
         ...state,
@@ -38,7 +43,7 @@ function reducer(state, action) {
 }
 
 export const AuthProvider = ({ children }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const register = async (formData) => {
@@ -60,15 +65,39 @@ export const AuthProvider = ({ children }) => {
             dispatch({ type: "REGISTER", payload: res.data });
             toast.success(res.data.message);
             setTimeout(() => {
-               navigate("/login");
-            }, 2000)
-            
-            return;
+              navigate("/");
+            }, 2000);
+
+            return res;
           }
         })
         .catch((err) => {
-        
-          toast.error(err.response.data.message)
+          toast.error(err.response.data.Error, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        });
+    } catch (err) {
+      throw new Error(`${err}`);
+    }
+  };
+
+  const verifyEmail = async (formData) => {
+    try {
+      const email = formData.email;
+      const token = "";
+
+      await axios
+        .patch(`http://localhost:7000/user/verify/${token}`, email)
+        .then((res) => {
+            if(res.status === 200){
+              navigate('/login')
+            }
         });
     } catch (err) {
       throw new Error(`${err}`);
