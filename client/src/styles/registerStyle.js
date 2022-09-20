@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 100vw;
   background: rgba(0, 0, 0, 0.05);
   min-height: 100vh;
-  padding: 5% 1%;
+  display: flex;
+  /* border:2px solid red; */
+  justify-content: center;
+  /* padding: 5% 1%; */
 `;
 
 export const Wrapper2 = styled.div`
@@ -15,10 +18,12 @@ export const Wrapper2 = styled.div`
   /* justify-content: center; */
   padding: 6% 15%;
   background: #fff;
-  width: calc(540px / 2);
+  width: calc(640px / 2);
+  margin: 5% 0%;
+
   /* width: 20%; */
   /* max-width: 100%; */
-  margin: 0 auto;
+  /* margin: 0 auto; */
 `;
 
 export const Logo = styled.img` 

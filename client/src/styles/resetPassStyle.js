@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const colors = {
     theme: 'lemon',
@@ -56,40 +55,65 @@ order: 1;
 flex-grow: 0;
 `;
 
-export const StyledFormButton = styled.button`
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-padding: 8px 16px;
-gap: 10px;
-border-radius: 6px;
-width: 320px;
+// export const StyledFormButton = styled.button`
+// display: flex;
+// flex-direction: row;
+// justify-content: center;
+// align-items: center;
+// padding: 8px 16px;
+// gap: 10px;
+// border-radius: 6px;
+// width: 320px;
+// height: 48px;
+
+// background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
+
+// /* Inside auto layout */
+
+// flex: none;
+// order: 1;
+// flex-grow: 0;
+// `;
+
+export const ResetPassword = styled.span`
+font-size: 12px;
+font-weight: lighter;
+`
+
+
+
+export const RestForm = styled.form`
+.formLabel{
+    font-size: 2px;
+    color: #21334F;
+}
+`
+export const FormInput = styled.input`
 height: 48px;
+border:1px solid gray;
+margin : 10px 0;
+& ::placeholder {
+    color: #C4C4C4;
+    font-size: 12px;
 
-background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
+}
+`
 
-/* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
-`;
-
-export const StyledButton = styled(Link)`
-width: 104px;
-height: 19px;
-margin-left: 295px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-flex: none;
-order: 0;
-flex-grow: 0;
-background-color: #D8D8D8;
-`;
+// export const StyledButton = styled(Link)`
+// width: 104px;
+// height: 19px;
+// margin-left: 295px;
+// font-family: 'Inter';
+// font-style: normal;
+// font-weight: 500;
+// font-size: 16px;
+// line-height: 19px;
+// flex: none;
+// order: 0;
+// flex-grow: 0;
+// background-color: #D8D8D8;
+// `;
 
 
 

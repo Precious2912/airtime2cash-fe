@@ -32,12 +32,19 @@ function reducer(state, action) {
         user: action.payload,
       };
 
-    // case "FORGOT_PASSWORD":
-    //   return {
-    //     ...state,
-    //     loggedIn: false,
-    //     user: action.payload,
-    //   };
+    case "FORGOT_PASSWORD":
+      return {
+        ...state,
+        loggedIn: false,
+        user: action.payload,
+      };
+
+    case "RESET_PASSWORD":
+      return {
+        ...state,
+        loggedIn: false,
+        user: action.payload,
+      };
 
     case "LOGOUT":
       return {
@@ -95,26 +102,57 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // const forgotPassword = async (formData) => {
-  //   try {
-  //     const email = formData.email
+  const forgotPassword = async (formData) => {
+    try {
+      const email = {
+        email: formData.email
+      }
 
-  //     await axios
-  //       .post(`http://localhost:7000/user/forgetPassword`, email)
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           console.log(res)
-  //           // add toastify promise here
-  //           console.log('sucess')
-  //           dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
-  //         }
-  //       });
-  //   } catch (err) {
-  //     console.log(err)
-  //     throw new Error(`${err}`);
-  //     // add toastify here
-  //   }
-  // };
+      await axios
+        .post(`http://localhost:7000/user/forgetPassword`, email)
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res)
+             navigate("/resetpassword");
+            // add toastify promise here
+            console.log('sucess')
+            dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
+          }
+        });
+    } catch (err) {
+      console.log(err)
+      throw new Error(`${err}`);
+      // add toastify here
+    }
+  };
+
+    const resetPassword = async (formData, token) => {
+      try {
+        const password = {
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+        };
+
+        await axios
+          .patch(`http://localhost:7000/user/resetPassword/${token}`, password)
+          .then((res) => {
+            if (res.status === 202) {
+              console.log(res);
+                           dispatch({
+                             type: "RESET_PASSWORD",
+                             payload: res.data,
+                           });
+              navigate("/login");
+              // add toastify promise here
+ 
+            }
+          });
+      } catch (err) {
+        console.log(err);
+        throw new Error(`${err}`);
+        // add toastify here
+      }
+    };
 
   const login = async (formData) => {
     try {
@@ -146,7 +184,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ register, login, logout, state }}>
+    <AuthContext.Provider value={{ register, login, forgotPassword, resetPassword, logout, state }}>
       {children}
     </AuthContext.Provider>
   );
