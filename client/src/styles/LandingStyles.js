@@ -232,6 +232,11 @@ export const ProductSection = styled.div`
     & img {
       width: 80%;
     }
+    @media (max-width: 1024px) {
+      & img {
+      width: 50%;
+    }
+    }
   }
 
   @media (max-width: 1024px) {
@@ -280,6 +285,15 @@ export const TestimonialCardWrapper = styled.div`
   padding: 0% 5%;
   display: flex;
   margin-top: 35px;
+  .rec.rec-arrow {
+  background-color:#F5F5F5; 
+}
+
+.rec.rec-arrow:hover {
+  background-color:#bcb8b8 !important;
+
+}
+
 `;
 export const TestimonialCard = styled.div`
   display: flex;

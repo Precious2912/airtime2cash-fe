@@ -1,6 +1,6 @@
 import React from 'react'
 import logo3 from '../../assets/icon/logo3.svg'
-import { FooterStyle, LowerFooter } from './LandingStyles' 
+import { FooterStyle, LowerFooter } from '../../styles/LandingStyles' 
 import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 export const Footer = () => {
   return (
