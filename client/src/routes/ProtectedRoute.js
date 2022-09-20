@@ -3,14 +3,11 @@ import { useLocation, Navigate } from "react-router-dom";
 
 export const ProtectedRoute = ({ children }) => {
   const location = useLocation();
-  const isAuthenticated = localStorage.getItem("authenticated");
+  const isAuthenticated = localStorage.getItem("token");
 
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
-  else {
-    return <Navigate to="/dashboard" state={{ from: location }} replace />;
-  }
 
-  // return children;
+  return children;
 };

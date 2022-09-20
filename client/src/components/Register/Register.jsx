@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/icon/logo2.svg";
 import { Link } from "react-router-dom";
 import backicon from "../../assets/icon/backicon.svg";
-import { useNavigate } from "react-router-dom";
-import StyleButton from '../../styles/Button.styles.js'
+import StyleButton from "../../styles/Button.styles.js";
 import {
   Wrapper,
   Wrapper2,
@@ -14,13 +13,12 @@ import {
   FormStyle,
   StyledLabel,
   StyledInput,
-  StyledFooter, 
+  StyledFooter,
 } from "../../styles/registerStyle";
 
 import { UseAuth } from "../../context/useAuth";
 
 export const Register = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -30,37 +28,33 @@ export const Register = () => {
     password: "",
     confirmPassword: "",
   });
-  const { state, register } = UseAuth();
-  console.log("outside-----" + register);
-  console.log(state.user);
+  const { register } = UseAuth();
 
   console.log(formData);
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("here");
     await register(formData);
-    navigate("/login");
   };
 
   return (
     <Wrapper>
       <Wrapper2>
-        <Logo src={logo} alt="logo" />
+        <Link to="/">
+          <Logo src={logo} alt="logo" />
+        </Link>
 
         <HeaderAndButton>
           <Link to="/">
-          <Back>
-
-            <img src={backicon} alt="logo" />
-            Go back
-          </Back>
+            <Back>
+              <img src={backicon} alt="logo" />
+              Go back
+            </Back>
           </Link>
           <FormHeader>Create an account</FormHeader>
         </HeaderAndButton>
 
-
-        <FormStyle onSubmit={handleSubmit}>
+        <FormStyle onSubmit={handleRegister}>
           <StyledLabel>First Name</StyledLabel>
           <StyledInput
             placeholder="Enter your first name"
@@ -149,7 +143,9 @@ export const Register = () => {
               })
             }
           ></StyledInput>
-          <StyleButton borderRadius='0px' height='48px' width='100%'>Sign Up</StyleButton>
+          <StyleButton borderRadius="0px" height="48px" width="100%">
+            Sign Up
+          </StyleButton>
         </FormStyle>
 
         <StyledFooter>
