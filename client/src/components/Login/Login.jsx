@@ -68,7 +68,7 @@ export const Login = () => {
                 }}
               />
             </div>
-            <Link to="/user/forgotpassword">
+            <Link to="/forgottenPassword">
             <p
               style={{
                 color: "#4285F4",
