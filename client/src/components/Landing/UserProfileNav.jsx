@@ -6,21 +6,25 @@ import  ProfileIcon  from '../../assets/icon/UserIcon.svg'
 import  SettingsIcon  from '../../assets/icon/settings.svg'
 import  HelpIcon  from '../../assets/icon/help.svg'
 import  LogoutIcon  from '../../assets/icon/logout.svg'
+import { Link } from 'react-router-dom';
 
 
-const UserProfileNav = ({setLogout}) => {
+const UserProfileNav = ({setLogout, dashboard}) => {
     const [showDropdown, setShowDropdown] = React.useState(false)
   return (
-    <Profile onClick={()=>setShowDropdown(!showDropdown)}>
-        <img src={UserImg} alt="" />
+    <Profile >
+         <Link to='/dashboard/UpdateUser'><img src={UserImg} alt="" /></Link>
+        <span onClick={()=>setShowDropdown(!showDropdown)}>
         <span>Davids </span>
-        <FiChevronDown />
+        {dashboard && <>
+       <FiChevronDown />
         <Dropdown showDropdown={showDropdown}>
-            <DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem>
+        <Link to='/dashboard/UpdateUser'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
             <DropdownItem>  <img src={SettingsIcon} alt="" /> <span>Settings</span> </DropdownItem>
             <DropdownItem>  <img src={HelpIcon} alt="" /> <span>Help Center</span> </DropdownItem>
             <DropdownItem onClick={()=>setLogout(false)}>  <img src={LogoutIcon} alt="" /> <span>Logout</span> </DropdownItem>
-        </Dropdown>
+        </Dropdown></>}
+        </span>
     </Profile>
   )
 }
@@ -39,7 +43,7 @@ const Profile = styled.div`
 const Dropdown = styled.div`
     position: absolute;
     top: 100%;
-    right: 0;
+    right: 10%;
     background-color: #fff;
     width: 226px;
     height: 180px;

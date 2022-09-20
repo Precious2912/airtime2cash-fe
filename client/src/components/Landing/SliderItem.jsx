@@ -1,6 +1,6 @@
 import React from 'react'
 import Carousel from 'react-elastic-carousel'
-import { TestimonialCard } from './LandingStyles'
+import { TestimonialCard } from '../../styles/LandingStyles'
 
 const breakPoints = [
     {width:1, itemsToShow:1},
