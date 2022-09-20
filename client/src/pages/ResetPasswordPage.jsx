@@ -71,9 +71,14 @@ justify-content: center;
 align-items: center;
 padding: 8px 16px;
 gap: 10px;
+border-radius: 6px;
 width: 320px;
 height: 48px;
+
 background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
+
+/* Inside auto layout */
+
 flex: none;
 order: 1;
 flex-grow: 0;

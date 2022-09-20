@@ -39,13 +39,14 @@ font-weight: bold;
 `;
 
 export const StyledTextInput = styled.input`
-width: 280px;
+width: 254px;
 padding: 15px;
 padding-left: 50px;
 font-size: 17px;
 letter-spacing: 1px;
 color: ${colors.dark1};
 background-color: ${colors.light2};
+border-radius: 6px;
 border: 0;
 outline: 0;
 display: block;
