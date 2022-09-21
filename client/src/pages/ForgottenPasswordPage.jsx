@@ -27,7 +27,7 @@ export const ForgottenPasswordPage = () => {
   return (
     <StyledContainer>
       <StyledFormArea>
-        <StyledTitle>Forget Password</StyledTitle>
+        <StyledTitle>Forgot Password</StyledTitle>
         <StyledSubTitle>
           Enter the email associated with your account and we'll send an email
           with instruction to reset your password

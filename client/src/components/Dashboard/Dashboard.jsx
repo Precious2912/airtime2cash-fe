@@ -13,8 +13,7 @@ export const Dashboard = () => {
     console.log(result.data.user.lastName);
     localStorage.setItem("firstName", result.data.user.firstName);
     localStorage.setItem("lastName", result.data.user.lastName);
-    localStorage.setItem("name", result.data.user.phoneNumber);
-    localStorage.setItem("phoneNumber", result.data.user.email);
+    localStorage.setItem("phoneNumber", result.data.user.phoneNumber);
     localStorage.setItem("avatar", result.data.user.avatar);
     localStorage.setItem("userName", result.data.user.userName);
     localStorage.setItem("email", result.data.user.email);
@@ -27,9 +26,7 @@ export const Dashboard = () => {
   return (
     <>
       <DashboardStyle>
-        <div className="top">
-        
-        </div>
+        <div className="top"></div>
         <div className="dashboard">
           <h1>Dashboard</h1>
           <div className="balance-wrapper">

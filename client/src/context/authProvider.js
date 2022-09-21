@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => {
 
       await axios
         .post(
-          `http://localhost:7000/user/register`,
+          `${process.env.REACT_APP_BACKEND_URL}/user/register`,
           registerUser
         )
         .then((res) => {
@@ -91,18 +91,17 @@ export const AuthProvider = ({ children }) => {
             toast.success(res.data.message, {
               autoClose: 1000,
             });
+            localStorage.setItem("email", registerUser);
             setTimeout(() => {
               navigate("/verify-emailsent");
               toast.success("Verify your email", {
                 autoClose: 3000,
               });
             }, 2000);
-
-            return res;
           }
         })
         .catch((err) => {
-          toast.error(err.response.data.Error, {
+          toast.error(err.response.data.message, {
             autoClose: 3000,
           });
         });
@@ -138,9 +137,9 @@ export const AuthProvider = ({ children }) => {
               autoClose: 3000,
             });
             const id = localStorage.getItem("id");
-            setTimeout(() => {
-              navigate(`/dashboard/${id}`);
-            }, 2000);
+            // setTimeout(() => {
+            navigate(`/dashboard/${id}`);
+            // }, 2000);
             return;
           }
         })
@@ -257,8 +256,12 @@ export const AuthProvider = ({ children }) => {
       };
       const id = localStorage.getItem("id");
       await axios
-        .patch(`${process.env.REACT_APP_BACKEND_URL}/user/update/${id}`, form)
-        .set("Authorization", `Bearer ${localStorage.getItem("token")}`)
+        .patch(`${process.env.REACT_APP_BACKEND_URL}/user/update/${id}`, form, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+
         .then((response) => {
           toast.success(response.data.message);
           console.log(response);
