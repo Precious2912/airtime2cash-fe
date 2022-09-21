@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import {
   StyledContainer,
@@ -11,7 +12,8 @@ import {
   colors
 } from "../styles/emailStyle";
 
-export const EmailSent = ({ logoutuser, user }) => {
+export const EmailSent = () => {
+
   return (
     <div>
       <StyledContainer>
@@ -41,7 +43,7 @@ export const EmailSent = ({ logoutuser, user }) => {
             <TextLink to="/forgotpassword">Click to Resend Link</TextLink>
           </ExtraText>
 
-          <StyledFormButton to="#">Back to login</StyledFormButton>
+         <Link to="/login"><StyledFormButton>Back to login</StyledFormButton></Link> 
         </StyledFormArea>
       </StyledContainer>
     </div>
