@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
 import {
   BackDiv,
   Container,
-  ModalStyle,
   UpdateUserPageStyle,
 } from "../../../styles/UpdateUserStyles";
 
@@ -16,10 +14,10 @@ import logo from "../../../assets/icon/logo2.svg";
 import backicon from "../../../assets/icon/backicon.svg";
 
 export const UpdateUserSetting = () => {
+  const id = localStorage.getItem("id");
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const [modalState, setModalState] = useState(false);
-
-  const [setImage, setSetImage] = useState({});
 
   const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);
@@ -79,7 +77,7 @@ export const UpdateUserSetting = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     await updateProfile(formData);
-    navigate("/dashboard");
+    window.location.href = `/dashboard/${id}`;
   };
 
   return (
@@ -88,7 +86,7 @@ export const UpdateUserSetting = () => {
 
       <Container>
         <HeaderAndButton>
-          <Link to="/dashboard">
+          <Link to={`/dashboard/${id}`}>
             <Back>
               <img src={backicon} alt=" " />
               Go back

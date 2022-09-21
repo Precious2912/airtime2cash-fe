@@ -21,6 +21,7 @@ export const Dashboard = () => {
   };
   useEffect(() => {
     apiCall();
+    // eslint-disable-next-line
   }, []);
 
   return (

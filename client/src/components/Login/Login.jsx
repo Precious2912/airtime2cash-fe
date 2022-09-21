@@ -3,16 +3,10 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
-import { useNavigate } from "react-router-dom";
-import {
-  Container,
-  UpdateUserPageStyle,
-  LogoWrapper,
-} from "../../styles/UpdateUserStyles";
+import { Container, UpdateUserPageStyle } from "../../styles/UpdateUserStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     userName: "",
@@ -20,12 +14,9 @@ export const Login = () => {
   });
   const { login } = UseAuth();
 
-  console.log(formData);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(formData);
-    navigate("/dashboard");
   };
 
   return (
@@ -68,12 +59,12 @@ export const Login = () => {
                 }}
               />
             </div>
-            <Link to="/user/forgotpassword">
+            <Link to="/forgottenpassword">
               <p
                 style={{
                   color: "#4285F4",
                   fontStyle: "normal",
-                  fontWeight: "400",
+                  fontWeight: "lighter",
                   fontSize: "12px",
                   lineHeight: "15px",
                   cursor: "pointer",
@@ -82,7 +73,6 @@ export const Login = () => {
                 Forgot Password?
               </p>
             </Link>
-
             <button type="submit" className="login-btn">
               Login
             </button>
