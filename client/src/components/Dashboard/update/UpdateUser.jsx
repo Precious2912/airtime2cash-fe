@@ -3,7 +3,6 @@ import { FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
-
 import {
   BackDiv,
   Container,
@@ -18,15 +17,18 @@ export const UpdateUserSetting = () => {
   const navigate = useNavigate();
   const [modalState, setModalState] = useState(false);
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    phoneNumber: "",
-    avatar: "",
-  });
+  const [setImage, setSetImage] = useState({});
 
-  const { getUser } = UseAuth();
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   userName: "",
+  //   phoneNumber: "",
+  //   avatar: "",
+  // });
+
+  // const { getUser } = UseAuth();
+  // console.log(state.user)
 
   const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);
@@ -46,49 +48,49 @@ export const UpdateUserSetting = () => {
   }
   useOutsideAlerter(wrapperRef);
 
-  // const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
-  // const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
-  // const [phoneNumber, setPhoneNumber] = useState(
-  //   localStorage.getItem("phoneNumber")
-  // );
-  // const [userName, setUserName] = useState(localStorage.getItem("userName"));
-  // const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
+  const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
+  const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
+  const [phoneNumber, setPhoneNumber] = useState(
+    localStorage.getItem("phoneNumber")
+  );
+  const [userName, setUserName] = useState(localStorage.getItem("userName"));
+  const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
 
-  // const handleChange = (e) => {
-  //   switch (e.target.name) {
-  //     case "firstName":
-  //       setFirstName(e.target.value);
-  //       break;
-  //     case "lastName":
-  //       setLastName(e.target.value);
-  //       break;
-  //     case "phoneNumber":
-  //       setPhoneNumber(e.target.value);
-  //       break;
-  //     case "userName":
-  //       setUserName(e.target.value);
-  //       break;
-  //     case "avatar":
-  //       setAvatar(e.target.value);
-  //       break;
-  //     default:
-  //   }
-  // };
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case "firstName":
+        setFirstName(e.target.value);
+        break;
+      case "lastName":
+        setLastName(e.target.value);
+        break;
+      case "phoneNumber":
+        setPhoneNumber(e.target.value);
+        break;
+      case "userName":
+        setUserName(e.target.value);
+        break;
+      case "avatar":
+        setAvatar(e.target.value);
+        break;
+      default:
+    }
+  };
 
-  // const formData = {
-  //   firstName: firstName,
-  //   lastName: lastName,
-  //   userName: userName,
-  //   phoneNumber: phoneNumber,
-  //   avatar: avatar,
-  // };
+  const formData = {
+    firstName: firstName,
+    lastName: lastName,
+    userName: userName,
+    phoneNumber: phoneNumber,
+    avatar: avatar,
+  };
+
   const handleUpdate = async (e) => {
     e.preventDefault();
-
     await updateProfile(formData);
     navigate("/dashboard");
   };
-  console.log(formData);
+
   return (
     <UpdateUserPageStyle>
       <BackDiv />
@@ -114,15 +116,8 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="firstName"
                 placeholder="First Name"
-                // value={firstName}
-                // onChange={handleChange}
-
-                // onChange={(e) =>
-                //   setFormData({
-                //     ...formData,
-                //     lastName: e.target.value.trim(),
-                //   })
-                // }
+                value={firstName}
+                onChange={handleChange}
               />
             </div>
             <div className="input-element">
@@ -131,14 +126,8 @@ export const UpdateUserSetting = () => {
                 type="text"
                 placeholder="Last Name"
                 name="lastName"
-                // value={lastName}
-                // onChange={handleChange}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lastName: e.target.value.trim(),
-                  })
-                }
+                value={lastName}
+                onChange={handleChange}
               />
             </div>
             <div className="input-element">
@@ -147,14 +136,8 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="phoneNumber"
                 placeholder="Phone Number"
-                // value={phoneNumber}
-                // onChange={handleChange}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lastName: e.target.value.trim(),
-                  })
-                }
+                value={phoneNumber}
+                onChange={handleChange}
               />
             </div>
 
@@ -164,82 +147,27 @@ export const UpdateUserSetting = () => {
                 type="text"
                 name="userName"
                 placeholder="User Name"
-                // value={userName}
-                // onChange={handleChange}
-
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lastName: e.target.value.trim(),
-                  })
-                }
+                value={userName}
+                onChange={handleChange}
               />
             </div>
+
             <div className="input-element">
               <label htmlFor="">Avatar</label>
               <input
                 type="text"
                 name="avatar"
-                placeholder="Avatar"
-                // value={avatar}
-                // onChange={handleChange}
-
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lastName: e.target.value.trim(),
-                  })
-                }
+                placeholder="Enter avatar url here"
+                value={avatar}
+                onChange={handleChange}
               />
             </div>
-            {/* <div className="input-element">
-              <label htmlFor="avatar">Avatar</label>
-              <input
-                type="button"
-                placeholder="Avatar"
-                value={"Upload Photo"}
-                className="avatar-upload"
-                onClick={() => {
-                  setModalState(true);
-                }}
-              />
-            </div> */}
 
             <button type="submit" className="save-btn">
               Save
             </button>
           </form>
         </div>
-        {/* {modalState && (
-          <ModalStyle>
-            <div className="modal-content" ref={wrapperRef}>
-              <div
-                className="close-btn"
-                onClick={() => {
-                  setModalState(false);
-                }}
-              >
-                <FaTimes />
-              </div>
-              <img src={logo} alt="logo" className="modal-logo" />
-              <div className="upload-section">
-                <h3>Upload your Photo</h3>
-                <input type="file" name="" id="" className="modal-input" />
-                <p className="allowed-text">
-                  *Allowed formats: jpeg, jpg, png and svg*{" "}
-                </p>
-                <button
-                  className="save-btn-modal"
-                  onClick={() => {
-                    setModalState(false);
-                  }}
-                >
-                  Add Photo
-                </button>
-              </div>
-            </div>
-          </ModalStyle>
-        )} */}
       </Container>
     </UpdateUserPageStyle>
   );
