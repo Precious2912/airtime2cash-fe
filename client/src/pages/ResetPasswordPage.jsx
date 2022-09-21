@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import StyleButton from "../styles/Button.styles.js";
 import { UseAuth } from "../context/useAuth";
+import logo from "../assets/icon/logo2.svg";
 
 import {
   StyledContainer,

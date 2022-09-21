@@ -99,11 +99,9 @@ export const Container = styled.div`
 
   .create-account {
     margin-top: 2rem;
-    width: 228px;
-    height: 15px;
 
-    font-family: "Inter";
-    font-style: normal;
+    height: 15px;
+    text-align: center;
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
