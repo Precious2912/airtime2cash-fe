@@ -49,7 +49,7 @@ export const Navbar = ({ landing, dashboard }) => {
             <MenuLinks onClick={() => setOpen(!open)}>
               <a href="/#contactUs">Contact Us</a>
             </MenuLinks>
-            {isLogin ? (
+            {localStorage.getItem("token") ? (
               <UserProfileNav setLogout={setIsLogin} />
             ) : (
               <StyleButton onClick={() => setIsLogin(true)} width="20%">

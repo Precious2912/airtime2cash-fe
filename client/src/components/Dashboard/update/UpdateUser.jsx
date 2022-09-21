@@ -81,8 +81,7 @@ export const UpdateUserSetting = () => {
 
   return (
     <UpdateUserPageStyle>
-      <BackDiv />
-
+      <div className="top"></div>
       <Container>
         <HeaderAndButton>
           <Link to={`/dashboard/${id}`}>
@@ -93,9 +92,10 @@ export const UpdateUserSetting = () => {
           </Link>
         </HeaderAndButton>
         <div className="container">
-          <img src={logo} alt=" " className="logo" />
-
-          <h2 className="header-text">Basic Infomation</h2>
+          <div className="imgWrapper">
+          <img src={logo} alt="logo" className="logo" />
+          </div>
+          <h3 className="header-text">Basic Information</h3>
 
           <form action="" className="form-group" onSubmit={handleUpdate}>
             <div className="input-element">

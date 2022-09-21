@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
-import { Container, UpdateUserPageStyle } from "../../styles/UpdateUserStyles";
+import {
+  Container,
+  UpdateUserPageStyle,
+  LogoWrapper,
+} from "../../styles/LoginStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
@@ -25,7 +29,9 @@ export const Login = () => {
       <Container>
         <div className="container">
           <Link to="/">
-            <img src={logo} alt="logo" className="logo" />
+            <LogoWrapper>
+              <img src={logo} alt="logo" className="logo" />
+            </LogoWrapper>
           </Link>
 
           <h2 className="login-header-text">Login</h2>

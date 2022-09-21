@@ -1,5 +1,7 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import mailIcon from "../assets/icon/mail.svg"; 
+import StyleButton from '../styles/Button.styles.js'
 
 import {
   StyledContainer,
@@ -9,49 +11,34 @@ import {
   ExtraText,
   TextLink,
   StyledFormButton,
-  colors
+  colors,
+  Icon,
+  ButtonWrapper
 } from "../styles/emailStyle";
 
-export const EmailSent = () => {
 
+export const EmailSent = ({text}) => {
   return (
-    <div>
       <StyledContainer>
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            backgroundColor: "transparent",
-            width: "100%",
-            padding: "15px",
-            display: "flex",
-            justifyContent: "flex-start",
-          }}
-        >
-          {/* <Avatar image={Logo} /> */}
-        </div>
-        <StyledFormArea bg={colors.dark2}>
+        
+        <StyledFormArea>
+          <Icon>
+          <img src={mailIcon} alt="" />
+          </Icon>
           <StyledTitle>Check your email</StyledTitle>
           <StyledSubTitle>
-            We sent a password reset link to your email Please click the link to
-            reset your password
+           {text}
           </StyledSubTitle>
 
           <ExtraText>
-            Don't receive the email?{" "}
-            <TextLink to="/forgotpassword">Click to Resend Link</TextLink>
+            Don't receive the email?
+            <TextLink><Link to="/forgottenpassword"> Click to Resend Link</Link></TextLink>
           </ExtraText>
-
-         <Link to="/login"><StyledFormButton>Back to login</StyledFormButton></Link> 
+          <ButtonWrapper>
+          <StyleButton borderRadius="0" width="100%" height="54px"><Link to="/login">Back to login</Link></StyleButton>
+          </ButtonWrapper>
         </StyledFormArea>
       </StyledContainer>
-    </div>
   );
 };
 
-// const mapStateToProps = ({session}) => ({
-// user: session.user
-// })
-
-// export default EmailSent;
