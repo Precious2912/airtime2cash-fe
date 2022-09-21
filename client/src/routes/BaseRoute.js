@@ -36,7 +36,8 @@ export const BaseRoute = () => {
               <DashboardPage />
             </ProtectedRoute>
           }
-        /> */}
+        />
+
         <Route
           path="/dashboard/UpdateUser"
           element={

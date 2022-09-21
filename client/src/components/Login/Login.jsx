@@ -14,7 +14,8 @@ import { UseAuth } from "../../context/useAuth";
 export const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    emailOrUsername: "",
+    email: "",
+    userName: "",
     password: "",
   });
   const { login } = UseAuth();
@@ -32,11 +33,11 @@ export const Login = () => {
     <UpdateUserPageStyle>
       {/* <BackDiv /> */}
       <Container>
+        <div className="container">
           <Link to="/">
-            <LogoWrapper>
             <img src={logo} alt="logo" className="logo" />
-            </LogoWrapper>
-            </Link>
+          </Link>
+
           <h2 className="login-header-text">Login</h2>
 
           <form action="" className="form-group" onSubmit={handleLogin}>
@@ -68,20 +69,21 @@ export const Login = () => {
                 }}
               />
             </div>
-            <Link to="/forgottenPassword">
-            <p
-              style={{
-                color: "#4285F4",
-                fontStyle: "normal",
-                fontWeight: "lighter",
-                fontSize: "12px",
-                lineHeight: "15px",
-                cursor: 'pointer'
-              }}
-            >
-              Forgot Password?
-            </p>
-            </Link> 
+            <Link to="/user/forgotpassword">
+              <p
+                style={{
+                  color: "#4285F4",
+                  fontStyle: "normal",
+                  fontWeight: "400",
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                  cursor: "pointer",
+                }}
+              >
+                Forgot Password?
+              </p>
+            </Link>
+
             <button type="submit" className="login-btn">
               Login
             </button>
