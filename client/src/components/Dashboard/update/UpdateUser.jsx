@@ -8,11 +8,9 @@ import {
   Container,
   ModalStyle,
   UpdateUserPageStyle,
-} from "./UpdateUserStyles";
+} from "../../../styles/UpdateUserStyles";
 
 import { Back, HeaderAndButton } from "../../../styles/registerStyle";
-
-
 
 import logo from "../../../assets/icon/logo2.svg";
 import backicon from "../../../assets/icon/backicon.svg";
@@ -22,8 +20,6 @@ export const UpdateUserSetting = () => {
   const [modalState, setModalState] = useState(false);
 
   const [setImage, setSetImage] = useState({});
-
-
 
   const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);

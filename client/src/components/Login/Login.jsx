@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import {
   Container,
   UpdateUserPageStyle,
-  LogoWrapper
+  LogoWrapper,
 } from "../../styles/UpdateUserStyles";
 import { UseAuth } from "../../context/useAuth";
 
@@ -29,7 +29,6 @@ export const Login = () => {
   };
 
   return (
-   
     <UpdateUserPageStyle>
       {/* <BackDiv /> */}
       <Container>
@@ -88,13 +87,14 @@ export const Login = () => {
               Login
             </button>
           </form>
-        <p className="create-account">
-          Don't have an account? &nbsp;
-          <Link to="/register" className="create-btn">
-            Create Account
-          </Link>
-        </p>
+          <p className="create-account">
+            Don't have an account? &nbsp;
+            <Link to="/register" className="create-btn">
+              Create Account
+            </Link>
+          </p>
+        </div>
       </Container>
-     </UpdateUserPageStyle>
+    </UpdateUserPageStyle>
   );
 };
