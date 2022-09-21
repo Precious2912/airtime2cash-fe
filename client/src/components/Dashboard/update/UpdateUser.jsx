@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
 import {
@@ -15,7 +15,6 @@ import backicon from "../../../assets/icon/backicon.svg";
 
 export const UpdateUserSetting = () => {
   const id = localStorage.getItem("id");
-  const navigate = useNavigate();
   // eslint-disable-next-line
   const [modalState, setModalState] = useState(false);
 
