@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   UpdateUserPageStyle,
@@ -12,19 +11,15 @@ import {
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     emailOrUsername: "",
     password: "",
   });
   const { login } = UseAuth();
 
-  console.log(formData);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(formData);
-    navigate("/dashboard");
   };
 
   return (

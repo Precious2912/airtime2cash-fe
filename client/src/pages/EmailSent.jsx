@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+import {Link} from "react-router-dom";
 
 import {
   StyledContainer,
@@ -42,7 +43,7 @@ export const EmailSent = () => {
             <TextLink to="/forgotpassword">Click to Resend Link</TextLink>
           </ExtraText>
 
-          <StyledFormButton to="#">Back to login</StyledFormButton>
+         <Link to="/login"><StyledFormButton>Back to login</StyledFormButton></Link> 
         </StyledFormArea>
       </StyledContainer>
     </div>

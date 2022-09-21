@@ -49,7 +49,7 @@ function reducer(state, action) {
     case "LOGOUT":
       return {
         ...state,
-        token: localStorage.removeItem("token"),
+        loggedIn: false,
       };
 
     default:
@@ -74,13 +74,21 @@ export const AuthProvider = ({ children }) => {
       };
 
       await axios
-        .post(`http://localhost:7000/user/register`, registerUser)
+        .post(
+          `${process.env.REACT_APP_BACKEND_URL}/user/register`,
+          registerUser
+        )
         .then((res) => {
           if (res.status === 201) {
             dispatch({ type: "REGISTER", payload: res.data });
-            toast.success(res.data.message);
+            toast.success(res.data.message, {
+              autoClose: 1000,
+            });
             setTimeout(() => {
               navigate("/emailsent");
+              toast.success("Verify your email", {
+                autoClose: 3000,
+              });
             }, 2000);
 
             return res;
@@ -88,71 +96,16 @@ export const AuthProvider = ({ children }) => {
         })
         .catch((err) => {
           toast.error(err.response.data.Error, {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
+            autoClose: 3000,
           });
         });
     } catch (err) {
+      toast.error(err.response.data.Error, {
+        autoClose: 3000,
+      });
       throw new Error(`${err}`);
     }
   };
-
-  const forgotPassword = async (formData) => {
-    try {
-      const email = {
-        email: formData.email
-      }
-
-      await axios
-        .post(`http://localhost:7000/user/forgetPassword`, email)
-        .then((res) => {
-          if (res.status === 200) {
-            console.log(res)
-             navigate("/resetpassword");
-            // add toastify promise here
-            console.log('sucess')
-            dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
-          }
-        });
-    } catch (err) {
-      console.log(err)
-      throw new Error(`${err}`);
-      // add toastify here
-    }
-  };
-
-    const resetPassword = async (formData, token) => {
-      try {
-        const password = {
-          password: formData.password,
-          confirmPassword: formData.confirmPassword,
-        };
-
-        await axios
-          .patch(`http://localhost:7000/user/resetPassword/${token}`, password)
-          .then((res) => {
-            if (res.status === 202) {
-              console.log(res);
-                           dispatch({
-                             type: "RESET_PASSWORD",
-                             payload: res.data,
-                           });
-              navigate("/login");
-              // add toastify promise here
- 
-            }
-          });
-      } catch (err) {
-        console.log(err);
-        throw new Error(`${err}`);
-        // add toastify here
-      }
-    };
 
   const login = async (formData) => {
     try {
@@ -162,29 +115,107 @@ export const AuthProvider = ({ children }) => {
       };
 
       await axios
-        .post(`http://localhost:7000/user/login`, loginUser)
+        .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, loginUser)
         .then((res) => {
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
             dispatch({ type: "LOGIN", payload: res.data });
+            toast.success(res.data.message, {
+              autoClose: 3000,
+            });
+            const id = localStorage.getItem("id");
+            setTimeout(() => {
+              navigate(`/dashboard/${id}`);
+            }, 2000);
             return;
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error("Invalid login credentials", {
+            autoClose: 3000,
+          });
         });
     } catch (err) {
+      console.log(err.response.data);
+      toast.error("Please kindly register", {
+        autoClose: 3000,
+      });
+      throw new Error(`${err}`);
+    }
+  };
+
+  const forgotPassword = async (formData) => {
+    try {
+      const email = {
+        email: formData.email,
+      };
+
+      await axios
+        .post(`${process.env.REACT_APP_BACKEND_URL}/user/forgetPassword`, email)
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            // should take you to a check your email-for-reset-password-link page
+            navigate("/emailsent");
+            toast.success("Reset password sent to you email", {
+              autoClose: 3000,
+            });
+            dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
+          }
+        });
+    } catch (err) {
+      toast.error("No user found, kindly register", {
+        autoClose: 3000,
+      });
+      throw new Error(`${err}`);
+    }
+  };
+
+  const resetPassword = async (formData, token) => {
+    try {
+      const password = {
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+      };
+
+      await axios
+        .patch(
+          `${process.env.REACT_APP_BACKEND_URL}/user/resetPassword/${token}`,
+          password
+        )
+        .then((res) => {
+          if (res.status === 202) {
+            dispatch({
+              type: "RESET_PASSWORD",
+              payload: res.data,
+            });
+            setTimeout(() => {
+              navigate("/login");
+              toast.success("Password reset successfully", {
+                autoClose: 1500,
+              });
+            }, 2000);
+          }
+        });
+    } catch (err) {
+        toast.error(err.response.data.Error, {
+          autoClose: 3000,
+        });
       throw new Error(`${err}`);
     }
   };
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
+    localStorage.clear()
+    navigate('/login')
   };
 
   return (
-    <AuthContext.Provider value={{ register, login, forgotPassword, resetPassword, logout, state }}>
+    <AuthContext.Provider
+      value={{ register, login, forgotPassword, resetPassword, logout, state }}
+    >
       {children}
     </AuthContext.Provider>
   );

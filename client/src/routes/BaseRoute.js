@@ -18,25 +18,23 @@ export const BaseRoute = () => {
       <ToastContainer />
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/dashboard" element={<DashboardPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/forgottenpassword" element={<ForgottenPasswordPage />}></Route>
         <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route>
         <Route path="/emailsent" element={<EmailSent />}></Route>
-        {/* <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route> */}
 
 
 
         {/* Protected Routes */}
-        {/* <Route
-          path="/dashboard"
+        <Route
+          path="/dashboard/:id"
           element={
             <ProtectedRoute>
               <DashboardPage />
             </ProtectedRoute>
           }
-        /> */}
+        />
         <Route
           path="/dashboard/UpdateUser"
           element={

@@ -7,10 +7,15 @@ import  SettingsIcon  from '../../assets/icon/settings.svg'
 import  HelpIcon  from '../../assets/icon/help.svg'
 import  LogoutIcon  from '../../assets/icon/logout.svg'
 import { Link } from 'react-router-dom';
+import { UseAuth } from "../../context/useAuth";
 
 
 const UserProfileNav = ({setLogout, dashboard}) => {
     const [showDropdown, setShowDropdown] = React.useState(false)
+     const { logout } = UseAuth();
+    const handleLogout = () =>{
+        logout()
+    }
   return (
     <Profile >
          <Link to='/dashboard/UpdateUser'><img src={UserImg} alt="" /></Link>
@@ -22,7 +27,7 @@ const UserProfileNav = ({setLogout, dashboard}) => {
         <Link to='/dashboard/UpdateUser'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
             <DropdownItem>  <img src={SettingsIcon} alt="" /> <span>Settings</span> </DropdownItem>
             <DropdownItem>  <img src={HelpIcon} alt="" /> <span>Help Center</span> </DropdownItem>
-            <DropdownItem onClick={()=>setLogout(false)}>  <img src={LogoutIcon} alt="" /> <span>Logout</span> </DropdownItem>
+            <DropdownItem onClick={()=>handleLogout()}>  <img src={LogoutIcon} alt="" /> <span>Logout</span> </DropdownItem>
         </Dropdown></>}
         </span>
     </Profile>
