@@ -4,8 +4,9 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { LandingPage } from "../pages/LandingPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
+import { Error } from "../pages/ErrorPage";
 import { DashboardPage } from "../pages/DashboardPage";
-import {ForgottenPasswordPage} from "../pages/ForgottenPasswordPage";
+import { ForgottenPasswordPage } from "../pages/ForgottenPasswordPage";
 import { ResetPasswordPage } from "../pages/ResetPasswordPage";
 import { EmailSent } from "../pages/EmailSent";
 import { ToastContainer } from "react-toastify";
@@ -16,17 +17,37 @@ export const BaseRoute = () => {
     <>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route> 
+        <Route path="/" element={<LandingPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/forgottenpassword" element={<ForgottenPasswordPage />}></Route>
-        <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route>
-        <Route path="/emailsent" element={<EmailSent text=" We sent a password reset link to your email Please click the link to
-            reset your password" />}></Route>
-          <Route path="/verify-emailsent" element={<EmailSent text=" We send a verification link to your email Please click the link to
-            verify your account" />}></Route>
-
-
+        <Route
+          path="/forgottenpassword"
+          element={<ForgottenPasswordPage />}
+        ></Route>
+        <Route
+          path="/resetpassword/:token"
+          element={<ResetPasswordPage />}
+        ></Route>
+        <Route
+          path="/emailsent"
+          element={
+            <EmailSent
+              password
+              text=" We sent a password reset link to your email Please click the link to
+            reset your password"
+            />
+          }
+        ></Route>
+        <Route
+          path="/verify-emailsent"
+          element={
+            <EmailSent
+              email
+              text=" We send a verification link to your email Please click the link to
+            verify your account"
+            />
+          }
+        ></Route>
 
         {/* Protected Routes */}
         <Route
@@ -34,13 +55,12 @@ export const BaseRoute = () => {
           element={
             <ProtectedRoute>
               <DashboardPage />
-          </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
-        
 
         {/* Error Route */}
-        <Route path="*" element={<h1>Error Page</h1>}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </>
   );
