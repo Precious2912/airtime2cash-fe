@@ -53,15 +53,16 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
 
 export default UserProfileNav;
 const Profile = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  & img {
-    width: 36px;
-    border-radius: 50%;
-  }
-`;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    cursor: pointer;
+    & img {
+        width: 36px;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+`
 const Dropdown = styled.div`
   position: absolute;
   top: 100%;

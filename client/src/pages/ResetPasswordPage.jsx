@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import StyleButton from "../styles/Button.styles.js";
 import { UseAuth } from "../context/useAuth";
+import logo from "../assets/icon/logo2.svg";
 
 import {
   StyledContainer,
   StyledFormArea,
-  StyledTitle,
+  StyledTitle, 
   ResetPassword,
   FormInput,
+  Logo,
+  FormLabel
 } from "../styles/resetPassStyle";
 import { RestForm } from "../styles/forgetPassStyle";
 import { useParams } from "react-router-dom";
@@ -30,7 +33,8 @@ export const ResetPasswordPage = () => {
     <div>
       <StyledContainer>
         <StyledFormArea>
-          {/* <Avatar image={Logo} /> */}
+          
+          <Logo><img src={logo} alt="" /></Logo>
           <StyledTitle>Password Reset</StyledTitle>
           <RestForm onSubmit={handleResetPassword}>
             <label className="formLabel">New Password</label>

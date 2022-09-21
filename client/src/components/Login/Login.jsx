@@ -6,7 +6,8 @@ import logo from "../../assets/icon/logo2.svg";
 import {
   Container,
   UpdateUserPageStyle,
-} from "../../styles/UpdateUserStyles";
+  LogoWrapper
+} from "../../styles/LoginStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
@@ -29,7 +30,9 @@ export const Login = () => {
       <Container>
         <div className="container">
           <Link to="/">
+            <LogoWrapper>
             <img src={logo} alt="logo" className="logo" />
+            </LogoWrapper>
           </Link>
 
           <h2 className="login-header-text">Login</h2>

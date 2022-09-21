@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => {
 
       await axios
         .post(
-          `${process.env.REACT_APP_BACKEND_URL}/user/register`,
+          `http://localhost:7000/user/register`,
           registerUser
         )
         .then((res) => {
@@ -92,7 +92,7 @@ export const AuthProvider = ({ children }) => {
               autoClose: 1000,
             });
             setTimeout(() => {
-              navigate("/emailsent");
+              navigate("/verify-emailsent");
               toast.success("Verify your email", {
                 autoClose: 3000,
               });

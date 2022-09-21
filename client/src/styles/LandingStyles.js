@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
   position: absolute;
   position: fixed;
   width: 100%;
+  /* @media (max-width: 320px) {
+    display: flex;
+    justify-content: center;
+    border: 2px solid red;
+  } */
 `;
 export const Nav = styled.div`
   display: flex;
@@ -71,6 +76,7 @@ export const MenuLinks = styled.div`
 `;
 export const Logo = styled.img`
   padding: 1rem 0;
+  max-width: 100%;
 `;
 
 // HERO BANNER========================================
