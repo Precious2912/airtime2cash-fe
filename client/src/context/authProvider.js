@@ -229,7 +229,7 @@ export const AuthProvider = ({ children }) => {
     try {
       //
       await axios
-        .get(`http://localhost:7000/user/singleUser/${id}`)
+        .get(`${process.env.REACT_APP_BACKEND_URL}/user/singleUser/${id}`)
         .then((res) => {
           //  localStorage.setItem("user", res.data.user.id);
           if (res.status === 200) {
@@ -257,7 +257,7 @@ export const AuthProvider = ({ children }) => {
       };
       const id = localStorage.getItem("id");
       await axios
-        .patch(`http://localhost:7000/user/update/${id}`, form)
+        .patch(`${process.env.REACT_APP_BACKEND_URL}/user/update/${id}`, form)
         .set("Authorization", `Bearer ${localStorage.getItem("token")}`)
         .then((response) => {
           toast.success(response.data.message);
