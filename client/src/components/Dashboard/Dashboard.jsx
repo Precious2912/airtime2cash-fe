@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { DashboardStyle } from "../../styles/dashboardStyle";
+//eslint-disable-next-line
 import { Navbar } from "../Landing/Navbar";
 import axios from "axios";
 
@@ -27,9 +28,7 @@ export const Dashboard = () => {
   return (
     <>
       <DashboardStyle>
-        <div className="top">
-        
-        </div>
+        <div className="top"></div>
         <div className="dashboard">
           <h1>Dashboard</h1>
           <div className="balance-wrapper">

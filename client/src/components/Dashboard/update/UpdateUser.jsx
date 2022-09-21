@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
 import {
+  //eslint-disable-next-line
   BackDiv,
   Container,
   UpdateUserPageStyle,
@@ -93,7 +94,7 @@ export const UpdateUserSetting = () => {
         </HeaderAndButton>
         <div className="container">
           <div className="imgWrapper">
-          <img src={logo} alt="logo" className="logo" />
+            <img src={logo} alt="logo" className="logo" />
           </div>
           <h3 className="header-text">Basic Information</h3>
 
@@ -140,7 +141,7 @@ export const UpdateUserSetting = () => {
               />
             </div>
 
-            <div className="input-element">
+            {/* <div className="input-element">
               <label htmlFor="">Avatar</label>
               <input
                 type="text"
@@ -148,6 +149,18 @@ export const UpdateUserSetting = () => {
                 placeholder="Enter avatar url here"
                 value={avatar}
                 onChange={handleChange}
+              />
+            </div> */}
+            <div className="input-element">
+              <label htmlFor="">Avatar</label>
+              <input
+                type="button"
+                placeholder="Email"
+                value={"Upload Photo"}
+                className="avatar-upload"
+                onClick={() => {
+                  setModalState(true);
+                }}
               />
             </div>
 

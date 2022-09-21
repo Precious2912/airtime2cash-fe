@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => {
 
       await axios
         .post(
-          `http://localhost:7000/user/register`,
+          `${process.env.REACT_APP_BACKEND_URL}/user/register`,
           registerUser
         )
         .then((res) => {
@@ -257,8 +257,11 @@ export const AuthProvider = ({ children }) => {
       };
       const id = localStorage.getItem("id");
       await axios
-        .patch(`http://localhost:7000/user/update/${id}`, form)
-        .set("Authorization", `Bearer ${localStorage.getItem("token")}`)
+        .patch(`http://localhost:7000/user/update/${id}`, form, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
         .then((response) => {
           toast.success(response.data.message);
           console.log(response);
