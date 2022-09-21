@@ -8,7 +8,7 @@ import {
   Container,
   UpdateUserPageStyle,
   LogoWrapper
-} from "../../styles/UpdateUserStyles";
+} from "../../styles/LoginStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {

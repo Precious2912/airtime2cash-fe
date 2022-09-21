@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const DashboardStyle = styled.div`
+
   .top {
-    width: 90rem;
-    height: 16.938rem;
+    width: 100%;
+    margin: 0%;
+    max-width: 100vw;
+    height: 25rem;
     background: rgba(222, 61, 109, 0.1);
   }
 
@@ -14,15 +17,16 @@ export const DashboardStyle = styled.div`
     align-items: center;
     /* padding: 3.75rem; */
     /* gap: 3.75rem; */
-    width: 42.438rem;
+    /* width: 42.438rem; */
+    width:50rem;
+    max-width:100%;
     height: 69.125rem;
-    margin: -7.5rem auto 0 auto;
+    margin:  -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
-
+    padding-top: 3rem;
     h1 {
-      font-family: "Inter";
-      font-style: normal;
+    
       font-weight: 600;
       font-size: 2rem;
       line-height: 2.438rem;
@@ -35,10 +39,13 @@ export const DashboardStyle = styled.div`
       justify-content: center;
       align-items: center;
       padding: 1.5rem;
-      width: 34.438rem;
+      width: 80%;
+      max-width: 100%;
+      /* width: 34.438rem; */
       height: 9.438rem;
       background: #de3d6d;
       border-radius: 1.5rem;
+      margin-top: 3rem;
     }
 
     .balance {
@@ -52,8 +59,6 @@ export const DashboardStyle = styled.div`
       /* height: 6.625rem; */
 
       .text {
-        font-family: "Inter";
-        font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
@@ -62,8 +67,6 @@ export const DashboardStyle = styled.div`
       }
 
       .acct-bal {
-        font-family: "Inter";
-        font-style: normal;
         font-weight: 700;
         font-size: 32px;
         line-height: 39px;

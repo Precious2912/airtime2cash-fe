@@ -30,22 +30,7 @@ export const ForgottenPasswordPage = ({ ForgottenPasswordPage }) => {
             Enter the email associated with your account and we'll send an email
             with instruction to reset your password
           </StyledSubTitle>
-          <Formik
-            initialValues={{
-              email: "",
-              redirectUrl: "http://localhost:3000/passwordreset",
-            }}
-            validationSchema={Yup.object({
-              email: Yup.string() 
-                .email("Invalid email address")
-                .required("Required"),
-            })}
-            onSubmit={(values) => {
-              console.log(values);
-              ForgottenPasswordPage(values);
-            }}
-          >
-            {() => (
+         
               <RestForm onSubmit={(e)=>submitData()}>
                 <label >Email</label>
                 <EmailInput 
@@ -58,8 +43,7 @@ export const ForgottenPasswordPage = ({ ForgottenPasswordPage }) => {
                 
                 <Back><Link to="/login">Back to Login</Link></Back>
               </RestForm>
-            )}
-          </Formik>
+      
         </StyledFormArea>
       </StyledContainer>
   );

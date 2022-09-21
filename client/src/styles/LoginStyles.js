@@ -2,18 +2,12 @@ import styled from "styled-components";
 
 export const UpdateUserPageStyle = styled.div`
   /* display: relative; */
-  min-height: 100vh;
+  background-color: #e5e5e5;
+  height: 100vh;
   /* padding: 10%; */
-  /* display: flex; */
-  /* justify-content: center;
-  align-items: center; */
-  .top {
-    width: 100vw;
-    /* min-width: 100vw; */
-    height: 25rem;
-    margin: 0%;
-    background: rgba(222, 61, 109, 0.1);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const BackDiv = styled.div`
@@ -29,37 +23,17 @@ top: 96px; */
 
 export const Container = styled.div`
   /* width: 640px; */
-/* max-width: 100%; */
-  padding: 7% 13%;
+  width: calc(640px / 2);
+
+  padding: 7% 15%;
   /* margin-bottom: 14rem; */
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-    margin: -13rem auto 0 auto;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-
-  @media (max-width: 320px) {
-    /* width: calc(640px / 2); */
-    
-  }
-  @media (min-width: 768px) {
-    width: calc(640px / 1.5);
-  }
-
-
   /* justify-content: flex-start; */
-  & .logo{
-    min-width:65%;
-    max-width: 65%;
-  }
 
-  & .imgWrapper{
-    width:100%;
-    text-align: center;
-  }
   button,
   input[type="submit"],
   input[type="reset"] {
@@ -112,9 +86,7 @@ export const Container = styled.div`
   .header-text {
     font-weight: 700;
     color: #21334f;
-    margin: 2.5rem  0 3.5rem 0;
-    width: 100%;
-    text-align: center;
+    margin-bottom: 2.5rem;
   }
   .login-header-text {
     font-weight: 900;
@@ -154,7 +126,7 @@ export const Container = styled.div`
 
   .form-group {
     /* border: 1px solid blue; */
-    /* align-self: flex-start; */
+    align-self: flex-start;
     width: 100%;
   }
 

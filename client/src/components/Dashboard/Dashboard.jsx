@@ -7,9 +7,10 @@ import { Navbar } from "../Landing/Navbar";
 export const Dashboard = () => {
   return (
     <>
-      <Navbar dashboard />
       <DashboardStyle>
-        <div className="top"></div>
+        <div className="top">
+        
+        </div>
         <div className="dashboard">
           <h1>Dashboard</h1>
           <div className="balance-wrapper">

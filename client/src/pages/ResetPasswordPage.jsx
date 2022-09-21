@@ -3,15 +3,17 @@ import { TextInput } from "../components/Forms";
 import { FiLock } from "react-icons/fi";
 import * as Yup from "yup";
 import StyleButton from '../styles/Button.styles.js'
+import logo from "../assets/icon/logo2.svg";
 
 
 import {
   StyledContainer,
   StyledFormArea,
-  StyledTitle,
-  StyledFormButton,
+  StyledTitle, 
   ResetPassword,
-  FormInput
+  FormInput,
+  Logo,
+  FormLabel
 } from "../styles/resetPassStyle";
 import { RestForm } from "../styles/forgetPassStyle";
 
@@ -20,52 +22,29 @@ export const ResetPasswordPage = () => {
     <div>
       <StyledContainer>
         <StyledFormArea>
-          {/* <Avatar image={Logo} /> */}
+          
+          <Logo><img src={logo} alt="" /></Logo>
+          <RestForm>
           <StyledTitle>Password Reset</StyledTitle>
-          <Formik
-            initialValues={{
-              newPassword: "",
-              confirmNewPassword: "",
-            }}
-            validationSchema={Yup.object({
-              newPassword: Yup.string()
-                .min(
-                  8,
-                  "Password is too short - should be 8 characters minimum."
-                )
-                .max(
-                  25,
-                  "Password is too long - should be 25 characters maximum."
-                )
-                .required("Required"),
-              confirmNewPassword: Yup.string()
-                .required("Required")
-                .oneOf([Yup.ref("newPassword")], "Passwords must match"),
-            })}
-            onSubmit={(values, { setSubmitting }) => {
-              console.log(values);
-            }}
-          >
-            {() => (
-              <RestForm>
-                <label className="formLabel">New Password</label>
+         
+              
+                <FormLabel>New Password</FormLabel>
                 <FormInput
                   name="newPassword"
                   type="password" 
                   placeholder="Enter new password"
                 />
-                <label className="formLabel">Confirm Password</label>
+                <FormLabel>Confirm Password</FormLabel>
                 <FormInput
                   name="confirmPassword"
                   type="password"
                   placeholder="Confirm password"
                 />
 
-                <StyleButton width="100%" borderRadius="0" type="submit">
+                <StyleButton width="100%" height="48px" borderRadius="0" type="submit">
                   <ResetPassword>Reset Password</ResetPassword></StyleButton>
               </RestForm>
-            )}
-          </Formik>
+     
         </StyledFormArea>
       </StyledContainer>
     </div>

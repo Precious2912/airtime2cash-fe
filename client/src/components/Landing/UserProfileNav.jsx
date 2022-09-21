@@ -9,17 +9,21 @@ import  LogoutIcon  from '../../assets/icon/logout.svg'
 import { Link } from 'react-router-dom';
 
 
-const UserProfileNav = ({setLogout, dashboard}) => {
+const UserProfileNav = ({setLogout, dashboard, landing}) => {
     const [showDropdown, setShowDropdown] = React.useState(false)
   return (
     <Profile >
          <Link to='/dashboard/UpdateUser'><img src={UserImg} alt="" /></Link>
         <span onClick={()=>setShowDropdown(!showDropdown)}>
-        <span>Davids </span>
+        <span>Davids </span> 
         {dashboard && <>
        <FiChevronDown />
         <Dropdown showDropdown={showDropdown}>
-        <Link to='/dashboard/UpdateUser'><DropdownItem>  <img src={ProfileIcon} alt="" /> <span>Account</span> </DropdownItem></Link>
+        <Link to='/dashboard/UpdateUser'><DropdownItem>  
+            <div>
+            <img src={ProfileIcon} alt="" /> 
+            </div>
+            <span>Account</span> </DropdownItem></Link>
             <DropdownItem>  <img src={SettingsIcon} alt="" /> <span>Settings</span> </DropdownItem>
             <DropdownItem>  <img src={HelpIcon} alt="" /> <span>Help Center</span> </DropdownItem>
             <DropdownItem onClick={()=>setLogout(false)}>  <img src={LogoutIcon} alt="" /> <span>Logout</span> </DropdownItem>
@@ -38,6 +42,7 @@ const Profile = styled.div`
     & img {
         width: 36px;
         border-radius: 50%;
+        object-fit: contain;
     }
 `
 const Dropdown = styled.div`

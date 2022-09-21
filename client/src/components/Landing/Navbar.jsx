@@ -23,7 +23,7 @@ export const Navbar=({landing, dashboard})=> {
         <span />
         <span />
     </Hamburger> }
-    {dashboard && <UserProfileNav dashboard setLogout={setIsLogin}/>}
+    {dashboard && <UserProfileNav dashboard landing setLogout={setIsLogin}/>}
    
     {landing && <Menu open={open}>
           <MenuLinks onClick={()=> setOpen(!open)}><a href='/'>Home</a></MenuLinks>

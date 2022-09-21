@@ -4,7 +4,6 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { LandingPage } from "../pages/LandingPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
-import { UpdateUserSetting } from "../components/Dashboard/update/UpdateUser";
 import { DashboardPage } from "../pages/DashboardPage";
 import {ForgottenPasswordPage} from "../pages/ForgottenPasswordPage";
 import { ResetPasswordPage } from "../pages/ResetPasswordPage";
@@ -17,34 +16,29 @@ export const BaseRoute = () => {
     <>
       <ToastContainer />
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/dashboard" element={<DashboardPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route> 
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/forgottenpassword" element={<ForgottenPasswordPage />}></Route>
         <Route path="/resetpassword" element={<ResetPasswordPage />}></Route>
-        <Route path="/emailsent" element={<EmailSent />}></Route>
+        <Route path="/emailsent" element={<EmailSent text=" We sent a password reset link to your email Please click the link to
+            reset your password" />}></Route>
+          <Route path="/verify-emailsent" element={<EmailSent text=" We send a verification link to your email Please click the link to
+            reset your password" />}></Route>
         {/* <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route> */}
 
 
 
         {/* Protected Routes */}
-        {/* <Route
-          path="/dashboard"
+        <Route
+          path="/dashboard/*"
           element={
             <ProtectedRoute>
               <DashboardPage />
-            </ProtectedRoute>
-          }
-        /> */}
-        <Route
-          path="/dashboard/UpdateUser"
-          element={
-            <ProtectedRoute>
-              <UpdateUserSetting />
-            </ProtectedRoute>
+          </ProtectedRoute>
           }
         />
+        
 
         {/* Error Route */}
         <Route path="*" element={<h1>Error Page</h1>}></Route>

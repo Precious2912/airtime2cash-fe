@@ -76,12 +76,13 @@ export const UpdateUserSetting = () => {
 
   return (
     <UpdateUserPageStyle>
-      <BackDiv />
+      <div className="top"></div>
       <Container>
         <div className="container">
+          <div className="imgWrapper">
           <img src={logo} alt="logo" className="logo" />
-
-          <h2 className="header-text">Basic Infomation</h2>
+          </div>
+          <h3 className="header-text">Basic Information</h3>
 
           <form action="" className="form-group">
             <div className="input-element">
