@@ -12,21 +12,7 @@ export const colors = {
 }
 
 
-export const StyledTitle = styled.h2`
-width: 141px;
-height: 22px;
-margin-top: 30px;
-margin-left: -180px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 18px;
-line-height: 22px;
-color: #21334F;
-flex: none;
-order: 0;
-flex-grow: 0;
-`;
+
 
 export const StyledIcon = styled.p`
 color: ${colors.dark1};
@@ -42,8 +28,7 @@ ${(props) => props.left && `left: 15%;`}
 export const StyledSubTitle = styled.p`
 width: 432px;
 height: 38px;
-margin-left: 275px;
-font-family: 'Inter';
+margin-left: 275px; 
 font-style: normal;
 font-weight: 400;
 font-size: 16px;
@@ -55,67 +40,11 @@ order: 1;
 flex-grow: 0;
 `;
 
-// export const StyledFormButton = styled.button`
-// display: flex;
-// flex-direction: row;
-// justify-content: center;
-// align-items: center;
-// padding: 8px 16px;
-// gap: 10px;
-// border-radius: 6px;
-// width: 320px;
-// height: 48px;
-
-// background: linear-gradient(92.1deg, #DE3D6D 55.67%, #F5844C 101.51%);
-
-// /* Inside auto layout */
-
-// flex: none;
-// order: 1;
-// flex-grow: 0;
-// `;
 
 export const ResetPassword = styled.span`
 font-size: 12px;
 font-weight: lighter;
 `
-
-
-
-export const RestForm = styled.form`
-.formLabel{
-    font-size: 2px;
-    color: #21334F;
-}
-`
-export const FormInput = styled.input`
-height: 48px;
-border:1px solid gray;
-margin : 10px 0;
-& ::placeholder {
-    color: #C4C4C4;
-    font-size: 12px;
-
-}
-`
-
-
-// export const StyledButton = styled(Link)`
-// width: 104px;
-// height: 19px;
-// margin-left: 295px;
-// font-family: 'Inter';
-// font-style: normal;
-// font-weight: 500;
-// font-size: 16px;
-// line-height: 19px;
-// flex: none;
-// order: 0;
-// flex-grow: 0;
-// background-color: #D8D8D8;
-// `;
-
-
 
 
 export const CopyrightText = styled.p`
@@ -125,41 +54,92 @@ text-align: center;
 color: ${colors.light2};
 `;
 
-export const StyledFormArea = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 80px;
-gap: 40px;
-background-color: white;
-width: 600px;
-height: 400px;
-flex: none;
-order: 0;
-flex-grow: 0;
-margin-top: 100px;
-`;
 
 
-export const StyledLabel = styled.p`
-text-align: left;
-font-size: 15px;
-font-weight: bold;
-margin-right: 250px;
-`;
 
-export const ButtonGroup = styled.div`
-display: flex;
-justify-content: space-around;
-flex-direction: row;
-margin-top: 25px;
-`;
 
+
+
+
+
+
+
+
+
+
+
+
+// RESPONSIVE DESIGN ======================
 export const StyledContainer = styled.div`
 background: #E5E5E5;
 justify-content: center;
-display: grid;
-height: 100vh;
+display: flex;
+min-height: 100vh;
+align-items: center;
+width: 100vw;
 
 `;
+
+export const StyledFormArea = styled.div`
+background-color: white;
+/* padding: 6% calc(30%/3); */
+min-width: 50%;
+max-width: 100%;
+margin:0; 
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 6% 2%;
+`;
+
+
+
+export const Logo = styled.div`
+width: 100%;
+text-align: center;
+& img{
+    width: 11rem;
+}
+`
+
+export const StyledTitle = styled.h2` 
+ 
+font-weight: 700;
+font-size: 18px;
+margin: 12% 0 14% 0;
+color: #21334F;
+`;
+
+export const RestForm = styled.form`
+ margin: 16px ;
+`
+
+
+export const FormLabel = styled.label`
+    font-size: 12px;
+    color: #21334F;
+    /* font-weight: lighter; */
+`
+
+export const FormInput = styled.input`
+height: 48px;
+border:1px solid #D9D9D9;
+padding: 0 5%;
+margin : 10px 0 23px 0;
+& ::placeholder {
+    color: #C4C4C4;
+    font-size: 12px;
+    font-weight: lighter;
+}
+`
+
+
+
+// export const StyledLabel = styled.p`
+// text-align: left;
+// font-size: 15px;
+// font-weight: bold;
+// margin-right: 250px;
+// `;
+
+

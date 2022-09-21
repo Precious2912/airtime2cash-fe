@@ -30,10 +30,11 @@ export const Register = () => {
   });
   const { register } = UseAuth();
 
-  console.log(formData);
+  // console.log(formData);
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    
     await register(formData);
   };
 
@@ -57,6 +58,7 @@ export const Register = () => {
         <FormStyle onSubmit={handleRegister}>
           <StyledLabel>First Name</StyledLabel>
           <StyledInput
+            required
             placeholder="Enter your first name"
             type="text"
             name="firstName"
@@ -69,6 +71,7 @@ export const Register = () => {
           ></StyledInput>
           <StyledLabel>Last Name</StyledLabel>
           <StyledInput
+            required
             placeholder="Enter your last name"
             type="text"
             name="lastName"
@@ -82,6 +85,7 @@ export const Register = () => {
 
           <StyledLabel> Email</StyledLabel>
           <StyledInput
+          required
             placeholder="Enter your email"
             type="email"
             name="email"
@@ -95,6 +99,7 @@ export const Register = () => {
 
           <StyledLabel> Username</StyledLabel>
           <StyledInput
+          required
             placeholder="Enter your username"
             type="text"
             name="userName"
@@ -108,6 +113,7 @@ export const Register = () => {
 
           <StyledLabel> Phone Number</StyledLabel>
           <StyledInput
+          required
             placeholder="Enter your phone number"
             type="text"
             name="phoneNumber"
@@ -120,6 +126,7 @@ export const Register = () => {
           ></StyledInput>
           <StyledLabel> Password</StyledLabel>
           <StyledInput
+          required
             placeholder="Enter your password"
             type="password"
             name="password"
@@ -133,6 +140,7 @@ export const Register = () => {
           <StyledLabel> Confirm Password</StyledLabel>
 
           <StyledInput
+          required
             placeholder="Confirm password"
             type="password"
             name="confirmPassword"

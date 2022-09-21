@@ -13,84 +13,51 @@ export const colors = {
 }
 
 export const ExtraText = styled.p`
-
-position: absolute;
-width: 331px;
-height: 20px;
-margin-left: 200px;
-margin-top: 20px;
-
-font-family: 'Mulish';
-font-style: normal;
-font-weight: 400;
+font-weight: lighter;
 font-size: 16px;
-line-height: 20px;
-text-align: center;
-
 color: #012A4A;
+text-align: center;
 `;
 
 export const TextLink = styled(Link)`
-position: absolute;
-width: 331px;
-height: 20px;
-margin-left: -95px;
-margin-top: 1px;
-
-font-family: 'Mulish';
-font-style: normal;
 font-weight: 400;
 font-size: 16px;
-line-height: 20px;
-text-align: center;
-
-color: 
+margin: 10% 0;
+& a{
+    color: 
 rgba(223, 62, 110, 1)
+}
+
 `;
 
 
 export const StyledContainer = styled.div`
+display: flex;
 justify-content: center;
 align-items: center;
-display: grid;
 background: #E5E5E5;
 height: 100vh;
 `;
 
 export const StyledTitle = styled.h2`
 /* position: absolute; */
-width: 252px;
-height: 39px;
-left: 304px;
-margin-top: 203px;
-margin-left: 270px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
+font-weight: 600;
 font-size: 32px;
 line-height: 39px;
 /* identical to box height */
-
-
 color: #03435F;
+text-align: center;
 `;
 
 
 
 export const StyledSubTitle = styled.p`
-width: 432px;
-height: 38px;
-margin-left: 200px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-text-align: center;
+font-weight: 200;
+font-size: 16px; 
 color: #03435F;
-flex: none;
-order: 1;
-flex-grow: 0;
+width: 50%;
+max-width: 100%;
+text-align: center;
 `;
 
 export const StyledFormButton = styled.button`
@@ -125,7 +92,10 @@ flex-grow: 0;
 background-color: #D8D8D8;
 `;
 
-
+export const  ButtonWrapper = styled.div`
+width: 204px;
+max-width: 100%;
+`
 export const Avatar = styled.div`
 width: 100px;
 height: 100px;
@@ -145,11 +115,13 @@ color: ${colors.light2};
 
 export const StyledFormArea = styled.div`
 /* position: absolute; */
-width: 860px;
-height: 527px;
-left: 0px;
-top: 0px;
-
+width: 50%;
+max-width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 6% 2%;
 background: #FFFFFF;
 `;
 
@@ -181,3 +153,6 @@ flex: none;
 order: 0;
 flex-grow: 0;
 `;
+
+export const Icon = styled.div`
+`
