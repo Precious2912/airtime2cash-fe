@@ -9,7 +9,11 @@ import {
   ModalStyle,
   UpdateUserPageStyle,
 } from "./UpdateUserStyles";
+
 import { Back, HeaderAndButton } from "../../../styles/registerStyle";
+
+
+
 import logo from "../../../assets/icon/logo2.svg";
 import backicon from "../../../assets/icon/backicon.svg";
 
@@ -19,16 +23,7 @@ export const UpdateUserSetting = () => {
 
   const [setImage, setSetImage] = useState({});
 
-  // const [formData, setFormData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   userName: "",
-  //   phoneNumber: "",
-  //   avatar: "",
-  // });
 
-  // const { getUser } = UseAuth();
-  // console.log(state.user)
 
   const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);

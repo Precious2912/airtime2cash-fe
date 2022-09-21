@@ -5,10 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
 import { useNavigate } from "react-router-dom";
 import {
-  BackDiv,
   Container,
   UpdateUserPageStyle,
-} from "../Dashboard/update/UpdateUserStyles";
+  LogoWrapper
+} from "../../styles/UpdateUserStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
@@ -29,8 +29,9 @@ export const Login = () => {
   };
 
   return (
+   
     <UpdateUserPageStyle>
-      <BackDiv />
+      {/* <BackDiv /> */}
       <Container>
         <div className="container">
           <Link to="/">
@@ -82,18 +83,18 @@ export const Login = () => {
                 Forgot Password?
               </p>
             </Link>
+
             <button type="submit" className="login-btn">
               Login
             </button>
           </form>
-        </div>
         <p className="create-account">
-          Don't have an account ?
+          Don't have an account? &nbsp;
           <Link to="/register" className="create-btn">
             Create Account
           </Link>
         </p>
       </Container>
-    </UpdateUserPageStyle>
+     </UpdateUserPageStyle>
   );
 };

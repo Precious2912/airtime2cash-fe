@@ -14,10 +14,12 @@ import StyleButton from "../../styles/Button.styles.js";
 import UserProfileNav from "./UserProfileNav";
 import { Link } from "react-router-dom";
 
+
 export const Navbar = ({ landing, dashboard }) => {
   const [open, setOpen] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   return (
+
     <Wrapper>
       <Nav>
         <a href="/">
