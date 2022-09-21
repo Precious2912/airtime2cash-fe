@@ -1,9 +1,6 @@
-import React from "react";
-import { Formik, Form } from "formik";
-import { TextInput } from "../components/Forms";
-import { FiMail } from "react-icons/fi";
-import * as Yup from "yup";
-import StyleButton from '../styles/Button.styles.js'
+import React, { useState } from "react";
+import { UseAuth } from "../context/useAuth";
+import StyleButton from "../styles/Button.styles.js";
 
 import {
   StyledContainer,
@@ -15,37 +12,51 @@ import {
   EmailInput,
 } from "../styles/forgetPassStyle";
 import { Link } from "react-router-dom";
-// import { backicon } from "../assets/icons/backicon.svg";
 
-// import {mobile} from "../Responsive";
-const submitData =(e)=>{
+export const ForgottenPasswordPage = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+  });
 
-}
-export const ForgottenPasswordPage = ({ ForgottenPasswordPage }) => {
+  const { forgotPassword } = UseAuth();
+
+  const handleForgetPassword = async (e) => {
+    e.preventDefault();
+    await forgotPassword(formData);
+  };
   return (
-      <StyledContainer>
-        <StyledFormArea>
-          <StyledTitle>Forget Password</StyledTitle>
-          <StyledSubTitle>
-            Enter the email associated with your account and we'll send an email
-            with instruction to reset your password
-          </StyledSubTitle>
-         
-              <RestForm onSubmit={(e)=>submitData()}>
-                <label >Email</label>
-                <EmailInput 
-                type="email"
-                placeholder="Enter your email"
-                required
-                />
-               
-                <StyleButton width="100%" height='48px' type="submit">Submit</StyleButton>
-                
-                <Back><Link to="/login">Back to Login</Link></Back>
-              </RestForm>
-      
-        </StyledFormArea>
-      </StyledContainer>
+    <StyledContainer>
+      <StyledFormArea>
+        <StyledTitle>Forget Password</StyledTitle>
+        <StyledSubTitle>
+          Enter the email associated with your account and we'll send an email
+          with instruction to reset your password
+        </StyledSubTitle>
+        <RestForm onSubmit={handleForgetPassword}>
+          <label>Email</label>
+          <EmailInput
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+            onChange={(e) => {
+              setFormData({
+                ...formData,
+                email: e.target.value.trim(),
+              });
+            }}
+          />
+
+          <StyleButton width="100%" height="48px" type="submit">
+            Submit
+          </StyleButton>
+
+          <Back>
+            <Link to="/login">Back to Login</Link>
+          </Back>
+        </RestForm>
+      </StyledFormArea>
+    </StyledContainer>
   );
 };
 

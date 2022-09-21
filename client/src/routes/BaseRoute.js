@@ -20,12 +20,11 @@ export const BaseRoute = () => {
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/forgottenpassword" element={<ForgottenPasswordPage />}></Route>
-        <Route path="/resetpassword" element={<ResetPasswordPage />}></Route>
+        <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route>
         <Route path="/emailsent" element={<EmailSent text=" We sent a password reset link to your email Please click the link to
             reset your password" />}></Route>
           <Route path="/verify-emailsent" element={<EmailSent text=" We send a verification link to your email Please click the link to
             reset your password" />}></Route>
-        {/* <Route path="/resetpassword/:token" element={<ResetPasswordPage />}></Route> */}
 
 
 

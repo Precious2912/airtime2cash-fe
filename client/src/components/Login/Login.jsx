@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import "react-toastify/dist/ReactToastify.css";
 import logo from "../../assets/icon/logo2.svg";
-import { useNavigate } from "react-router-dom";
 import {
   Container,
   UpdateUserPageStyle,
@@ -12,19 +11,16 @@ import {
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    emailOrUsername: "",
+    email: "",
+    userName: "",
     password: "",
   });
   const { login } = UseAuth();
 
-  console.log(formData);
-
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(formData);
-    navigate("/dashboard");
   };
 
   return (
@@ -32,11 +28,11 @@ export const Login = () => {
     <UpdateUserPageStyle>
       {/* <BackDiv /> */}
       <Container>
+        <div className="container">
           <Link to="/">
-            <LogoWrapper>
             <img src={logo} alt="logo" className="logo" />
-            </LogoWrapper>
-            </Link>
+          </Link>
+
           <h2 className="login-header-text">Login</h2>
 
           <form action="" className="form-group" onSubmit={handleLogin}>
@@ -68,7 +64,7 @@ export const Login = () => {
                 }}
               />
             </div>
-            <Link to="/forgottenPassword">
+            <Link to="/forgottenpassword">
             <p
               style={{
                 color: "#4285F4",
@@ -92,6 +88,7 @@ export const Login = () => {
             Create Account
           </Link>
         </p>
+        </div>
       </Container>
      </UpdateUserPageStyle>
   );

@@ -1,44 +1,25 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { UseAuth } from "../../../context/useAuth";
 import {
   BackDiv,
   Container,
-  ModalStyle,
   UpdateUserPageStyle,
 } from "../../../styles/UpdateUserStyles";
-import logo from "../../../assets/icon/logo2.svg";
-import { useState } from "react";
-import { FaTimes } from "react-icons/fa";
 
-import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
-// import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Back, HeaderAndButton } from "../../../styles/registerStyle";
+
+import logo from "../../../assets/icon/logo2.svg";
+import backicon from "../../../assets/icon/backicon.svg";
 
 export const UpdateUserSetting = () => {
-  // const [formData, setFormData] = useState({});
+  const id = localStorage.getItem("id");
+  const navigate = useNavigate();
+  // eslint-disable-next-line
   const [modalState, setModalState] = useState(false);
 
-  // const [userInfo, setUserInfo] = useState();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [userName, setUserName] = useState("");
-  // const [avatar, setAvatar] = useState("");
-  // const [email] = useState("");
-  // const [toastMessage, setToastMessage] = useState("");
-  // const [toasti, setToasti] = useState([]);
-  // const [poasti, setPoasti] = useState([]);
-
-  // const infooo = async () => {
-  //   const res = await axios.get(`${url}/allUsers`);
-
-  //   setToasti(res.data.users);
-  // };
-  // useEffect(() => {
-  //   infooo();
-  // }, []);
-
-  // console.log(toasti);
+  const { updateProfile } = UseAuth({});
   const wrapperRef = useRef(null);
 
   function useOutsideAlerter(ref) {
@@ -56,6 +37,14 @@ export const UpdateUserSetting = () => {
   }
   useOutsideAlerter(wrapperRef);
 
+  const [firstName, setFirstName] = useState(localStorage.getItem("firstName"));
+  const [lastName, setLastName] = useState(localStorage.getItem("lastName"));
+  const [phoneNumber, setPhoneNumber] = useState(
+    localStorage.getItem("phoneNumber")
+  );
+  const [userName, setUserName] = useState(localStorage.getItem("userName"));
+  const [avatar, setAvatar] = useState(localStorage.getItem("avatar"));
+
   const handleChange = (e) => {
     switch (e.target.name) {
       case "firstName":
@@ -70,21 +59,46 @@ export const UpdateUserSetting = () => {
       case "userName":
         setUserName(e.target.value);
         break;
+      case "avatar":
+        setAvatar(e.target.value);
+        break;
       default:
     }
+  };
+
+  const formData = {
+    firstName: firstName,
+    lastName: lastName,
+    userName: userName,
+    phoneNumber: phoneNumber,
+    avatar: avatar,
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    await updateProfile(formData);
+    window.location.href = `/dashboard/${id}`;
   };
 
   return (
     <UpdateUserPageStyle>
       <div className="top"></div>
       <Container>
+        <HeaderAndButton>
+          <Link to={`/dashboard/${id}`}>
+            <Back>
+              <img src={backicon} alt=" " />
+              Go back
+            </Back>
+          </Link>
+        </HeaderAndButton>
         <div className="container">
           <div className="imgWrapper">
           <img src={logo} alt="logo" className="logo" />
           </div>
           <h3 className="header-text">Basic Information</h3>
 
-          <form action="" className="form-group">
+          <form action="" className="form-group" onSubmit={handleUpdate}>
             <div className="input-element">
               <label htmlFor="firstName">First Name</label>
               <input
@@ -126,16 +140,15 @@ export const UpdateUserSetting = () => {
                 onChange={handleChange}
               />
             </div>
+
             <div className="input-element">
-              <label htmlFor="avatar">Avatar</label>
+              <label htmlFor="">Avatar</label>
               <input
-                type="button"
-                placeholder="Avatar"
-                value={"Upload Photo"}
-                className="avatar-upload"
-                onClick={() => {
-                  setModalState(true);
-                }}
+                type="text"
+                name="avatar"
+                placeholder="Enter avatar url here"
+                value={avatar}
+                onChange={handleChange}
               />
             </div>
 
@@ -144,29 +157,6 @@ export const UpdateUserSetting = () => {
             </button>
           </form>
         </div>
-        {modalState && (
-          <ModalStyle>
-            <div className="modal-content" ref={wrapperRef}>
-              <div
-                className="close-btn"
-                onClick={() => {
-                  setModalState(false);
-                }}
-              >
-                <FaTimes />
-              </div>
-              <img src={logo} alt="logo" className="modal-logo" />
-              <div className="upload-section">
-                <h3>Upload your Photo</h3>
-                <input type="file" name="" id="" className="modal-input" />
-                <p className="allowed-text">
-                  *Allowed formats: jpeg, jpg, png and svg*{" "}
-                </p>
-                <button className="save-btn-modal">Add Photo</button>
-              </div>
-            </div>
-          </ModalStyle>
-        )}
       </Container>
     </UpdateUserPageStyle>
   );
