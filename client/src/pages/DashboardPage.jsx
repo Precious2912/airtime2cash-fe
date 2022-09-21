@@ -10,7 +10,7 @@ export const DashboardPage = () => {
     <Navbar dashboard />
 
     <Routes>
-        <Route path="/" element={<Dashboard />}></Route> 
+        <Route path="/:token" element={<Dashboard />}></Route> 
         <Route path="/UpdateUser" element={<UpdateUserSetting />}></Route> 
         <Route path="*" element={<h1>Error Page</h1>}></Route>
      </Routes>
