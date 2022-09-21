@@ -1,10 +1,29 @@
-import React from "react";
-// import { Header } from './Header'
+import React, { useEffect } from "react";
 import { DashboardStyle } from "../../styles/dashboardStyle";
-// import { Footer } from '../Landing/Footer'
 import { Navbar } from "../Landing/Navbar";
+import axios from "axios";
 
 export const Dashboard = () => {
+  const id = localStorage.getItem("id");
+
+  const apiCall = async () => {
+    const result = await axios.get(
+      `http://localhost:7000/user/singleUser/${id}`
+    );
+    console.log(result.data.user.lastName);
+    localStorage.setItem("firstName", result.data.user.firstName);
+    localStorage.setItem("lastName", result.data.user.lastName);
+    localStorage.setItem("name", result.data.user.phoneNumber);
+    localStorage.setItem("phoneNumber", result.data.user.email);
+    localStorage.setItem("avatar", result.data.user.avatar);
+    localStorage.setItem("userName", result.data.user.userName);
+    localStorage.setItem("email", result.data.user.email);
+  };
+  useEffect(() => {
+    apiCall();
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <>
       <Navbar dashboard />
@@ -24,4 +43,3 @@ export const Dashboard = () => {
     </>
   );
 };
-

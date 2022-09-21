@@ -6,13 +6,13 @@ import logo from "../../assets/icon/logo2.svg";
 import {
   Container,
   UpdateUserPageStyle,
-  LogoWrapper
 } from "../../styles/UpdateUserStyles";
 import { UseAuth } from "../../context/useAuth";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
-    emailOrUsername: "",
+    email: "",
+    userName: "",
     password: "",
   });
   const { login } = UseAuth();
@@ -27,11 +27,11 @@ export const Login = () => {
     <UpdateUserPageStyle>
       {/* <BackDiv /> */}
       <Container>
+        <div className="container">
           <Link to="/">
-            <LogoWrapper>
             <img src={logo} alt="logo" className="logo" />
-            </LogoWrapper>
-            </Link>
+          </Link>
+
           <h2 className="login-header-text">Login</h2>
 
           <form action="" className="form-group" onSubmit={handleLogin}>
@@ -87,6 +87,7 @@ export const Login = () => {
             Create Account
           </Link>
         </p>
+        </div>
       </Container>
      </UpdateUserPageStyle>
   );

@@ -16,6 +16,7 @@ function reducer(state, action) {
     case "REGISTER":
       return {
         ...state,
+        loggedIn: false,
         user: action.data,
       };
 
@@ -26,6 +27,12 @@ function reducer(state, action) {
       };
 
     case "LOGIN":
+      return {
+        ...state,
+        loggedIn: true,
+        user: action.payload,
+      };
+    case "GETUSER":
       return {
         ...state,
         loggedIn: true,
@@ -120,6 +127,12 @@ export const AuthProvider = ({ children }) => {
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
+            // localStorage.setItem("firstName", res.data.user_info.firstName);
+            // localStorage.setItem("lastName", res.data.user_info.lastName);
+            // localStorage.setItem("name", res.data.user_info.phoneNumber);
+            // localStorage.setItem("phoneNumber", res.data.user_info.email);
+            // localStorage.setItem("avatar", res.data.user_info.avatar);
+            // localStorage.setItem("userName", res.data.user_info.userName);
             dispatch({ type: "LOGIN", payload: res.data });
             toast.success(res.data.message, {
               autoClose: 3000,
@@ -199,22 +212,77 @@ export const AuthProvider = ({ children }) => {
           }
         });
     } catch (err) {
-        toast.error(err.response.data.Error, {
-          autoClose: 3000,
-        });
+      toast.error(err.response.data.Error, {
+        autoClose: 3000,
+      });
       throw new Error(`${err}`);
     }
   };
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    localStorage.clear()
-    navigate('/login')
+    localStorage.clear();
+    navigate("/login");
+  };
+
+  const getUser = async (id) => {
+    try {
+      //
+      await axios
+        .get(`http://localhost:7000/user/singleUser/${id}`)
+        .then((res) => {
+          //  localStorage.setItem("user", res.data.user.id);
+          if (res.status === 200) {
+            dispatch({ type: "GETUSER", payload: res.data });
+            return;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      throw new Error(`${err}`);
+    }
+  };
+
+  const updateProfile = async (formData) => {
+    try {
+      const form = {
+        firstName: formData.firstName || localStorage.getItem("firstName"),
+        lastName: formData.lastName || localStorage.getItem("lastName"),
+        userName: formData.username || localStorage.getItem("userName"),
+        phoneNumber:
+          formData.phoneNumber || localStorage.getItem("phoneNumber"),
+        avatar: formData.avatar || localStorage.getItem("avatar"),
+      };
+      const id = localStorage.getItem("id");
+      await axios
+        .patch(`http://localhost:7000/user/update/${id}`, form)
+        .set("Authorization", `Bearer ${localStorage.getItem("token")}`)
+        .then((response) => {
+          toast.success(response.data.message);
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <AuthContext.Provider
-      value={{ register, login, forgotPassword, resetPassword, logout, state }}
+      value={{
+        register,
+        login,
+        getUser,
+        forgotPassword,
+        updateProfile,
+        resetPassword,
+        logout,
+        state,
+      }}
     >
       {children}
     </AuthContext.Provider>
