@@ -24,7 +24,7 @@ export const BaseRoute = () => {
         <Route path="/emailsent" element={<EmailSent text=" We sent a password reset link to your email Please click the link to
             reset your password" />}></Route>
           <Route path="/verify-emailsent" element={<EmailSent text=" We send a verification link to your email Please click the link to
-            reset your password" />}></Route>
+            verify your account" />}></Route>
 
 
 

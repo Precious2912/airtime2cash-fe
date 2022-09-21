@@ -30,7 +30,9 @@ export const Login = () => {
       <Container>
         <div className="container">
           <Link to="/">
+            <LogoWrapper>
             <img src={logo} alt="logo" className="logo" />
+            </LogoWrapper>
           </Link>
 
           <h2 className="login-header-text">Login</h2>
