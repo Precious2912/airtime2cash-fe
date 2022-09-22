@@ -176,7 +176,7 @@ export const UpdateUserSetting = () => {
               />
             </div>
 
-            {/* <div className="input-element">
+            <div className="input-element">
               <label htmlFor="">Avatar</label>
               <input
                 type="text"
@@ -185,8 +185,9 @@ export const UpdateUserSetting = () => {
                 value={avatar}
                 onChange={handleChange}
               />
-            </div> */}
-            <div className="input-element">
+            </div>
+            
+            {/* <div className="input-element">
               <label htmlFor="">Avatar :</label>
               <input
                 style={{
@@ -205,7 +206,7 @@ export const UpdateUserSetting = () => {
                   setModalState(true);
                 }}
               />
-            </div>
+            </div> */}
 
             <button type="submit" className="save-btn">
               Save
