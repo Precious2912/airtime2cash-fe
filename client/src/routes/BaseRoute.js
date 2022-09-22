@@ -5,11 +5,7 @@ import { LandingPage } from "../pages/LandingPage";
 import VerifyStatus from "../pages/VerifyStatus";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
-<<<<<<< HEAD
-import { ErrorPage } from "../pages/ErrorPage";
-=======
 import { Error } from "../pages/ErrorPage";
->>>>>>> origin/develop
 import { DashboardPage } from "../pages/DashboardPage";
 import { ForgottenPasswordPage } from "../pages/ForgottenPasswordPage";
 import { ResetPasswordPage } from "../pages/ResetPasswordPage";
