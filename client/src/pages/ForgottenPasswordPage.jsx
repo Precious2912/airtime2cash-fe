@@ -25,8 +25,11 @@ export const ForgottenPasswordPage = () => {
   const handleForgetPassword = async (e) => {
     e.preventDefault();
     setShowLoading(true);
-    await forgotPassword(formData);
-    setShowLoading(false);
+    await forgotPassword(formData).then(() => {
+      setShowLoading(false);
+    }).catch(() => {
+      setShowLoading(false);
+    });
   };
   return (
     <StyledContainer>
