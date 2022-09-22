@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/icon/logo2.svg";
 import { Link } from "react-router-dom";
 import backicon from "../../assets/icon/backicon.svg";
-import StyleButton from "../../styles/Button.styles.js";
+import StyleButton from "../../styles/ButtonStyles.js";
 import {
   Wrapper,
   Wrapper2,

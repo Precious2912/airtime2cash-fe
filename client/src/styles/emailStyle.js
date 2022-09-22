@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom';
 
 export const colors = {
     theme: 'lemon',
@@ -19,7 +18,7 @@ color: #012A4A;
 text-align: center;
 `;
 
-export const TextLink = styled(Link)`
+export const TextLink = styled.span`
 font-weight: 400;
 font-size: 16px;
 margin: 10% 0;
@@ -76,22 +75,6 @@ margin-top: 75px;
 background: linear-gradient(104.22deg, #DE3D6D 38.86%, #F5844C 82.71%)
 `;
 
-export const StyledButton = styled(Link)`
-width: 104px;
-height: 19px;
-margin-left: 295px;
-font-family: 'Inter';
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-color: #000000;
-flex: none;
-order: 0;
-flex-grow: 0;
-background-color: #D8D8D8;
-`;
-
 export const  ButtonWrapper = styled.div`
 width: 204px;
 max-width: 100%;
@@ -116,13 +99,16 @@ color: ${colors.light2};
 export const StyledFormArea = styled.div`
 /* position: absolute; */
 width: 50%;
-max-width: 100%;
+max-width: 90%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 padding: 6% 2%;
 background: #FFFFFF;
+@media (max-width: 550px) {
+    width: 90%;
+}
 `;
 
 

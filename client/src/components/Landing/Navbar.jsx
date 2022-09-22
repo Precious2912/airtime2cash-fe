@@ -9,8 +9,8 @@ import {
   Hamburger,
   Menu,
   MenuLinks,
-} from "../../styles/LandingStyles";
-import StyleButton from "../../styles/Button.styles.js";
+} from "../../styles/NavbarStyles";
+import StyleButton from "../../styles/ButtonStyles.js";
 import UserProfileNav from "./UserProfileNav";
 import { Link } from "react-router-dom";
 
@@ -27,7 +27,6 @@ export const Navbar = ({ landing, dashboard }) => {
         <a href="/">
           <Logo src={logo} alt="" />
         </a>
-
         {landing && (
           <Hamburger onClick={() => setOpen(!open)}>
             <span />
