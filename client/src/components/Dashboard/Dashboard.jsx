@@ -11,7 +11,6 @@ export const Dashboard = () => {
     const result = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/user/singleUser/${id}`
     );
-    console.log(result.data.user.lastName);
     localStorage.setItem("firstName", result.data.user.firstName);
     localStorage.setItem("lastName", result.data.user.lastName);
     localStorage.setItem("phoneNumber", result.data.user.phoneNumber);
@@ -19,6 +18,7 @@ export const Dashboard = () => {
     localStorage.setItem("userName", result.data.user.userName);
     localStorage.setItem("email", result.data.user.email);
   };
+
   useEffect(() => {
     apiCall();
     // eslint-disable-next-line
