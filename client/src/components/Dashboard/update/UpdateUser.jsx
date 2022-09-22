@@ -2,26 +2,31 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
+import { FaTimes, FaCloudUploadAlt } from "react-icons/fa";
+
 import {
   //eslint-disable-next-line
   BackDiv,
   Container,
   UpdateUserPageStyle,
+  ModalStyle,
 } from "../../../styles/UpdateUserStyles";
 
 import { Back, HeaderAndButton } from "../../../styles/registerStyle";
 
 import logo from "../../../assets/icon/logo2.svg";
 import backicon from "../../../assets/icon/backicon.svg";
+import axios from "axios";
 
 export const UpdateUserSetting = () => {
   const id = localStorage.getItem("id");
   // eslint-disable-next-line
   const [modalState, setModalState] = useState(false);
+  const [fileImage, setFileImage] = useState("");
 
   const { updateProfile } = UseAuth({});
-  const wrapperRef = useRef(null);
 
+  const wrapperRef = useRef(null);
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
@@ -80,6 +85,36 @@ export const UpdateUserSetting = () => {
     window.location.href = `/dashboard/${id}`;
   };
 
+  const handleImageChange = (e) => {
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+  };
+
+  const uploadAvatar = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", fileImage);
+    formData.append("upload_preset", "sprint2");
+    // console.log(fileImage);
+    // console.log(formData);
+    try {
+      const res = await axios
+        .post(
+          "http://api.cloudinary.com/v1_1/podf-live-project/image/upload",
+          formData
+        )
+        .then((res) => {
+          setAvatar(res.data.secure_url);
+          setModalState(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <UpdateUserPageStyle>
       <div className="top"></div>
@@ -152,11 +187,19 @@ export const UpdateUserSetting = () => {
               />
             </div> */}
             <div className="input-element">
-              <label htmlFor="">Avatar</label>
+              <label htmlFor="">Avatar :</label>
               <input
+                style={{
+                  backgroundColor: "rose",
+                  color: "red",
+                  border: "none",
+                  padding: 0,
+                  font: "inherit",
+                  cursor: "pointer",
+                }}
                 type="button"
-                placeholder="Email"
-                value={"Upload Photo"}
+                placeholder="Avatar"
+                value={"Click to Upload Photo"}
                 className="avatar-upload"
                 onClick={() => {
                   setModalState(true);
@@ -169,6 +212,50 @@ export const UpdateUserSetting = () => {
             </button>
           </form>
         </div>
+        {modalState && (
+          <ModalStyle>
+            <div className="modal-content" ref={wrapperRef}>
+              <div
+                className="close-btn"
+                onClick={() => {
+                  setModalState(false);
+                }}
+              >
+                <FaTimes />
+              </div>
+              <img src={logo} alt="logo" className="modal-logo" />
+              <div className="upload-section">
+                <h3
+                  style={{
+                    background: "rose",
+                    color: "red",
+                    border: "none",
+                    padding: 0,
+                    font: "inherit",
+                    cursor: "pointer",
+                  }}
+                >
+                  Upload a Photo
+                </h3>
+                <form onSubmit={uploadAvatar}>
+                  <input
+                    type="file"
+                    name=""
+                    id=""
+                    className="modal-input"
+                    onChange={handleImageChange}
+                  />
+                  <p className="allowed-text">
+                    *Allowed formats: jpeg, jpg, png and svg*{" "}
+                  </p>
+                  <button type="submit" className="save-btn-modal">
+                    Add Photo
+                  </button>
+                </form>
+              </div>
+            </div>
+          </ModalStyle>
+        )}
       </Container>
     </UpdateUserPageStyle>
   );
