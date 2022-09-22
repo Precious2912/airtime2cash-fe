@@ -32,7 +32,6 @@ export const ResetPasswordPage = () => {
     <div>
       <StyledContainer>
         <StyledFormArea>
-          
           <Logo><img src={logo} alt="" /></Logo>
           <StyledTitle>Password Reset</StyledTitle>
           <RestForm onSubmit={handleResetPassword}>

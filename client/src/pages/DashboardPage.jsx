@@ -12,7 +12,7 @@ export const DashboardPage = () => {
     <Routes>
         <Route path="/:token" element={<Dashboard />}></Route> 
         <Route path="/UpdateUser" element={<UpdateUserSetting />}></Route> 
-        <Route path="*" element={<h1>Error Page</h1>}></Route>
+        <Route path="/*" element={<h1>Error Page</h1>}></Route>
      </Routes>
      </>
   )
