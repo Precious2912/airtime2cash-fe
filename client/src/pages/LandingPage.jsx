@@ -14,7 +14,7 @@ import rechargeImage from "../assets/images/Recharge.png";
 import loginIcon from "../assets/icon/Login.svg";
 import DashboardIcon from "../assets/icon/Dashboard.svg";
 import Spinning from "../assets/icon/Spinning.svg";
-import StyleButton from "../styles/Button.styles.js";
+import StyleButton from "../styles/ButtonStyles.js";
 import SliderItem from "../components/Landing/SliderItem.jsx";
 import { Navbar } from "../components/Landing/Navbar";
 import { Footer } from "../components/Landing/Footer";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { UseAuth } from "../context/useAuth";
-import StyleButton from "../styles/Button.styles.js";
+import StyleButton from "../styles/ButtonStyles.js";
 
 import {
   StyledContainer,
@@ -12,17 +12,21 @@ import {
   EmailInput,
 } from "../styles/forgetPassStyle";
 import { Link } from "react-router-dom";
+import { ThreeDots } from "react-loading-icons";
 
 export const ForgottenPasswordPage = () => {
   const [formData, setFormData] = useState({
     email: "",
   });
+  const [showLoading, setShowLoading] = useState(false);
 
   const { forgotPassword } = UseAuth();
 
   const handleForgetPassword = async (e) => {
     e.preventDefault();
+    setShowLoading(true);
     await forgotPassword(formData);
+    setShowLoading(false);
   };
   return (
     <StyledContainer>
@@ -47,9 +51,17 @@ export const ForgottenPasswordPage = () => {
             }}
           />
 
-          <StyleButton width="100%" height="48px" type="submit">
-            Submit
-          </StyleButton>
+ 
+            <StyleButton
+              disabled={showLoading}
+              width="100%"
+              height="48px"
+              type="submit"
+            >
+               {!showLoading ? <span>Submit</span>:
+              <ThreeDots height="1rem" fill="#DE3D6D" />}
+            </StyleButton>
+          
 
           <Back>
             <Link to="/login">Back to Login</Link>

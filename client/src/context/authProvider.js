@@ -79,7 +79,6 @@ export const AuthProvider = ({ children }) => {
         password: formData.password,
         confirmPassword: formData.confirmPassword,
       };
-
       await axios
         .post(
           `${process.env.REACT_APP_BACKEND_URL}/user/register`,

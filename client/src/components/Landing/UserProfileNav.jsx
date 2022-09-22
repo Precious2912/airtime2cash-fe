@@ -21,7 +21,9 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
   return (
     <Profile>
       <Link to="/dashboard/UpdateUser">
+        <ProfileImg>
         <img src={avatar} alt="" />
+        </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
         <span>{firstName} </span>
@@ -41,7 +43,7 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
                 <img src={HelpIcon} alt="" /> <span>Help Center</span>{" "}
               </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
-                <img src={LogoutIcon} alt="" /> <span>Logout</span>{" "}
+                <img src={LogoutIcon} alt="" /> <span>Logout</span>
               </DropdownItem>
             </Dropdown>
           </>
@@ -58,10 +60,15 @@ const Profile = styled.div`
     gap:10px;
     cursor: pointer;
     & img {
-        width: 36px;
-        border-radius: 50%;
-        object-fit: contain;
+      width: 100%; height:100%; object-fit: cover;
+      border-radius: 50%; 
+
     }
+`
+const ProfileImg = styled.div`
+        width: 36px;
+        height: 36px;
+        border-radius: 50%; 
 `
 const Dropdown = styled.div`
   position: absolute;

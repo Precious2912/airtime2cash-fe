@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import StyleButton from "../styles/Button.styles.js";
+import StyleButton from "../styles/ButtonStyles.js";
 import { UseAuth } from "../context/useAuth";
 import logo from "../assets/icon/logo2.svg";
 
@@ -9,8 +9,7 @@ import {
   StyledTitle, 
   ResetPassword,
   FormInput,
-  Logo,
-  FormLabel
+  Logo, 
 } from "../styles/resetPassStyle";
 import { RestForm } from "../styles/forgetPassStyle";
 import { useParams } from "react-router-dom";
