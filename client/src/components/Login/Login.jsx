@@ -6,7 +6,7 @@ import logo from "../../assets/icon/logo2.svg";
 import {
   Container,
   UpdateUserPageStyle,
-  LogoWrapper
+  LogoWrapper,
 } from "../../styles/LoginStyles";
 import { UseAuth } from "../../context/useAuth";
 
@@ -24,14 +24,13 @@ export const Login = () => {
   };
 
   return (
-   
     <UpdateUserPageStyle>
       {/* <BackDiv /> */}
       <Container>
         <div className="container">
           <Link to="/">
             <LogoWrapper>
-            <img src={logo} alt="logo" className="logo" />
+              <img src={logo} alt="logo" className="logo" />
             </LogoWrapper>
           </Link>
 
@@ -67,31 +66,31 @@ export const Login = () => {
               />
             </div>
             <Link to="/forgottenpassword">
-            <p
-              style={{
-                color: "#4285F4",
-                fontStyle: "normal",
-                fontWeight: "lighter",
-                fontSize: "12px",
-                lineHeight: "15px",
-                cursor: 'pointer'
-              }}
-            >
-              Forgot Password?
-            </p>
-            </Link> 
+              <p
+                style={{
+                  color: "#4285F4",
+                  fontStyle: "normal",
+                  fontWeight: "lighter",
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                  cursor: "pointer",
+                }}
+              >
+                Forgot Password?
+              </p>
+            </Link>
             <button type="submit" className="login-btn">
               Login
             </button>
           </form>
-        <p className="create-account">
-          Don't have an account? &nbsp;
-          <Link to="/register" className="create-btn">
-            Create Account
-          </Link>
-        </p>
+          <p className="create-account">
+            Don't have an account? &nbsp;
+            <Link to="/register" className="create-btn">
+              Create Account
+            </Link>
+          </p>
         </div>
       </Container>
-     </UpdateUserPageStyle>
+    </UpdateUserPageStyle>
   );
 };

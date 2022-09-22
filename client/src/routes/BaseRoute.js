@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { LandingPage } from "../pages/LandingPage";
+import VerifyStatus from "../pages/VerifyStatus";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
 import { Error } from "../pages/ErrorPage";

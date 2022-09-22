@@ -17,6 +17,8 @@ import { Link } from "react-router-dom";
 
 export const Navbar = ({ landing, dashboard }) => {
   const [open, setOpen] = useState(false);
+  
+  // eslint-disable-next-line
   const [isLogin, setIsLogin] = useState(false);
   return (
 

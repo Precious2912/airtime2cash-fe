@@ -261,7 +261,6 @@ export const AuthProvider = ({ children }) => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         })
-
         .then((response) => {
           toast.success(response.data.message);
           console.log(response);
