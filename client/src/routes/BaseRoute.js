@@ -5,7 +5,11 @@ import { LandingPage } from "../pages/LandingPage";
 import VerifyStatus from "../pages/VerifyStatus";
 import { RegisterPage } from "../pages/RegisterPage";
 import { LoginPage } from "../pages/LoginPage";
+<<<<<<< HEAD
 import { ErrorPage } from "../pages/ErrorPage";
+=======
+import { Error } from "../pages/ErrorPage";
+>>>>>>> origin/develop
 import { DashboardPage } from "../pages/DashboardPage";
 import { ForgottenPasswordPage } from "../pages/ForgottenPasswordPage";
 import { ResetPasswordPage } from "../pages/ResetPasswordPage";
@@ -21,7 +25,6 @@ export const BaseRoute = () => {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/verifystatus/" element={<VerifyStatus />}></Route>
         <Route
           path="/forgottenpassword"
           element={<ForgottenPasswordPage />}
@@ -34,6 +37,7 @@ export const BaseRoute = () => {
           path="/emailsent"
           element={
             <EmailSent
+              password
               text=" We sent a password reset link to your email Please click the link to
             reset your password"
             />
@@ -43,6 +47,7 @@ export const BaseRoute = () => {
           path="/verify-emailsent"
           element={
             <EmailSent
+              email
               text=" We send a verification link to your email Please click the link to
             verify your account"
             />
@@ -60,7 +65,7 @@ export const BaseRoute = () => {
         />
 
         {/* Error Route */}
-        <Route path="*" element={<ErrorPage />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </>
   );

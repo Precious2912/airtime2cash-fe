@@ -9,13 +9,12 @@ export const Dashboard = () => {
 
   const apiCall = async () => {
     const result = await axios.get(
-      `http://localhost:7000/user/singleUser/${id}`
+      `${process.env.REACT_APP_BACKEND_URL}/user/singleUser/${id}`
     );
     console.log(result.data.user.lastName);
     localStorage.setItem("firstName", result.data.user.firstName);
     localStorage.setItem("lastName", result.data.user.lastName);
-    localStorage.setItem("name", result.data.user.phoneNumber);
-    localStorage.setItem("phoneNumber", result.data.user.email);
+    localStorage.setItem("phoneNumber", result.data.user.phoneNumber);
     localStorage.setItem("avatar", result.data.user.avatar);
     localStorage.setItem("userName", result.data.user.userName);
     localStorage.setItem("email", result.data.user.email);
