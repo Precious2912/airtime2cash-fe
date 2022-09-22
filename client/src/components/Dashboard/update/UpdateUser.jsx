@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { UseAuth } from "../../../context/useAuth";
+//eslint-disable-next-line
 import { FaTimes, FaCloudUploadAlt } from "react-icons/fa";
 
 import {
@@ -85,6 +86,7 @@ export const UpdateUserSetting = () => {
     window.location.href = `/dashboard/${id}`;
   };
 
+  // eslint-disable-next-line
   const handleImageChange = (e) => {
     const data = new FormData();
     data.append("file", e.target.files[0]);
@@ -176,7 +178,7 @@ export const UpdateUserSetting = () => {
               />
             </div>
 
-            <div className="input-element">
+            {/* <div className="input-element">
               <label htmlFor="">Avatar</label>
               <input
                 type="text"
@@ -185,9 +187,9 @@ export const UpdateUserSetting = () => {
                 value={avatar}
                 onChange={handleChange}
               />
-            </div>
-            
-            {/* <div className="input-element">
+            </div> */}
+
+            <div className="input-element">
               <label htmlFor="">Avatar :</label>
               <input
                 style={{
@@ -206,7 +208,7 @@ export const UpdateUserSetting = () => {
                   setModalState(true);
                 }}
               />
-            </div> */}
+            </div>
 
             <button type="submit" className="save-btn">
               Save
@@ -238,18 +240,24 @@ export const UpdateUserSetting = () => {
                 >
                   Upload a Photo
                 </h3>
-                <form onSubmit={uploadAvatar}>
+                <form>
+                  {/* <form onSubmit={uploadAvatar}> */}
                   <input
                     type="file"
                     name=""
                     id=""
                     className="modal-input"
-                    onChange={handleImageChange}
+                    // onChange={handleImageChange}
+                    onChange={(e) => setFileImage(e.target.files[0])}
                   />
                   <p className="allowed-text">
                     *Allowed formats: jpeg, jpg, png and svg*{" "}
                   </p>
-                  <button type="submit" className="save-btn-modal">
+                  <button
+                    type="submit"
+                    className="save-btn-modal"
+                    onClick={uploadAvatar}
+                  >
                     Add Photo
                   </button>
                 </form>
