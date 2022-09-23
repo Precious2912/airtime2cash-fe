@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardStyle } from "../../styles/dashboardStyle";
 //eslint-disable-next-line
-import { Navbar } from "../Landing/Navbar";
 import axios from "axios";
 
+import Tabs from "./Tabs";
 export const Dashboard = () => {
+  // eslint-disable-next-line
+  const [isLogin, setIsLogin] = useState(false);
   const id = localStorage.getItem("id");
 
   const apiCall = async () => {
@@ -37,6 +39,7 @@ export const Dashboard = () => {
               <button>Active is active</button>
             </div>
           </div>
+          <Tabs />
         </div>
       </DashboardStyle>
     </>

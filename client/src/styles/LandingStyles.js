@@ -74,6 +74,28 @@ export const MenuLinks = styled.div`
     }
   }
 `;
+export const DMenuLinks = styled.div`
+  & .active {
+    color: #de3d6d;
+    text-decoration: none;
+    font-weight: 600;
+    underline: true;
+  }
+  a {
+    padding: 1rem 1rem;
+    width: 6rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #012a4a;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+    font-weight: 400;
+    &:hover {
+      color: #de3d6d;
+    }
+  }
+`;
 export const Logo = styled.img`
   padding: 1rem 0;
   max-width: 100%;
@@ -150,7 +172,7 @@ export const AboutSection = styled.div`
 
   & .aboutDescription {
     margin: -1% 2% 0 2%;
-    width: 40%; 
+    width: 40%;
     & h2 {
       font-size: 2.5rem;
       font-weight: 600;
@@ -164,10 +186,10 @@ export const AboutSection = styled.div`
   }
   @media (max-width: 1024px) {
     & .aboutDescription {
-      width:  100%;& 
-      h2 {
-      font-size: 2rem;
-      line-height: 36px;
+      width: 100%;
+      & h2 {
+        font-size: 2rem;
+        line-height: 36px;
       }
     }
   }
@@ -240,18 +262,18 @@ export const ProductSection = styled.div`
     }
     @media (max-width: 1024px) {
       & img {
-      width: 50%;
-    }
+        width: 50%;
+      }
     }
   }
 
   @media (max-width: 1024px) {
-    & .productDescription { 
+    & .productDescription {
       width: 100%;
       & h2 {
-      line-height: 46px;
-      text-align: center;
-      padding: 20px 0;
+        line-height: 46px;
+        text-align: center;
+        padding: 20px 0;
       }
     }
     & .productImage {
@@ -292,14 +314,12 @@ export const TestimonialCardWrapper = styled.div`
   display: flex;
   margin-top: 35px;
   .rec.rec-arrow {
-  background-color:#F5F5F5; 
-}
+    background-color: #f5f5f5;
+  }
 
-.rec.rec-arrow:hover {
-  background-color:#bcb8b8 !important;
-
-}
-
+  .rec.rec-arrow:hover {
+    background-color: #bcb8b8 !important;
+  }
 `;
 export const TestimonialCard = styled.div`
   display: flex;
@@ -379,6 +399,5 @@ export const LowerFooter = styled.div`
     }
   }
 `;
-
 
 // 1024px
