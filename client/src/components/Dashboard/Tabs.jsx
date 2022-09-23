@@ -43,10 +43,10 @@ const Tabs = () => {
         {/* {activeTab === "tab1" ? <Error /> : <UploadAvatar />} */}
 
         <TabContent id="tab1" activeTab={activeTab}>
-          <p>
+         
             {/* <UploadAvatar /> */}
             <h1>Sell airtime</h1>
-          </p>
+       
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
           <div>
@@ -54,16 +54,16 @@ const Tabs = () => {
           </div>
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
-          <p>
+  
             {/* <UpdateUserSetting /> */}
             <h1>Manage Bank Account Here</h1>
-          </p>
+   
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
-          <p>
+  
             {/* <Error /> */}
             <h1>Transaction History Here</h1>
-          </p>
+   
         </TabContent>
       </div>
       {/* <Button>Sell Airtime</Button> */}

@@ -27,7 +27,6 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <>
       <DashboardStyle>
         <div className="top"></div>
         <div className="dashboard">
@@ -45,6 +44,5 @@ export const Dashboard = () => {
           <Tabs />
         </div>
       </DashboardStyle>
-    </>
   );
 };
