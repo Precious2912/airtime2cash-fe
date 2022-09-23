@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Error } from "./../../pages/ErrorPage";
-import UploadAvatar from "./../../pages/VerifyStatus";
-import Button from  '../../styles/ButtonStyles'
+// import { Error } from "./../../pages/ErrorPage";
+// import UploadAvatar from "./../../pages/VerifyStatus";
+// import Button from  '../../styles/ButtonStyles'
 import TabNavItem from "./TabNavItem";
 import TabContent from "./TabContent";
-import { UpdateUserSetting } from "./update/UpdateUser";
+// import { UpdateUserSetting } from "./update/UpdateUser";
 import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
 
