@@ -5,7 +5,8 @@ import Button from  '../../styles/ButtonStyles'
 import TabNavItem from "./TabNavItem";
 import TabContent from "./TabContent";
 import { UpdateUserSetting } from "./update/UpdateUser";
-import { TabStyle } from "../../styles/DashboardTabStyles";
+import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
+import Withdraw from "./TabContent/Withdraw";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -48,10 +49,9 @@ const Tabs = () => {
           </p>
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
-          <p>
-            {/* <UploadAvatar /> */}
-            <h1>Withdraw Balance Here</h1>
-          </p>
+          <div>
+            <Withdraw />
+          </div>
         </TabContent>
         <TabContent id="tab3" activeTab={activeTab}>
           <p>
@@ -66,7 +66,7 @@ const Tabs = () => {
           </p>
         </TabContent>
       </div>
-      <Button>Sell Airtime</Button>
+      {/* <Button>Sell Airtime</Button> */}
     </TabStyle>
   );
 };

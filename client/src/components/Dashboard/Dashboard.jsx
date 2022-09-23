@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { DashboardStyle } from "../../styles/dashboardStyle";
+import { DashboardStyle } from "../../styles/DashboardStyles/HomeStyles";
 //eslint-disable-next-line
 import axios from "axios";
 
