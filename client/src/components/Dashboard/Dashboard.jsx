@@ -38,6 +38,9 @@ export const Dashboard = () => {
               <p className="acct-bal">N21,350.00</p>
               <button>Active is active</button>
             </div>
+    
+
+
           </div>
           <Tabs />
         </div>

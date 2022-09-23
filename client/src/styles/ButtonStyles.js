@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-    background-color: #012A4A;
+    /* background-color: #012A4A; */
     color: #fff;
     padding: 10px;
     border-radius:${({borderRadius}) => (borderRadius ? borderRadius : "5px")};
@@ -10,11 +10,12 @@ const Button = styled.button`
     font-size: 16px;
     font-weight: 500;
     height: ${({height}) => (height ? height : "auto")};
-    width:${({width}) => (width ? width : "auto")};
-    background-image: linear-gradient(to right, #DE3D6D,#F5844C);
+    width:${({width}) => (width ? width : "auto")}; 
+    background-image: ${({disabled}) => (disabled ? "gray" : "linear-gradient(to right, #DE3D6D,#F5844C)")};;
+    cursor: ${({disabled}) => (disabled ? "not-allowed" : "pointer")} ;
     &:hover{
-        background-color: #DE3D6D;
-    }
+        background-color:${({disabled}) => (disabled ? "lightgray" : "#DE3D6D")} ;
+    } 
 `
 
 export default Button

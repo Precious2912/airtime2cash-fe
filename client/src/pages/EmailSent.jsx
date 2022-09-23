@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import mailIcon from "../assets/icon/mail.svg"; 
-import StyleButton from '../styles/Button.styles.js'
+import StyleButton from '../styles/ButtonStyles.js'
 import { UseAuth } from "../context/useAuth";
 
 import {
@@ -10,13 +10,10 @@ import {
   StyledTitle,
   StyledSubTitle,
   ExtraText,
-  TextLink,
-  StyledFormButton,
-  colors,
+  TextLink,  
   Icon,
   ButtonWrapper
 } from "../styles/emailStyle";
-
 
 export const EmailSent = ({text, password, email}) => {
   const user_email = localStorage.getItem('email')
@@ -31,6 +28,7 @@ export const EmailSent = ({text, password, email}) => {
       await forgotPassword(formData);
     };
   return (
+    <>
     <StyledContainer>
       <StyledFormArea>
         <Icon>
@@ -42,12 +40,12 @@ export const EmailSent = ({text, password, email}) => {
         <ExtraText>
           Don't receive the email?
           <TextLink>
-            {password && (
-              <Link to="/forgottenpassword"> Click to Resend Link</Link>
-            )}
-            {email && (
+            {password && 
+              <Link  to="/forgottenpassword"> Click to Resend Link</Link>
+            }
+            {email && 
               <Link to="/#" > Click to Resend Link</Link>
-            )}
+            }
           </TextLink>
         </ExtraText>
         <ButtonWrapper>
@@ -57,6 +55,7 @@ export const EmailSent = ({text, password, email}) => {
         </ButtonWrapper>
       </StyledFormArea>
     </StyledContainer>
+    </>
   );
 };
 
