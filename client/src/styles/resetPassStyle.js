@@ -1,75 +1,5 @@
 import styled from 'styled-components';
 
-export const colors = {
-    theme: 'lemon',
-    light1: 'antiquewhite',
-    light2: '#E5E7EB',
-    dark1: '#1F2937',
-    dark2: '#B7C4CF',
-    dark3: '#9CA3AF',
-    dark4: '#6B7280',
-    red: '#DC2626',
-}
-
-
-
-
-export const StyledIcon = styled.p`
-color: ${colors.dark1};
-position: absolute;
-font-size: 20px;
-margin-left: 275px;
-top: 35%;
-${(props) => props.right && `right: 15%;`}
-${(props) => props.left && `left: 15%;`}
-`;
-
-
-export const StyledSubTitle = styled.p`
-width: 432px;
-height: 38px;
-margin-left: 275px; 
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-text-align: center;
-color: #C4C4C4;
-display: flex;
-order: 1;
-flex-grow: 0;
-`;
-
-
-export const ResetPassword = styled.span`
-font-size: 12px;
-font-weight: lighter;
-`
-
-
-export const CopyrightText = styled.p`
-padding: 5px;
-margin: 20px;
-text-align: center;
-color: ${colors.light2};
-`;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// RESPONSIVE DESIGN ======================
 export const StyledContainer = styled.div`
 background: #E5E5E5;
 justify-content: center;
@@ -82,7 +12,6 @@ width: 100vw;
 
 export const StyledFormArea = styled.div`
 background-color: white;
-/* padding: 6% calc(30%/3); */
 min-width: 50%;
 max-width: 100%;
 margin:0; 
@@ -98,7 +27,7 @@ export const Logo = styled.div`
 width: 100%;
 text-align: center;
 & img{
-    width: 11rem;
+    width: 10rem;
 }
 `
 
@@ -133,13 +62,10 @@ margin : 10px 0 23px 0;
 }
 `
 
+export const ResetPassword = styled.span`
+font-size: 12px;
+font-weight: lighter;
+`
 
-
-// export const StyledLabel = styled.p`
-// text-align: left;
-// font-size: 15px;
-// font-weight: bold;
-// margin-right: 250px;
-// `;
 
 
