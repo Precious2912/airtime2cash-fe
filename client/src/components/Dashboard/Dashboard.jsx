@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { DashboardStyle } from "../../styles/dashboardStyle";
 //eslint-disable-next-line
-import { Navbar } from "../Landing/Navbar";
 import axios from "axios";
+import { AddBank } from "./TabContent/AddBank";
 
 export const Dashboard = () => {
   const id = localStorage.getItem("id");
@@ -36,10 +36,8 @@ export const Dashboard = () => {
               <p className="acct-bal">N21,350.00</p>
               <button>Active is active</button>
             </div>
-    
-
-
           </div>
+          <AddBank />
         </div>
       </DashboardStyle>
     </>
