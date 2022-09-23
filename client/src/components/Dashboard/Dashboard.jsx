@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardStyle } from "../../styles/dashboardStyle";
 //eslint-disable-next-line
-import { Navbar } from "../Landing/Navbar";
 import axios from "axios";
 
+import Tabs from "./Tabs";
 export const Dashboard = () => {
+  // eslint-disable-next-line
+  const [isLogin, setIsLogin] = useState(false);
   const id = localStorage.getItem("id");
 
   const apiCall = async () => {
     const result = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}/user/singleUser/${id}`
     );
-    console.log(result.data.user.lastName);
     localStorage.setItem("firstName", result.data.user.firstName);
     localStorage.setItem("lastName", result.data.user.lastName);
     localStorage.setItem("phoneNumber", result.data.user.phoneNumber);
@@ -19,6 +20,7 @@ export const Dashboard = () => {
     localStorage.setItem("userName", result.data.user.userName);
     localStorage.setItem("email", result.data.user.email);
   };
+
   useEffect(() => {
     apiCall();
     // eslint-disable-next-line
@@ -40,6 +42,7 @@ export const Dashboard = () => {
 
 
           </div>
+          <Tabs />
         </div>
       </DashboardStyle>
     </>
