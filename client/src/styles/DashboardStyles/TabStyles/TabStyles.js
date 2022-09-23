@@ -47,17 +47,17 @@ export const TabStyle = styled.div`
   }
 
  & ul.nav li:first-child {
-    border-bottom-left-radius: 2rem;
-    border-top-left-radius: 2rem;
+    // border-bottom-left-radius: 2rem;
+    // border-top-left-radius: 2rem;
   }
 
  & ul.nav li:last-child {
-    border-bottom-right-radius: 2rem;
-    border-top-right-radius: 2rem;
+    // border-bottom-right-radius: 2rem;
+    // border-top-right-radius: 2rem;
   }
 
  & ul.nav li:hover {
-    background: rgba(50, 224, 196, 0.15);
+    // background: rgba(50, 224, 196, 0.15);
     border-bottom: 1px solid #DE3D6D;;
 
   }
