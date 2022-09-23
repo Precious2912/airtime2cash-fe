@@ -43,23 +43,6 @@ text-align: center;
   margin: 6% 0 4% 0;
 `;
 
-export const StyledFormButton = styled.button`
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: center;
-  // align-items: center;
-  // padding: 16px 24px;
-  // margin-left: 275px;
-  // gap: 16px;
-  // width: 320px;
-  // height: 48px;
-  // background: linear-gradient(101.99deg, #DE3D6D 55.72%, #F5844C 103.65%);
-  // border-radius: 6px;
-  // flex: none;
-  // order: 2;
-  // flex-grow: 0;
-  // border: none;
-`;
 
 export const StyledButton = styled(Link)`
   width: 104px;

@@ -11,7 +11,7 @@ import {
   Container,
   UpdateUserPageStyle,
   ModalStyle,
-} from "../../../styles/UpdateUserStyles";
+} from "../../../styles/DashboardStyles/UpdateUserStyles";
 
 import { Back, HeaderAndButton } from "../../../styles/registerStyle";
 

@@ -27,12 +27,12 @@ export const Hero = styled.div`
     display: flex;
 
     & p {
-      font-size: 3.4rem;
+      font-size: 4rem;
       font-weight: bolder;
       background: linear-gradient(to right, #de3d6d, #f5844c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 6px;
+      letter-spacing: 2px;
       line-height: 1.3;
 
       margin: 0%;

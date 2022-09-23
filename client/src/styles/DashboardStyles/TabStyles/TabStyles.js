@@ -7,7 +7,7 @@ export const TabStyle = styled.div`
   /* background: #e5e5e2; */
   margin: 0.5rem auto 1.5rem;
   padding: 2rem 1rem;
-  color: #e8f0f2;
+  /* color: #e8f0f2; */
   // border: 4px sol
   // border-radius: 2rem;
   @media (max-width: 769px) {
@@ -15,7 +15,7 @@ export const TabStyle = styled.div`
   }
 
   /* Tab Navigation */
-  ul.nav {
+  & ul.nav {
     width: 100%;
     margin: -0.5rem auto 2rem;
     display: flex;
@@ -29,17 +29,14 @@ export const TabStyle = styled.div`
     }
   }
 
-  ul.nav li {
+  & ul.nav li {
     width: 50%;
-    padding: 1rem;
+    padding-bottom: 1%;
     list-style: none;
     text-align: center;
     cursor: pointer;
     transition: all 0.7s;
-
     height: 17px;
-    font-family: "Inter";
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -49,29 +46,29 @@ export const TabStyle = styled.div`
     flex-grow: 0;
   }
 
-  ul.nav li:first-child {
+ & ul.nav li:first-child {
     border-bottom-left-radius: 2rem;
     border-top-left-radius: 2rem;
   }
 
-  ul.nav li:last-child {
+ & ul.nav li:last-child {
     border-bottom-right-radius: 2rem;
     border-top-right-radius: 2rem;
   }
 
-  ul.nav li:hover {
+ & ul.nav li:hover {
     background: rgba(50, 224, 196, 0.15);
-    text-decoration: underline red 2px;
+    border-bottom: 1px solid #DE3D6D;;
+
   }
 
-  ul.nav li.active {
+ & ul.nav li.active {
     /* background: #39a2db; */
-    text-decoration: underline red 2px;
+    border-bottom: 1px solid #DE3D6D;
   }
 
   /* Tab Content Styles */
-  .TabContent {
-    font-size: 2rem;
-    text-align: center;
+ & .TabContent {
+    margin:0 6%;
   }
 `;
