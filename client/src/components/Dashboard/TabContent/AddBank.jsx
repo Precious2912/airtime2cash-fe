@@ -1,111 +1,94 @@
-import React, {useState} from 'react'
-import { BankStyle, AccountStyle } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
+import React, { useState} from "react";
+import {
+  BankStyle,
+  BankHeader,
+} from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
+import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import {
   FormStyle,
   StyledLabel,
   StyledInput,
 } from "../../../styles/registerStyle";
 import StyleButton from "../../../styles/ButtonStyles";
-import { Modal } from '../../modal/Modal';
+import { Modal } from "../../modal/Modal";
+import Select from "react-select";
 
-export const AddBank = () => {
-    const [showModal, setShowModal] = useState(false);
+const banks = [
+  { value: "First Bank", label: "First Bank" },
+  { value: "Access Bank", label: "Access Bank" },
+  { value: "Zenith Bank", label: "Zenith Bank" },
+];
 
-    const[addTab, showAddTab] = useState(true);
-    const [viewTab, showViewTab] = useState(false);
+export const AddBank = ({show}) => {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-    const handleAddBank = (e) => {
-        e.preventDefault()
-        setShowModal((p) => !p);
-    }
+  const changeHandler = (e) => {
+    e.preventDefault();
+    setShowModal((p) => !p)
+  };
 
-    const displayViewBank = () => {
-        console.log('clicked')
-        showViewTab(p => !p);
-        showAddTab((p) => !p);
-    }
 
   return (
     <>
+      <BankHeader>
+        <h3 className="bank-acct">Bank Account</h3>
+        <p onClick={show}>View Bank Accounts</p>
+      </BankHeader>
       <BankStyle>
-        <div className="bank-header">
-          <h3 className="bank-acct">Bank Account</h3>
-          {addTab && <p onClick={displayViewBank}>View Bank Accounts</p>}
-        </div>
+        <FormStyle onSubmit={changeHandler}>
+          <StyledLabel>Bank Name</StyledLabel>
+          <Select
+            styles={CustomStyles}
+            onChange={setSelectedOption}
+            options={banks}
+            defaultValue={{ label: "Select Bank", value: 0 }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              // height: 200,
+              // minHeight: 200,
+              // paddingTop: 7,
+              // paddingBottom: 7,
 
-        {addTab && (
-          <FormStyle>
-            <StyledLabel>Bank Name</StyledLabel>
-            <select name="banks" className="bank-option">
-              <option value="first-bank">Select bank</option>
-              <option value="first-bank">First Bank</option>
-              <option value="zenith">Zenith</option>
-              <option value="access">Access</option>
-              <option value="sterling">Sterling</option>
-            </select>
-            <StyledLabel>Account Name</StyledLabel>
-            <StyledInput
-              required
-              placeholder="Account name"
-              type="text"
-              name="accountName"
-            ></StyledInput>
+              colors: {
+                ...theme.colors,
+                // primary25: "#012a4a",
+                primary: "#de3d6d",
+              },
+            })}
+          />
 
-            <StyledLabel> Account Number</StyledLabel>
-            <StyledInput
-              required
-              placeholder="Account Number"
-              type="number"
-              name="number"
-            ></StyledInput>
-            <StyleButton
-              borderRadius="0px"
-              height="48px"
-              width="35%"
-              style={{
-                marginTop: "2rem",
-              }}
-              onClick={handleAddBank}
-            >
-              Add Bank
-            </StyleButton>
-            {showModal && <Modal setShowModal={setShowModal} />}
-          </FormStyle>
-        )}
+          <StyledLabel style={{color: '#012a4a'}}>Account Name</StyledLabel>
+          <StyledInput
+            required
+            placeholder="Account name"
+            type="text"
+            name="accountName"
+          ></StyledInput>
 
-        {viewTab && (
-          <>
-            <AccountStyle>
-              <div className="content">
-                <p>Bank name</p>
-                <p>Account Number</p>
-                <p>Account name</p>
-              </div>
-              <button className="remove-btn">Remove</button>
-            </AccountStyle>
-
-            <AccountStyle>
-              <div className="content">
-                <p>Bank name</p>
-                <p>Account Number</p>
-                <p>Account name</p>
-              </div>
-              <button className="remove-btn">Remove</button>
-            </AccountStyle>
-            <StyleButton
-              borderRadius="0px"
-              height="48px"
-              width="35%"
-              style={{
-                marginTop: "2rem",
-              }}
-              onClick={displayViewBank}
-            >
-              Add New Bank
-            </StyleButton>
-          </>
-        )}
+          <StyledLabel> Account Number</StyledLabel>
+          <StyledInput
+            required
+            placeholder="Account Number"
+            type="number"
+            name="number"
+            // max="10"
+          ></StyledInput>
+          <StyleButton
+            type="submit"
+            borderRadius="0px"
+            height="48px"
+            width="35%"
+            style={{
+              marginTop: "1.5rem",
+            }}
+          >
+            Add Bank
+          </StyleButton>
+          {showModal && <Modal setShowModal={setShowModal} />}
+        </FormStyle>
       </BankStyle>
     </>
   );
-}
+};

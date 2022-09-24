@@ -27,12 +27,12 @@ export const Hero = styled.div`
     display: flex;
 
     & p {
-      font-size: 3.4rem;
+      font-size: 4rem;
       font-weight: bolder;
       background: linear-gradient(to right, #de3d6d, #f5844c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: 6px;
+      letter-spacing: 2px;
       line-height: 1.3;
 
       margin: 0%;
@@ -70,7 +70,7 @@ export const AboutSection = styled.div`
 
   & .aboutDescription {
     margin: -1% 2% 0 2%;
-    width: 40%; 
+    width: 40%;
     & h2 {
       font-size: 2.5rem;
       font-weight: 600;
@@ -84,10 +84,10 @@ export const AboutSection = styled.div`
   }
   @media (max-width: 1024px) {
     & .aboutDescription {
-      width:  100%;& 
-      h2 {
-      font-size: 2rem;
-      line-height: 36px;
+      width: 100%;
+      & h2 {
+        font-size: 2rem;
+        line-height: 36px;
       }
     }
   }
@@ -160,18 +160,18 @@ export const ProductSection = styled.div`
     }
     @media (max-width: 1024px) {
       & img {
-      width: 50%;
-    }
+        width: 50%;
+      }
     }
   }
 
   @media (max-width: 1024px) {
-    & .productDescription { 
+    & .productDescription {
       width: 100%;
       & h2 {
-      line-height: 46px;
-      text-align: center;
-      padding: 20px 0;
+        line-height: 46px;
+        text-align: center;
+        padding: 20px 0;
       }
     }
     & .productImage {
@@ -212,14 +212,12 @@ export const TestimonialCardWrapper = styled.div`
   display: flex;
   margin-top: 35px;
   .rec.rec-arrow {
-  background-color:#F5F5F5; 
-}
+    background-color: #f5f5f5;
+  }
 
-.rec.rec-arrow:hover {
-  background-color:#bcb8b8 !important;
-
-}
-
+  .rec.rec-arrow:hover {
+    background-color: #bcb8b8 !important;
+  }
 `;
 export const TestimonialCard = styled.div`
   display: flex;
@@ -299,6 +297,5 @@ export const LowerFooter = styled.div`
     }
   }
 `;
-
 
 // 1024px

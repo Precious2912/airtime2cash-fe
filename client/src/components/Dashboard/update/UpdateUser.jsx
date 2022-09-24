@@ -11,7 +11,7 @@ import {
   Container,
   UpdateUserPageStyle,
   ModalStyle,
-} from "../../../styles/UpdateUserStyles";
+} from "../../../styles/DashboardStyles/UpdateUserStyles";
 
 import { Back, HeaderAndButton } from "../../../styles/registerStyle";
 
@@ -111,11 +111,14 @@ export const UpdateUserSetting = () => {
         })
         .catch((err) => {
           console.log(err);
+          setModalState(false);
         });
       console.log(res.data);
     } catch (error) {
       console.log(error);
+      setModalState(false);
     }
+    setModalState(false);
   };
   return (
     <UpdateUserPageStyle>

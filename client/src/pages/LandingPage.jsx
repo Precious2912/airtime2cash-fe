@@ -44,7 +44,7 @@ export const LandingPage = () => {
   ];
   return (
     <div>
-      {/* HEOR SECTION  */}
+      {/* HERO SECTION  */}
       <Navbar landing />
       <Hero>
         <div className="heroText">

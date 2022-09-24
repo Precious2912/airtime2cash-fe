@@ -117,7 +117,7 @@ export const StyledInput = styled.input`
   ::placeholder {
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 15px;
     color: #c4c4c4;
   }

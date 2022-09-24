@@ -20,9 +20,9 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
   };
   return (
     <Profile>
-      <Link to="/dashboard/UpdateUser">
+      <Link to={`/dashboard/${localStorage.getItem("id")}`}>
         <ProfileImg>
-        <img src={avatar} alt="" />
+          <img src={avatar} alt="" />
         </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
@@ -32,14 +32,14 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
             <FiChevronDown />
             <Dropdown showDropdown={showDropdown}>
               <Link to="/dashboard/UpdateUser">
-                <DropdownItem> 
+                <DropdownItem>
                   <img src={ProfileIcon} alt="" /> <span>Account</span>{" "}
                 </DropdownItem>
               </Link>
-              <DropdownItem> 
+              <DropdownItem>
                 <img src={SettingsIcon} alt="" /> <span>Settings</span>{" "}
               </DropdownItem>
-              <DropdownItem> 
+              <DropdownItem>
                 <img src={HelpIcon} alt="" /> <span>Help Center</span>{" "}
               </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
@@ -55,21 +55,22 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
 
 export default UserProfileNav;
 const Profile = styled.div`
-    display: flex;
-    align-items: center;
-    gap:10px;
-    cursor: pointer;
-    & img {
-      width: 100%; height:100%; object-fit: cover;
-      border-radius: 50%; 
-
-    }
-`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+`;
 const ProfileImg = styled.div`
-        width: 36px;
-        height: 36px;
-        border-radius: 50%; 
-`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+`;
 const Dropdown = styled.div`
   position: absolute;
   top: 100%;

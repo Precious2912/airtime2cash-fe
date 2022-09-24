@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-const Button = styled.button`
-    /* background-color: #012A4A; */
+const Button = styled.button` 
     color: #fff;
     padding: 10px;
     border-radius:${({borderRadius}) => (borderRadius ? borderRadius : "5px")};

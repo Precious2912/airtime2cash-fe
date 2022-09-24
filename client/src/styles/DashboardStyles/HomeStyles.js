@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const DashboardStyle = styled.div`
 
-  .top {
+ & .top {
     width: 100%;
     margin: 0%;
     max-width: 100vw;
@@ -10,7 +10,7 @@ export const DashboardStyle = styled.div`
     background: rgba(222, 61, 109, 0.1);
   }
 
-  .dashboard {
+ & .dashboard {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -20,12 +20,12 @@ export const DashboardStyle = styled.div`
     /* width: 42.438rem; */
     width:50rem;
     max-width:100%;
-    height: 69.125rem;
+    /* height: 69.125rem; */
     margin:  -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
     padding-top: 3rem;
-    h1 {
+   & h1 {
     
       font-weight: 600;
       font-size: 2rem;
@@ -33,7 +33,7 @@ export const DashboardStyle = styled.div`
       color: #012a4a;
     }
 
-    .balance-wrapper {
+   & .balance-wrapper {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -48,7 +48,7 @@ export const DashboardStyle = styled.div`
       margin-top: 3rem;
     }
 
-    .balance {
+   & .balance {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -66,7 +66,7 @@ export const DashboardStyle = styled.div`
         color: #ffffff;
       }
 
-      .acct-bal {
+     & .acct-bal {
         font-weight: 700;
         font-size: 32px;
         line-height: 39px;
@@ -74,7 +74,7 @@ export const DashboardStyle = styled.div`
         color: #ffffff;
       }
 
-      button {
+     & button {
         justify-content: center;
         align-items: center;
         padding: 8px 10px 8px 8px;
