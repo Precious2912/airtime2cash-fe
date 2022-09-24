@@ -4,7 +4,7 @@ import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOp
 import StyledButton from '../../../styles/ButtonStyles'
 import Select from "react-select";
 
-const banks = [
+const Network = [
   { value: "MTN", label: "MTN" },
   { value: "GLO", label: "GLO" },
   { value: "AIRTEL", label: "AIRTEL" },
