@@ -8,6 +8,7 @@ import TabContent from "./TabContent";
 import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
 import SellAirTime from "./TabContent/SellAirTime";
+import { ManageAcount } from "../../pages/ManageAcount";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -57,7 +58,8 @@ const Tabs = () => {
         <TabContent id="tab3" activeTab={activeTab}>
           <p>
             {/* <UpdateUserSetting /> */}
-            <h1>Manage Bank Account Here</h1>
+            <ManageAcount />
+            {/* <h1>Manage Bank Account Here</h1> */}
           </p>
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
