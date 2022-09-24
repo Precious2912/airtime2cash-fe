@@ -7,6 +7,7 @@ import TabContent from "./TabContent";
 // import { UpdateUserSetting } from "./update/UpdateUser";
 import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
+import { ManageAcount } from "../../pages/ManageAcount";
 import TransactionHistory from "./TabContent/TransactionHistory";
 
 const Tabs = () => {
@@ -57,8 +58,9 @@ const Tabs = () => {
         <TabContent id="tab3" activeTab={activeTab}>
   
             {/* <UpdateUserSetting /> */}
-            <h1>Manage Bank Account Here</h1>
-   
+            <ManageAcount />
+            {/* <h1>Manage Bank Account Here</h1> */}
+          </p>
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
   
