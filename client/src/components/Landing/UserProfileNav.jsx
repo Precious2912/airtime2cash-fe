@@ -8,9 +8,8 @@ import HelpIcon from "../../assets/icon/help.svg";
 import LogoutIcon from "../../assets/icon/logout.svg";
 import { Link } from "react-router-dom";
 import { UseAuth } from "../../context/useAuth";
-const firstName = localStorage.getItem("firstName");
-const avatar = localStorage.getItem("avatar");
-alert(avatar)
+ 
+
 const UserProfileNav = ({ setLogout, dashboard, userData }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -23,11 +22,11 @@ const UserProfileNav = ({ setLogout, dashboard, userData }) => {
     <Profile>
       <Link to={`/dashboard/${localStorage.getItem("id")}`}>
         <ProfileImg>
-          <img src={avatar} alt="" />
+          <img src={localStorage.getItem("avatar")} alt="" />
         </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
-        <span>{firstName?.substring(0,10)} </span>
+        <span>{localStorage.getItem("userName")?.substring(0,10)} </span>
         {dashboard && (
           <>
             <FiChevronDown />

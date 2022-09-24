@@ -162,7 +162,10 @@ export const Container = styled.div`
     margin-top: 1rem;
     /* border: 1px solid red; */
     color: #ffffff;
-    padding: 1rem 5.25rem;
+    /* padding: 1rem 5.25rem; */
+
+    width:12rem;
+    height: 3rem;
     background-image: linear-gradient(to right, #de3d6d 80%, #f5844c 100%);
   }
   .login-btn {

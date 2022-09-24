@@ -49,7 +49,6 @@ const Tabs = () => {
          
             {/* <UploadAvatar /> */}
             <SellAirTime/>
-          </p>
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
           <div>

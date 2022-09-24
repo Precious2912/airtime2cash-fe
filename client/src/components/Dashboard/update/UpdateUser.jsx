@@ -85,7 +85,7 @@ export const UpdateUserSetting = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    setShowLoading(true);
+    setShowLoading(true); 
     await updateProfile(formData).then(() => {
       setShowLoading(false);
       window.location.href = `/dashboard/${id}`;
@@ -210,7 +210,7 @@ export const UpdateUserSetting = () => {
                   backgroundColor: "rose",
                   color: "red",
                   border: "none",
-                  padding: 0,
+                  padding:"5% 0",
                   font: "inherit",
                   cursor: "pointer",
                 }}
@@ -225,7 +225,7 @@ export const UpdateUserSetting = () => {
             </div>
               
             <button disabled={showLoading} type="submit" className="save-btn">
-            {showLoading ? <ThreeDots height="0.5rem" /> : 'Save'}
+            {showLoading ? <ThreeDots height="0.5rem" width="5.25rem" /> : 'Save'}
             </button>
           </form>
         </div>
