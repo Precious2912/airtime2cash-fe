@@ -20,7 +20,7 @@ export const DashboardStyle = styled.div`
     /* width: 42.438rem; */
     width:50rem;
     max-width:100%;
-    height: 69.125rem;
+    /* height: 69.125rem; */
     margin:  -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
