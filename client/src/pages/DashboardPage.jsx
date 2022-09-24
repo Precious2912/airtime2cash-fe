@@ -8,7 +8,6 @@ export const DashboardPage = () => {
   return (
     <>
     <Navbar dashboard />
-
     <Routes>
         <Route path="/:token" element={<Dashboard />}></Route> 
         <Route path="/UpdateUser" element={<UpdateUserSetting />}></Route> 

@@ -1,19 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
+import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import { ButtonWrapper, WithdrawWrapper } from "../../../styles/DashboardStyles/TabStyles/WithdrawStyles";
 
+const banks = [
+  { value: "First Bank", label: "First Bank" },
+  { value: "Access Bank", label: "Access Bank" },
+  { value: "Zenith Bank", label: "Zenith Bank" },
+];
+
 const Withdraw = () => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
   return (
     <WithdrawWrapper>
       <small>Withdraw</small>
       <form>
         <div className="form-group">
         <label>Select Account</label>
-        <select required placeholder="Select Bank">
-          <option value="javascript">GTBank</option>
-          <option value="php">First Bank</option>
-          <option value="java">Sterling Bank</option>
-        </select>
+        <Select
+            styles={CustomStyles}
+            onChange={setSelectedOption}
+            options={banks}
+            defaultValue={{ label: "Select Bank", value: 0 }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              // height: 200,
+              // minHeight: 200,
+              // paddingTop: 7,
+              // paddingBottom: 7,
+
+              colors: {
+                ...theme.colors,
+                // primary25: "#012a4a",
+                primary: "#de3d6d",
+              },
+            })}
+          />
         </div>
 
         <div className="form-group">

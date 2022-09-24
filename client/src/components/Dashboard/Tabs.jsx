@@ -60,7 +60,6 @@ const Tabs = () => {
             {/* <UpdateUserSetting /> */}
             <ManageAcount />
             {/* <h1>Manage Bank Account Here</h1> */}
-          </p>
         </TabContent>
         <TabContent id="tab4" activeTab={activeTab}>
   

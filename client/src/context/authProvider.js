@@ -129,8 +129,8 @@ export const AuthProvider = ({ children }) => {
             // localStorage.setItem("lastName", res.data.user_info.lastName);
             // localStorage.setItem("name", res.data.user_info.phoneNumber);
             // localStorage.setItem("phoneNumber", res.data.user_info.email);
-            // localStorage.setItem("avatar", res.data.user_info.avatar);
-            // localStorage.setItem("userName", res.data.user_info.userName);
+            localStorage.setItem("avatar", res.data.user_info.avatar);
+            localStorage.setItem("userName", res.data.user_info.userName);
             dispatch({ type: "LOGIN", payload: res.data });
             toast.success(res.data.message, {
               autoClose: 3000,

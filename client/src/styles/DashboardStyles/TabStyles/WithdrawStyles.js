@@ -19,7 +19,7 @@ export const WithdrawWrapper = styled.div`
    }
 
 & select, & input {
-    padding: 20px;
+    padding: 15px;
      margin-bottom: 10px;
      margin-top: 10px;
      width: 100%;

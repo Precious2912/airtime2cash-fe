@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // import UserImg from '../../assets/images/user.jpeg'
 import { FiChevronDown } from "react-icons/fi";
@@ -10,14 +10,10 @@ import { Link } from "react-router-dom";
 import { UseAuth } from "../../context/useAuth";
 const firstName = localStorage.getItem("firstName");
 const avatar = localStorage.getItem("avatar");
+alert(avatar)
+const UserProfileNav = ({ setLogout, dashboard, userData }) => {
 
-const UserProfileNav = ({ setLogout, dashboard }) => {
-  useEffect(() => {
-
-  });
-
-  const [showDropdown, setShowDropdown] = React.useState(false);
-
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const { logout } = UseAuth();
   const handleLogout = () => {
@@ -31,7 +27,7 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
         </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
-        <span>{firstName.substring(0,10)} </span>
+        <span>{firstName?.substring(0,10)} </span>
         {dashboard && (
           <>
             <FiChevronDown />
@@ -45,7 +41,7 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
                 <img src={SettingsIcon} alt="" /> <span>Settings</span>{" "}
               </DropdownItem>
               <DropdownItem>
-                <img src={HelpIcon} alt="" /> <span>Help Center</span>{" "}
+                <img src={HelpIcon} alt="" /> <span>Help Center</span>
               </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
                 <img src={LogoutIcon} alt="" /> <span>Logout</span>
@@ -64,6 +60,10 @@ const Profile = styled.div`
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  @media (max-width: 500px) {
+  flex-direction: column; 
+  
+  }
   & img {
     width: 100%;
     height: 100%;
