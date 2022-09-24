@@ -46,29 +46,120 @@ export const TabStyle = styled.div`
     flex-grow: 0;
   }
 
- & ul.nav li:first-child {
+  & ul.nav li:first-child {
     // border-bottom-left-radius: 2rem;
     // border-top-left-radius: 2rem;
   }
 
- & ul.nav li:last-child {
+  & ul.nav li:last-child {
     // border-bottom-right-radius: 2rem;
     // border-top-right-radius: 2rem;
   }
 
- & ul.nav li:hover {
+  & ul.nav li:hover {
     // background: rgba(50, 224, 196, 0.15);
-    border-bottom: 1px solid #DE3D6D;;
-
+    border-bottom: 1px solid #de3d6d;
   }
 
- & ul.nav li.active {
+  & ul.nav li.active {
     /* background: #39a2db; */
-    border-bottom: 1px solid #DE3D6D;
+    border-bottom: 1px solid #de3d6d;
   }
 
   /* Tab Content Styles */
- & .TabContent {
-    margin:0 6%;
+  & .TabContent {
+    margin: 0 6%;
+  }
+`;
+
+export const TabContent = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-top: 1.5rem;
+  gap: 26px;
+
+  width: 94%;
+  height: 21px;
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align: center;
+  justify-content: space-between;
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+
+  @media (max-width: 649px) {
+    gap: 20px;
+  }
+  @media (max-width: 630px) {
+    gap: 15px;
+  }
+  @media (max-width: 612) {
+    gap: 8px;
+    padding: 0.5rem;
+  }
+  @media (max-width: 414px) {
+    padding: 1rem 0;
+    display: block;
+  }
+`;
+
+export const TabContentItem = styled.div`
+  width: 99%;
+  height: 389px;
+  text-align: center;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+`;
+
+export const DashCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  width: 100%;
+  height: 887px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  @media (max-width: 769px) {
+    padding: 2rem 0;
+  }
+`;
+
+export const TabElement = styled.div`
+  height: 17px;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #012a4a;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  .nav:hover {
+    // background: rgba(50, 224, 196, 0.15);
+    border-bottom: 1px solid #de3d6d;
+  }
+
+  .nav:active {
+    /* background: #39a2db; */
+    border-bottom: 1px solid #de3d6d;
   }
 `;

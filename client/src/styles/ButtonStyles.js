@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button` 
+    margin-top: ${({marginTop})=>(marginTop? marginTop:'0')};
     color: #fff;
     padding: 10px;
     border-radius:${({borderRadius}) => (borderRadius ? borderRadius : "5px")};

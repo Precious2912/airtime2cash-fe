@@ -103,7 +103,6 @@ export const AddBank = ({ show }) => {
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
-
               colors: {
                 ...theme.colors,
                 primary: "#de3d6d",
