@@ -7,6 +7,7 @@ import TabContent from "./TabContent";
 // import { UpdateUserSetting } from "./update/UpdateUser";
 import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
+import SellAirTime from "./TabContent/SellAirTime";
 import { ManageAcount } from "../../pages/ManageAcount";
 import TransactionHistory from "./TabContent/TransactionHistory";
 
@@ -47,8 +48,8 @@ const Tabs = () => {
         <TabContent id="tab1" activeTab={activeTab}>
          
             {/* <UploadAvatar /> */}
-            <h1>Sell airtime</h1>
-       
+            <SellAirTime/>
+          </p>
         </TabContent>
         <TabContent id="tab2" activeTab={activeTab}>
           <div>

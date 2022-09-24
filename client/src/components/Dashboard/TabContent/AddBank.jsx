@@ -46,11 +46,6 @@ export const AddBank = ({show}) => {
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
-              // height: 200,
-              // minHeight: 200,
-              // paddingTop: 7,
-              // paddingBottom: 7,
-
               colors: {
                 ...theme.colors,
                 // primary25: "#012a4a",
