@@ -21,8 +21,8 @@ const SellAirTime = () => {
           <Select
             styles={CustomStyles}
             onChange={setSelectedOption}
-            options={banks}
-            defaultValue={{ label: "Select Bank", value: 0 }}
+            options={Network}
+            defaultValue={{ label: "Select Network", value: 0 }}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
