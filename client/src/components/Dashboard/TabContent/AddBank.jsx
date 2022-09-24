@@ -1,4 +1,5 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   BankStyle,
   BankHeader,
@@ -12,22 +13,73 @@ import {
 import StyleButton from "../../../styles/ButtonStyles";
 import { Modal } from "../../modal/Modal";
 import Select from "react-select";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-const banks = [
-  { value: "First Bank", label: "First Bank" },
-  { value: "Access Bank", label: "Access Bank" },
-  { value: "Zenith Bank", label: "Zenith Bank" },
-];
+const addBankSchema = yup.object().shape({
+  accountName: yup.string().required("Enter Account Name"),
+  accountNumber: yup.string().required("Enter Account Number"),
+  bank: yup
+    .number()
+    .required("Choose a bank")
+});
 
-export const AddBank = ({show}) => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+export const AddBank = ({ show }) => {
+  const [banklist, setBankList] = useState([]);
 
-  const changeHandler = (e) => {
-    e.preventDefault();
-    setShowModal((p) => !p)
+  const getBanks = async () => {
+    try {
+      const response = await axios.get("https://api.paystack.co/bank", {
+        headers: {
+          Authorization: `Bearer sk_test_ca29cc7657234aff06291fba0d1b47380afbd8be`,
+        },
+      });
+      setBankList(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  useEffect(() => {
+    getBanks();
+  }, []);
+
+  const allBanks = [];
+
+  const banks = banklist.map((bank) => {
+    return bank.name;
+  });
+
+  banks.forEach(element => {
+    let temp = {};
+    temp["value"] = element;
+    temp["label"] = element;
+    allBanks.push(temp);
+    temp = {};
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(addBankSchema),
+  });
+
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    alert(JSON.stringify(data));
+    setShowModal((p) => !p);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedBank, setSelectedBank] = useState("");
+
+  const handleBankChange = (selectedBank) => {
+    console.log(selectedBank.value);
+    setSelectedBank(selectedBank);
+  };
 
   return (
     <>
@@ -36,45 +88,47 @@ export const AddBank = ({show}) => {
         <p onClick={show}>View Bank Accounts</p>
       </BankHeader>
       <BankStyle>
-        <FormStyle onSubmit={changeHandler}>
+        <FormStyle onSubmit={handleSubmit(onSubmit)}>
           <StyledLabel>Bank Name</StyledLabel>
           <Select
+            name="bank"
             styles={CustomStyles}
-            onChange={setSelectedOption}
-            options={banks}
-            defaultValue={{ label: "Select Bank", value: 0 }}
+            placeholder={"Select bank"}
+            value={selectedBank}
+            onChange={(selectedOption) => {
+              handleBankChange(selectedOption);
+            }}
+            noOptionsMessage={() => "Bank not found"}
+            options={allBanks}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
-              // height: 200,
-              // minHeight: 200,
-              // paddingTop: 7,
-              // paddingBottom: 7,
 
               colors: {
                 ...theme.colors,
-                // primary25: "#012a4a",
                 primary: "#de3d6d",
               },
             })}
           />
+          {errors.bank && <p>{errors.bank.message}</p>}
 
-          <StyledLabel style={{color: '#012a4a'}}>Account Name</StyledLabel>
+          <StyledLabel style={{ color: "#012a4a" }}>Account Name</StyledLabel>
           <StyledInput
-            required
+            {...register("accountName")}
             placeholder="Account name"
             type="text"
             name="accountName"
           ></StyledInput>
+          {errors.accountName && <p>{errors.accountName.message}</p>}
 
           <StyledLabel> Account Number</StyledLabel>
           <StyledInput
-            required
+            {...register("accountNumber")}
             placeholder="Account Number"
             type="number"
-            name="number"
-            // max="10"
+            name="accountNumber"
           ></StyledInput>
+          {errors.accountNumber && <p>{errors.accountNumber.message}</p>}
           <StyleButton
             type="submit"
             borderRadius="0px"

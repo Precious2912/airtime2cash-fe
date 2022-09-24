@@ -6,6 +6,7 @@ import {
 } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
 import StyleButton from "../../../styles/ButtonStyles";
 
+
 const dummyAccount = [
   {
     bankName: "First Bank",
@@ -34,7 +35,10 @@ const dummyAccount = [
   },
 ];
 
+
+
 const ViewBank = ({ show }) => {
+
   return (
     <>
       <BankHeader>
