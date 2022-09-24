@@ -67,11 +67,6 @@ export const LandingPage = () => {
         </div>
       </Hero>
       {/* ABOUT SECTION */}
-      <select required placeholder="Select Bank">
-          <option value="javascript">GTBank</option>
-          <option value="php">First Bank</option>
-          <option value="java">Sterling Bank</option>
-        </select>
       <AboutSection id="about">
         <SideIndicator />
         <div className="aboutDescription">

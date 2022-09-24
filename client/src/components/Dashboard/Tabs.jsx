@@ -7,6 +7,7 @@ import TabContent from "./TabContent";
 // import { UpdateUserSetting } from "./update/UpdateUser";
 import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
+import TransactionHistory from "./TabContent/TransactionHistory";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -62,7 +63,7 @@ const Tabs = () => {
         <TabContent id="tab4" activeTab={activeTab}>
   
             {/* <Error /> */}
-            <h1>Transaction History Here</h1>
+            <TransactionHistory/>
    
         </TabContent>
       </div>

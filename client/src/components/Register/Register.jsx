@@ -3,6 +3,7 @@ import logo from "../../assets/icon/logo2.svg";
 import { Link } from "react-router-dom";
 import backicon from "../../assets/icon/backicon.svg";
 import StyleButton from "../../styles/ButtonStyles.js";
+import { toast } from "react-toastify";
 import {
   Wrapper,
   Wrapper2,
@@ -17,8 +18,11 @@ import {
 } from "../../styles/registerStyle";
 
 import { UseAuth } from "../../context/useAuth";
+import ThreeDots from "react-loading-icons/dist/esm/components/three-dots";
 
 export const Register = () => {
+  const [showLoading, setShowLoading] = useState(false);
+  const [passwordMiss, setPasswordMiss] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -31,11 +35,27 @@ export const Register = () => {
   const { register } = UseAuth();
 
   // console.log(formData);
-
+  const handleCheckPassword = ()=>{
+    if(formData.password !== formData.confirmPassword && formData.confirmPassword !== ""){
+      setPasswordMiss(true)
+    }else{
+      setPasswordMiss(false)
+    }
+  }
   const handleRegister = async (e) => {
     e.preventDefault();
-    
-    await register(formData);
+    if(formData.password === formData.confirmPassword){
+      setShowLoading(true);
+    await register(formData).then(() => {
+      setShowLoading(false);
+    }).catch(() => {
+      setShowLoading(false);
+    });
+    }else{
+      toast.error("Password mismatch", {
+        autoClose: 3000,
+      });
+    }
   };
 
   return (
@@ -124,16 +144,18 @@ export const Register = () => {
               })
             }
           ></StyledInput>
+          {passwordMiss && <p className="passwordCheck">Password mismatch</p>}
           <StyledLabel> Password</StyledLabel>
           <StyledInput
           required
             placeholder="Enter your password"
             type="password"
             name="password"
+            onKeyUp={handleCheckPassword}
             onChange={(e) =>
               setFormData({
                 ...formData,
-                password: e.target.value.trim(),
+                password: e.target.value.trim()
               })
             }
           ></StyledInput>
@@ -144,6 +166,7 @@ export const Register = () => {
             placeholder="Confirm password"
             type="password"
             name="confirmPassword"
+            onKeyUp={handleCheckPassword}
             onChange={(e) =>
               setFormData({
                 ...formData,
@@ -151,9 +174,9 @@ export const Register = () => {
               })
             }
           ></StyledInput>
-          <StyleButton borderRadius="0px" height="48px" width="100%">
-            Sign Up
-          </StyleButton>
+          <StyleButton disabled={showLoading} width="100%" borderRadius="0" type="submit">
+            {showLoading ? <ThreeDots height="1rem" fill="#DE3D6D" /> : "Sign Up"}
+           </StyleButton>
         </FormStyle>
 
         <StyledFooter>

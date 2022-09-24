@@ -142,13 +142,12 @@ export const AuthProvider = ({ children }) => {
             return;
           }
         })
-        .catch((err) => {
-          toast.error("Invalid login credentials", {
+        .catch((err) => { 
+          toast.error(err.response.data.message, {
             autoClose: 3000,
           });
         });
-    } catch (err) {
-      console.log(err.response.data);
+    } catch (err) { 
       toast.error("Please kindly register", {
         autoClose: 3000,
       });
@@ -165,7 +164,8 @@ export const AuthProvider = ({ children }) => {
       await axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/forgetPassword`, email)
         .then((res) => {
-          if (res.status === 200) {
+          console.log(res);
+          if (res.status === 200 && res.data.email_response.info) {
             console.log(res);
             // should take you to a check your email-for-reset-password-link page
             navigate("/emailsent");
@@ -173,9 +173,14 @@ export const AuthProvider = ({ children }) => {
               autoClose: 3000,
             });
             dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
+          }else{
+            toast.error("Unable to send verification Email check connectivity", {
+              autoClose: 3000,
+            });
           }
         });
     } catch (err) {
+      console.log(err);
       toast.error("No user found, kindly register", {
         autoClose: 3000,
       });

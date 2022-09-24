@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 // import UserImg from '../../assets/images/user.jpeg'
 import { FiChevronDown } from "react-icons/fi";
@@ -8,11 +8,16 @@ import HelpIcon from "../../assets/icon/help.svg";
 import LogoutIcon from "../../assets/icon/logout.svg";
 import { Link } from "react-router-dom";
 import { UseAuth } from "../../context/useAuth";
+const firstName = localStorage.getItem("firstName");
+const avatar = localStorage.getItem("avatar");
 
 const UserProfileNav = ({ setLogout, dashboard }) => {
+  useEffect(() => {
+
+  });
+
   const [showDropdown, setShowDropdown] = React.useState(false);
-  const firstName = localStorage.getItem("firstName");
-  const avatar = localStorage.getItem("avatar");
+
 
   const { logout } = UseAuth();
   const handleLogout = () => {
@@ -26,7 +31,7 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
         </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
-        <span>{firstName} </span>
+        <span>{firstName.substring(0,10)} </span>
         {dashboard && (
           <>
             <FiChevronDown />
