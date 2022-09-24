@@ -5,9 +5,9 @@ import StyledButton from '../../../styles/ButtonStyles'
 import Select from "react-select";
 
 const banks = [
-  { value: "First Bank", label: "First Bank" },
-  { value: "Access Bank", label: "Access Bank" },
-  { value: "Zenith Bank", label: "Zenith Bank" },
+  { value: "MTN", label: "MTN" },
+  { value: "GLO", label: "GLO" },
+  { value: "AIRTEL", label: "AIRTEL" },
 ];
 
 const SellAirTime = () => {
