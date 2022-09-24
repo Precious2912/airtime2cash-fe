@@ -1,76 +1,69 @@
 import React, { useState } from "react";
-// import { Error } from "./../../pages/ErrorPage";
-// import UploadAvatar from "./../../pages/VerifyStatus";
-// import Button from  '../../styles/ButtonStyles'
 import TabNavItem from "./TabNavItem";
-import TabContent from "./TabContent";
+// import TabContent from "./TabContent";
 // import { UpdateUserSetting } from "./update/UpdateUser";
-import { TabStyle } from "../../styles/DashboardStyles/TabStyles/TabStyles";
+import {
+  TabContent,
+  TabContentItem,
+  DashCard,
+  TabElement,
+} from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
 import SellAirTime from "./TabContent/SellAirTime";
 import { ManageAcount } from "../../pages/ManageAcount";
+import DashBoardWallet from "./TabContent/DashBoardWallet";
+import { DashboardStyle } from "../../styles/DashboardStyles/HomeStyles";
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState("tab1");
+  const tabs = [
+    "Sell Airtime",
+    "Withdraw balance",
+    "Manage Bank Account",
+    "Transaction History",
+  ];
+  const [active, setActive] = useState(tabs[0]);
 
   return (
-    <TabStyle>
-      <ul className="nav">
-        <TabNavItem
-          title="Sell airtime"
-          id="tab1"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <TabNavItem
-          title="Withdraw Balance"
-          id="tab2"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <TabNavItem
-          title="Manage Bank Account"
-          id="tab3"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-        <TabNavItem
-          title="Transaction History"
-          id="tab4"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
-      </ul>
-      <div className="outlet">
-        {/* {activeTab === "tab1" ? <Error /> : <UploadAvatar />} */}
+    <>
+      <DashboardStyle>
+        <div className="top"></div>
+        <div className="dashboard">
+          {active === tabs[0] || active === tabs[1] ? (
+            <DashBoardWallet />
+          ) : (
+            <h1>{active}</h1>
+          )}
+          <DashCard>
+            <TabContent>
+              {tabs.map((tab) => (
+                <TabElement>
+                  <div
+                    className="nav"
+                    key={tab}
+                    active={active === tab}
+                    onClick={() => setActive(tab)}
+                  >
+                    {tab}
+                  </div>
+                </TabElement>
+              ))}{" "}
+            </TabContent>
 
-        <TabContent id="tab1" activeTab={activeTab}>
-          <p>
-            {/* <UploadAvatar /> */}
-            <SellAirTime/>
-          </p>
-        </TabContent>
-        <TabContent id="tab2" activeTab={activeTab}>
-          <div>
-            <Withdraw />
-          </div>
-        </TabContent>
-        <TabContent id="tab3" activeTab={activeTab}>
-          <p>
-            {/* <UpdateUserSetting /> */}
-            <ManageAcount />
-            {/* <h1>Manage Bank Account Here</h1> */}
-          </p>
-        </TabContent>
-        <TabContent id="tab4" activeTab={activeTab}>
-          <p>
-            {/* <Error /> */}
-            <h1>Transaction History Here</h1>
-          </p>
-        </TabContent>
-      </div>
-      {/* <Button>Sell Airtime</Button> */}
-    </TabStyle>
+            <TabContentItem>
+              {active === tabs[0] ? (
+                <SellAirTime />
+              ) : active === tabs[1] ? (
+                <h3>withdraw balance component Here</h3>
+              ) : active === tabs[2] ? (
+                <ManageAcount />
+              ) : (
+                <h3>Transaction History Here</h3>
+              )}
+            </TabContentItem>
+          </DashCard>
+        </div>
+      </DashboardStyle>
+    </>
   );
 };
 export default Tabs;
