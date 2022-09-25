@@ -13,6 +13,7 @@ import SellAirTime from "./TabContent/SellAirTime";
 import { ManageAcount } from "../../pages/ManageAcount";
 import DashBoardWallet from "./TabContent/DashBoardWallet";
 import { DashboardStyle } from "../../styles/DashboardStyles/HomeStyles";
+import TransactionHistory from "./TabContent/TransactionHistory";
 
 const Tabs = () => {
   const tabs = [
@@ -39,25 +40,24 @@ const Tabs = () => {
                 <TabElement key={index}>
                   <div
                     className="nav"
-                    key={tab}
                     active={active === tab}
                     onClick={() => setActive(tab)}
                   >
                     {tab}
                   </div>
                 </TabElement>
-              ))}{" "}
+              ))}
             </TabContent>
 
             <TabContentItem>
               {active === tabs[0] ? (
                 <SellAirTime />
               ) : active === tabs[1] ? (
-                <h3>withdraw balance component Here</h3>
+                <Withdraw />
               ) : active === tabs[2] ? (
                 <ManageAcount />
               ) : (
-                <h3>Transaction History Here</h3>
+                <TransactionHistory />
               )}
             </TabContentItem>
           </DashCard>

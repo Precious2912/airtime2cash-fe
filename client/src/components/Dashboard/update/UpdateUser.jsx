@@ -18,12 +18,15 @@ import { Back, HeaderAndButton } from "../../../styles/registerStyle";
 import logo from "../../../assets/icon/logo2.svg";
 import backicon from "../../../assets/icon/backicon.svg";
 import axios from "axios";
+import ThreeDots from "react-loading-icons/dist/esm/components/three-dots";
+import { toast } from "react-toastify";
 
 export const UpdateUserSetting = () => {
   const id = localStorage.getItem("id");
   // eslint-disable-next-line
   const [modalState, setModalState] = useState(false);
   const [fileImage, setFileImage] = useState("");
+  const [showLoading, setShowLoading] = useState(false);
 
   const { updateProfile } = UseAuth({});
 
@@ -82,8 +85,16 @@ export const UpdateUserSetting = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    await updateProfile(formData);
-    window.location.href = `/dashboard/${id}`;
+    setShowLoading(true); 
+    await updateProfile(formData).then(() => {
+      setShowLoading(false);
+      window.location.href = `/dashboard/${id}`;
+    }).catch(() => {
+      setShowLoading(false);
+      toast.error("Oops an error ocurred", {
+        autoClose: 3000,
+      });
+    });;
   };
 
   // eslint-disable-next-line
@@ -199,7 +210,7 @@ export const UpdateUserSetting = () => {
                   backgroundColor: "rose",
                   color: "red",
                   border: "none",
-                  padding: 0,
+                  padding:"5% 0",
                   font: "inherit",
                   cursor: "pointer",
                 }}
@@ -212,9 +223,9 @@ export const UpdateUserSetting = () => {
                 }}
               />
             </div>
-
-            <button type="submit" className="save-btn">
-              Save
+              
+            <button disabled={showLoading} type="submit" className="save-btn">
+            {showLoading ? <ThreeDots height="0.5rem" width="5.25rem" /> : 'Save'}
             </button>
           </form>
         </div>

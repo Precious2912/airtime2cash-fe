@@ -49,9 +49,9 @@ export const EmailSent = ({text, password, email}) => {
           </TextLink>
         </ExtraText>
         <ButtonWrapper>
-          <StyleButton borderRadius="0" width="100%" height="54px">
-            <Link to="/login">Back to login</Link>
-          </StyleButton>
+        <Link to="/login"><StyleButton borderRadius="0" width="100%" height="54px">
+            Back to login
+          </StyleButton></Link>
         </ButtonWrapper>
       </StyledFormArea>
     </StyledContainer>

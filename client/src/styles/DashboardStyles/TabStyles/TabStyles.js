@@ -75,47 +75,30 @@ export const TabStyle = styled.div`
 export const TabContent = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  padding-top: 1.5rem;
-  gap: 26px;
-
-  width: 94%;
-  height: 21px;
-  padding-left: 3%;
-  padding-right: 3%;
-  text-align: center;
+  width: 100%;
   justify-content: space-between;
 
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-
   @media (max-width: 649px) {
-    gap: 20px;
+    /* gap: 20px; */
   }
   @media (max-width: 630px) {
-    gap: 15px;
+    /* gap: 15px; */
   }
   @media (max-width: 612) {
-    gap: 8px;
-    padding: 0.5rem;
+    /* gap: 8px; */
+    /* padding: 0.5rem; */
   }
   @media (max-width: 414px) {
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
     display: block;
   }
 `;
 
 export const TabContentItem = styled.div`
-  width: 99%;
+  width: 100%;
   height: 389px;
-  text-align: center;
-
+  box-sizing: border-box;
   /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
 `;
 
 export const DashCard = styled.div`
@@ -123,7 +106,7 @@ export const DashCard = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 40px;
+  gap: 12px;
 
   width: 100%;
   height: 887px;
@@ -140,18 +123,16 @@ export const DashCard = styled.div`
 
 export const TabElement = styled.div`
   height: 17px;
-
-  font-family: "Inter";
-  font-style: normal;
+  padding: 0 3%;
   font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
-
+  /* line-height: 17px; */
+  margin-top: 5%;
   color: #012a4a;
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+  cursor: pointer;
+  /* flex: none; */
+  /* order: 0; */
+  /* flex-grow: 0; */
 
   .nav:hover {
     // background: rgba(50, 224, 196, 0.15);

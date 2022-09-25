@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // import UserImg from '../../assets/images/user.jpeg'
 import { FiChevronDown } from "react-icons/fi";
@@ -8,11 +8,11 @@ import HelpIcon from "../../assets/icon/help.svg";
 import LogoutIcon from "../../assets/icon/logout.svg";
 import { Link } from "react-router-dom";
 import { UseAuth } from "../../context/useAuth";
+ 
 
-const UserProfileNav = ({ setLogout, dashboard }) => {
-  const [showDropdown, setShowDropdown] = React.useState(false);
-  const firstName = localStorage.getItem("firstName");
-  const avatar = localStorage.getItem("avatar");
+const UserProfileNav = ({ setLogout, dashboard, userData }) => {
+
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const { logout } = UseAuth();
   const handleLogout = () => {
@@ -22,11 +22,11 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
     <Profile>
       <Link to={`/dashboard/${localStorage.getItem("id")}`}>
         <ProfileImg>
-          <img src={avatar} alt="" />
+          <img src={localStorage.getItem("avatar")} alt="" />
         </ProfileImg>
       </Link>
       <span onClick={() => setShowDropdown(!showDropdown)}>
-        <span>{firstName} </span>
+        <span>{localStorage.getItem("userName")?.substring(0,10)} </span>
         {dashboard && (
           <>
             <FiChevronDown />
@@ -40,7 +40,7 @@ const UserProfileNav = ({ setLogout, dashboard }) => {
                 <img src={SettingsIcon} alt="" /> <span>Settings</span>{" "}
               </DropdownItem>
               <DropdownItem>
-                <img src={HelpIcon} alt="" /> <span>Help Center</span>{" "}
+                <img src={HelpIcon} alt="" /> <span>Help Center</span>
               </DropdownItem>
               <DropdownItem onClick={() => handleLogout()}>
                 <img src={LogoutIcon} alt="" /> <span>Logout</span>
@@ -59,6 +59,10 @@ const Profile = styled.div`
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  @media (max-width: 500px) {
+  flex-direction: column; 
+  
+  }
   & img {
     width: 100%;
     height: 100%;
