@@ -1,4 +1,7 @@
 import styled from "styled-components";
+export const BankWrapper = styled.div`
+padding: 0 3%;
+`
 export const BankHeader = styled.div`
   width: 100%;
   display: flex;

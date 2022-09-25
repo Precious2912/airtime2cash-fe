@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SellAirTimeWrapper = styled.div`
 color: #012A4A;
-
+padding: 0 3%;
 & h5{
 font-weight: 600;
 line-height: 17px;

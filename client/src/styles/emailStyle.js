@@ -26,7 +26,12 @@ margin: 10% 0;
     color: 
 rgba(223, 62, 110, 1)
 }
-
+& button{
+    color: 
+rgba(223, 62, 110, 1);
+border: none;
+background-color: transparent;
+}
 `;
 
 

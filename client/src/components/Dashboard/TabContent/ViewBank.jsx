@@ -3,6 +3,7 @@ import {
   BankStyle,
   AccountStyle,
   BankHeader,
+  BankWrapper,
 } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
 import StyleButton from "../../../styles/ButtonStyles";
 
@@ -36,12 +37,11 @@ const dummyAccount = [
 
 const ViewBank = ({ show }) => {
   return (
-    <>
+    <BankWrapper>
       <BankHeader>
         <h3 className="bank-acct">Bank Account</h3>
       </BankHeader>
       <BankStyle>
-        <>
           <div className="accounts">
             {dummyAccount.map((acct, index) => {
               return (
@@ -68,9 +68,8 @@ const ViewBank = ({ show }) => {
           >
             Add New Bank
           </StyleButton>
-        </>
       </BankStyle>
-    </>
+    </BankWrapper>
   );
 };
 

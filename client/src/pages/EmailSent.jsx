@@ -3,6 +3,7 @@ import { Link,  } from "react-router-dom";
 import mailIcon from "../assets/icon/mail.svg"; 
 import StyleButton from '../styles/ButtonStyles.js'
 import { UseAuth } from "../context/useAuth";
+import { ResendVerification } from "./ResendVerification";
 
 import {
   StyledContainer,
@@ -44,7 +45,7 @@ export const EmailSent = ({text, password, email}) => {
               <Link  to="/forgottenpassword"> Click to Resend Link</Link>
             }
             {email && 
-              <Link to="/#" > Click to Resend Link</Link>
+              <button onClick={()=>ResendVerification()}> Click to Resend Link</button>
             }
           </TextLink>
         </ExtraText>
