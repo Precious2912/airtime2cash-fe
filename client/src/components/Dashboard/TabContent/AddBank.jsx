@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import {
   BankStyle,
   BankHeader,
+  BankWrapper,
 } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import {
@@ -30,7 +31,7 @@ export const AddBank = ({show}) => {
 
 
   return (
-    <>
+    <BankWrapper>
       <BankHeader>
         <h3 className="bank-acct">Bank Account</h3>
         <p onClick={show}>View Bank Accounts</p>
@@ -84,6 +85,6 @@ export const AddBank = ({show}) => {
           {showModal && <Modal setShowModal={setShowModal} />}
         </FormStyle>
       </BankStyle>
-    </>
+    </BankWrapper>
   );
 };

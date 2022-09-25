@@ -2,6 +2,7 @@ import { createContext, useReducer } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { ResendVerification } from "../pages/ResendVerification";
 
 export const AuthContext = createContext();
 
@@ -144,9 +145,17 @@ export const AuthProvider = ({ children }) => {
           }
         })
         .catch((err) => { 
-          toast.error(err.response.data.message, {
-            autoClose: 3000,
-          });
+          if(err.response.data.message === "Please verify your email"){
+            toast.error(err.response.data.message, {
+              autoClose: 3000,
+            });
+          ResendVerification()
+          }else{
+            toast.error(err.response.data.message, {
+              autoClose: 3000,
+            });
+          }
+         
         });
     } catch (err) { 
       toast.error("Please kindly register", {
