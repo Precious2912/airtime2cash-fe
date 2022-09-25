@@ -59,19 +59,18 @@ const ViewBank = ({ show }) => {
                 </AccountStyle>
               );
             })}
+            <StyleButton
+              borderRadius="0px"
+              height="48px"
+              width="35%"
+              style={{
+                marginTop: "2rem",
+              }}
+              onClick={show}
+            >
+              Add New Bank
+            </StyleButton>
           </div>
-
-          <StyleButton
-            borderRadius="0px"
-            height="48px"
-            width="35%"
-            style={{
-              marginTop: "2rem",
-            }}
-            onClick={show}
-          >
-            Add New Bank
-          </StyleButton>
         </>
       </BankStyle>
     </>
