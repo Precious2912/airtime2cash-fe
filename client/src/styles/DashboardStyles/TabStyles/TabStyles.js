@@ -78,7 +78,6 @@ export const TabContent = styled.div`
   width: 100%;
   justify-content: space-between;
 
-
   @media (max-width: 649px) {
     /* gap: 20px; */
   }
@@ -100,7 +99,6 @@ export const TabContentItem = styled.div`
   height: 389px;
   box-sizing: border-box;
   /* Inside auto layout */
-
 `;
 
 export const DashCard = styled.div`
@@ -125,11 +123,11 @@ export const DashCard = styled.div`
 
 export const TabElement = styled.div`
   height: 17px;
-
+  padding: 0 3%;
   font-weight: 400;
   font-size: 14px;
   /* line-height: 17px; */
-margin-top: 5%;
+  margin-top: 5%;
   color: #012a4a;
   cursor: pointer;
   /* flex: none; */

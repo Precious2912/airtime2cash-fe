@@ -10,9 +10,10 @@ import {
 } from "../../styles/DashboardStyles/TabStyles/TabStyles";
 import Withdraw from "./TabContent/Withdraw";
 import SellAirTime from "./TabContent/SellAirTime";
-import { ManageAcount } from "../../pages/ManageAcount"; 
+import { ManageAcount } from "../../pages/ManageAcount";
 import DashBoardWallet from "./TabContent/DashBoardWallet";
 import { DashboardStyle } from "../../styles/DashboardStyles/HomeStyles";
+import TransactionHistory from "./TabContent/TransactionHistory";
 
 const Tabs = () => {
   const tabs = [
@@ -36,7 +37,7 @@ const Tabs = () => {
           <DashCard>
             <TabContent>
               {tabs.map((tab, index) => (
-                <TabElement  key={index}>
+                <TabElement key={index}>
                   <div
                     className="nav"
                     active={active === tab}
@@ -56,7 +57,7 @@ const Tabs = () => {
               ) : active === tabs[2] ? (
                 <ManageAcount />
               ) : (
-                <h3>Transaction History Here</h3>
+                <TransactionHistory />
               )}
             </TabContentItem>
           </DashCard>
