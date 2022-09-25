@@ -1,7 +1,6 @@
 export const CustomStyles = {
   control: (base) => ({
     ...base,
-    borderRadius: 0,
     minHeight: 48,
     marginBottom: 15,
     marginTop: 10,

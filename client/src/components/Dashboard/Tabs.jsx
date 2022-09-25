@@ -35,8 +35,8 @@ const Tabs = () => {
           )}
           <DashCard>
             <TabContent>
-              {tabs.map((tab) => (
-                <TabElement>
+              {tabs.map((tab, index) => (
+                <TabElement key={index}>
                   <div
                     className="nav"
                     key={tab}

@@ -13,17 +13,6 @@ import {
 import StyleButton from "../../../styles/ButtonStyles";
 import { Modal } from "../../modal/Modal";
 import Select from "react-select";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-const addBankSchema = yup.object().shape({
-  accountName: yup.string().required("Enter Account Name"),
-  accountNumber: yup.string().required("Enter Account Number"),
-  bank: yup
-    .number()
-    .required("Choose a bank")
-});
 
 export const AddBank = ({ show }) => {
   const [banklist, setBankList] = useState([]);
@@ -51,7 +40,7 @@ export const AddBank = ({ show }) => {
     return bank.name;
   });
 
-  banks.forEach(element => {
+  banks.forEach((element) => {
     let temp = {};
     temp["value"] = element;
     temp["label"] = element;
@@ -59,25 +48,32 @@ export const AddBank = ({ show }) => {
     temp = {};
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(addBankSchema),
-  });
+  const [showModal, setShowModal] = useState(false);
 
-  const onSubmit = (data, e) => {
+  const [selectedBank, setSelectedBank] = useState("Select bank");
+  const [inputs, setInputs] = useState({
+    accountName: "",
+    accountNumber: "",
+  });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+      const valid =
+        selectedBank !== "Select bank" &&
+        inputs.accountName.length > 0 &&
+        inputs.accountNumber.length > 0;
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(data));
-    setShowModal((p) => !p);
+      console.log(selectedBank, inputs.accountName, inputs.accountNumber);
+      setShowModal((p) => !p);
   };
 
-  const [showModal, setShowModal] = useState(false);
-  const [selectedBank, setSelectedBank] = useState("");
-
   const handleBankChange = (selectedBank) => {
-    console.log(selectedBank.value);
     setSelectedBank(selectedBank);
   };
 
@@ -88,16 +84,14 @@ export const AddBank = ({ show }) => {
         <p onClick={show}>View Bank Accounts</p>
       </BankHeader>
       <BankStyle>
-        <FormStyle onSubmit={handleSubmit(onSubmit)}>
+        <FormStyle onSubmit={(e) => handleSubmit(e)}>
           <StyledLabel>Bank Name</StyledLabel>
           <Select
             name="bank"
             styles={CustomStyles}
             placeholder={"Select bank"}
+            onChange={(selectedBank) => handleBankChange(selectedBank)}
             value={selectedBank}
-            onChange={(selectedOption) => {
-              handleBankChange(selectedOption);
-            }}
             noOptionsMessage={() => "Bank not found"}
             options={allBanks}
             theme={(theme) => ({
@@ -109,25 +103,24 @@ export const AddBank = ({ show }) => {
               },
             })}
           />
-          {errors.bank && <p>{errors.bank.message}</p>}
 
           <StyledLabel style={{ color: "#012a4a" }}>Account Name</StyledLabel>
           <StyledInput
-            {...register("accountName")}
             placeholder="Account name"
             type="text"
             name="accountName"
+            value={inputs.accountName}
+            onChange={handleInputChange}
           ></StyledInput>
-          {errors.accountName && <p>{errors.accountName.message}</p>}
 
           <StyledLabel> Account Number</StyledLabel>
           <StyledInput
-            {...register("accountNumber")}
             placeholder="Account Number"
             type="number"
             name="accountNumber"
+            value={inputs.accountNumber}
+            onChange={handleInputChange}
           ></StyledInput>
-          {errors.accountNumber && <p>{errors.accountNumber.message}</p>}
           <StyleButton
             type="submit"
             borderRadius="0px"
@@ -136,6 +129,7 @@ export const AddBank = ({ show }) => {
             style={{
               marginTop: "1.5rem",
             }}
+            disabled={!valid}
           >
             Add Bank
           </StyleButton>
