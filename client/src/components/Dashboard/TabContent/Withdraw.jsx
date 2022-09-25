@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
-import { ButtonWrapper, WithdrawWrapper } from "../../../styles/DashboardStyles/TabStyles/WithdrawStyles";
+import { ButtonWrapper, TabTitle, WithdrawWrapper } from "../../../styles/DashboardStyles/TabStyles/WithdrawStyles";
 
 const banks = [
   { value: "First Bank", label: "First Bank" },
@@ -15,7 +15,7 @@ const Withdraw = () => {
 
   return (
     <WithdrawWrapper>
-      <small>Withdraw</small>
+      <TabTitle><b>Withdraw</b></TabTitle>
       <form>
         <div className="form-group">
         <label>Select Account</label>

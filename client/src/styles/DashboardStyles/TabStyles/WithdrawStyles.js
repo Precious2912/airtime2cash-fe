@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export const WithdrawWrapper = styled.div`
+margin-top:4%;
  font-weight: 400;
 & form {
     margin: 5% auto;
@@ -42,4 +43,8 @@ export const WithdrawWrapper = styled.div`
 `
 export const ButtonWrapper = styled.div`
 margin-top: 4%;
+`
+export const TabTitle = styled.small`
+font-size: 14px;
+ color:#012A4A; 
 `

@@ -19,7 +19,7 @@ export const DashboardStyle = styled.div`
     margin:  -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
-    padding: 0 4rem;
+    padding: 0 4%;
    & h1 {
     
       font-weight: 600;
@@ -63,7 +63,7 @@ export const DashboardStyle = styled.div`
 
      & .acct-bal {
         font-weight: 700;
-        font-size: 2.3rem;
+        font-size: 2.3em;
         line-height: 39px;
         margin: 0;
         color: #ffffff;

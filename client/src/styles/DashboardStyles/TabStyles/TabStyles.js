@@ -75,24 +75,22 @@ export const TabStyle = styled.div`
 export const TabContent = styled.div`
   display: flex;
   flex-direction: row;
-
   width: 100%;
-
   justify-content: space-between;
 
 
   @media (max-width: 649px) {
-    gap: 20px;
+    /* gap: 20px; */
   }
   @media (max-width: 630px) {
-    gap: 15px;
+    /* gap: 15px; */
   }
   @media (max-width: 612) {
-    gap: 8px;
-    padding: 0.5rem;
+    /* gap: 8px; */
+    /* padding: 0.5rem; */
   }
   @media (max-width: 414px) {
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
     display: block;
   }
 `;
@@ -110,7 +108,7 @@ export const DashCard = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 40px;
+  gap: 12px;
 
   width: 100%;
   height: 887px;
