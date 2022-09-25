@@ -123,7 +123,7 @@ export const DashCard = styled.div`
 
 export const TabElement = styled.div`
   height: 17px;
-  padding: 0 3%;
+  padding: 0;
   font-weight: 400;
   font-size: 14px;
   /* line-height: 17px; */
@@ -134,13 +134,5 @@ export const TabElement = styled.div`
   /* order: 0; */
   /* flex-grow: 0; */
 
-  .nav:hover {
-    // background: rgba(50, 224, 196, 0.15);
-    border-bottom: 1px solid #de3d6d;
-  }
-
-  .nav:active {
-    /* background: #39a2db; */
-    border-bottom: 1px solid #de3d6d;
-  }
+  ${({ active }) => active && `border-bottom: 1px solid #DE3D6D; `}
 `;

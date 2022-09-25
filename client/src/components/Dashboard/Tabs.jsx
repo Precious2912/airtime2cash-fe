@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TabNavItem from "./TabNavItem";
+// import TabNavItem from "./TabNavItem";
 // import TabContent from "./TabContent";
 // import { UpdateUserSetting } from "./update/UpdateUser";
 import {
@@ -37,14 +37,13 @@ const Tabs = () => {
           <DashCard>
             <TabContent>
               {tabs.map((tab, index) => (
-                <TabElement key={index}>
-                  <div
-                    className="nav"
-                    active={active === tab}
-                    onClick={() => setActive(tab)}
-                  >
-                    {tab}
-                  </div>
+                <TabElement
+                  key={index}
+                  id="nav"
+                  active={active === tab}
+                  onClick={() => setActive(tab)}
+                >
+                  {tab}
                 </TabElement>
               ))}
             </TabContent>
