@@ -17,9 +17,6 @@ const Button = styled.button`
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "lightgray" : "#DE3D6D")};
   }
-  &:disabled {
-    background-color: lightgray;
-  }
 `;
 
 export default Button

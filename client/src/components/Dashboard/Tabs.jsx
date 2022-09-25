@@ -22,7 +22,8 @@ const Tabs = () => {
     "Manage Bank Account",
     "Transaction History",
   ];
-  const [active, setActive] = useState(tabs[0]);
+   const [active, setActive] = useState(tabs[0]);
+
 
   return (
     <>
@@ -35,9 +36,7 @@ const Tabs = () => {
             <h1>{active}</h1>
           )} */}
           {(active === tabs[0] || active === tabs[1]) && <DashBoardWallet />}
-          {active === tabs[2] && 
-          <h1>Manage Bank</h1>
-          }
+          {active === tabs[2] && <h1>Manage Bank</h1>}
           {active === tabs[3] && <h1>Transactions</h1>}
 
           <DashCard>
