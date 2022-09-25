@@ -14,35 +14,30 @@ export const DashboardStyle = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    /* padding: 3.75rem; */
-    /* gap: 3.75rem; */
-    /* width: 42.438rem; */
-    width:50rem;
-    max-width:100%;
-    /* height: 69.125rem; */
+    width:45rem;
+    max-width:100%; 
     margin:  -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
-    padding-top: 3rem;
+    padding: 0 4%;
    & h1 {
     
       font-weight: 600;
-      font-size: 2rem;
-      line-height: 2.438rem;
+      width: 100%;
+      text-align: center;
       color: #012a4a;
     }
 
    & .balance-wrapper {
+    box-sizing: border-box;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 1.5rem;
-      width: 80%;
-      max-width: 100%;
-      /* width: 34.438rem; */
-      height: 9.438rem;
+      width: 100%;
+      max-width: 100%; 
+      /* height: 9.438rem; */
       background: #de3d6d;
       border-radius: 1.5rem;
       margin-top: 3rem;
@@ -53,7 +48,7 @@ export const DashboardStyle = styled.div`
       flex-direction: column;
       align-items: center;
       padding: 0rem;
-      /* gap: 0.25rem; */
+      gap:0.7rem;
 
       width: 11.438rem;
       /* height: 6.625rem; */
@@ -62,15 +57,15 @@ export const DashboardStyle = styled.div`
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
-
+        margin:0;
         color: #ffffff;
       }
 
      & .acct-bal {
         font-weight: 700;
-        font-size: 32px;
+        font-size: 2.3em;
         line-height: 39px;
-
+        margin: 0;
         color: #ffffff;
       }
 

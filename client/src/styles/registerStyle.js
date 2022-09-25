@@ -97,6 +97,11 @@ export const StyledLabel = styled.label`
 export const FormStyle = styled.form`
   margin: 0 ;
   width: 100%;
+  & .passwordCheck{
+    color:red;
+    font-size: 12px;
+    width:100%;
+  }
 `;
 export const StyledInput = styled.input`
   box-sizing: border-box;

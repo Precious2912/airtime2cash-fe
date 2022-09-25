@@ -21,13 +21,16 @@ export const Nav = styled.div`
   min-height: 96px;
   background-color: #fff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 0 10%;
+  padding: 0 10%; 
+  @media (max-width: 320px) {
+    padding:0 3%;
+  }
+
 `;
 export const Hamburger = styled.div`
   display: none;
   flex-direction: column;
   cursor: pointer;
-  
   span {
     height: 2px;
     width: 25px;
@@ -77,7 +80,8 @@ export const MenuLinks = styled.div`
   }
 `;
 export const Logo = styled.img`
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
   max-width: 100%;
   padding:0;
+
 `;

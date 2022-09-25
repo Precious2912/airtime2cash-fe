@@ -5,7 +5,7 @@ export const BankHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3rem;
+  margin: 2rem 0;
 
   & .bank-acct {
     font-weight: 600;
@@ -37,7 +37,7 @@ export const BankStyle = styled.div`
   .accounts {
     overflow: auto;
     height: 70vh;
-    padding: 2%;
+    padding: 0 1%;
   }
 `;
 

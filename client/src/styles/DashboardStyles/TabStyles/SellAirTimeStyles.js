@@ -4,8 +4,9 @@ export const SellAirTimeWrapper = styled.div`
 color: #012A4A;
 
 & h5{
-font-weight: 400;
+font-weight: 600;
 line-height: 17px;
+font-size: 14px;
 }
 
 & label{

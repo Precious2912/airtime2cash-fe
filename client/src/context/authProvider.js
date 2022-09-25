@@ -122,6 +122,7 @@ export const AuthProvider = ({ children }) => {
       await axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, loginUser)
         .then((res) => {
+          console.log(res);
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
@@ -129,8 +130,8 @@ export const AuthProvider = ({ children }) => {
             // localStorage.setItem("lastName", res.data.user_info.lastName);
             // localStorage.setItem("name", res.data.user_info.phoneNumber);
             // localStorage.setItem("phoneNumber", res.data.user_info.email);
-            // localStorage.setItem("avatar", res.data.user_info.avatar);
-            // localStorage.setItem("userName", res.data.user_info.userName);
+            localStorage.setItem("avatar", res.data.user_info.avatar);
+            localStorage.setItem("userName", res.data.user_info.userName); 
             dispatch({ type: "LOGIN", payload: res.data });
             toast.success(res.data.message, {
               autoClose: 3000,
@@ -142,13 +143,12 @@ export const AuthProvider = ({ children }) => {
             return;
           }
         })
-        .catch((err) => {
-          toast.error("Invalid login credentials", {
+        .catch((err) => { 
+          toast.error(err.response.data.message, {
             autoClose: 3000,
           });
         });
-    } catch (err) {
-      console.log(err.response.data);
+    } catch (err) { 
       toast.error("Please kindly register", {
         autoClose: 3000,
       });
@@ -165,7 +165,8 @@ export const AuthProvider = ({ children }) => {
       await axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/forgetPassword`, email)
         .then((res) => {
-          if (res.status === 200) {
+          console.log(res);
+          if (res.status === 200 && res.data.email_response.info) {
             console.log(res);
             // should take you to a check your email-for-reset-password-link page
             navigate("/emailsent");
@@ -173,9 +174,14 @@ export const AuthProvider = ({ children }) => {
               autoClose: 3000,
             });
             dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
+          }else{
+            toast.error("Unable to send verification Email check connectivity", {
+              autoClose: 3000,
+            });
           }
         });
     } catch (err) {
+      console.log(err);
       toast.error("No user found, kindly register", {
         autoClose: 3000,
       });
@@ -196,6 +202,7 @@ export const AuthProvider = ({ children }) => {
           password
         )
         .then((res) => {
+          console.log(res)
           if (res.status === 202) {
             dispatch({
               type: "RESET_PASSWORD",
@@ -210,9 +217,15 @@ export const AuthProvider = ({ children }) => {
           }
         });
     } catch (err) {
-      toast.error(err.response.data.Error, {
+      console.log(err);
+      toast.error(err.response.data.message, {
         autoClose: 3000,
       });
+      if(err.response.data.Error){
+        toast.error(err.response.data.Error, {
+          autoClose: 3000,
+        });
+      }
       throw new Error(`${err}`);
     }
   };
@@ -248,9 +261,9 @@ export const AuthProvider = ({ children }) => {
       const form = {
         firstName: formData.firstName || localStorage.getItem("firstName"),
         lastName: formData.lastName || localStorage.getItem("lastName"),
-        userName: formData.username || localStorage.getItem("userName"),
+        userName: formData.userName || localStorage.getItem("userName"),
         phoneNumber:
-          formData.phoneNumber || localStorage.getItem("phoneNumber"),
+        formData.phoneNumber || localStorage.getItem("phoneNumber"),
         avatar: formData.avatar || localStorage.getItem("avatar"),
       };
       const id = localStorage.getItem("id");
@@ -263,6 +276,12 @@ export const AuthProvider = ({ children }) => {
         .then((response) => {
           toast.success(response.data.message);
           console.log(response);
+          localStorage.setItem("firstName", response.data.updatedRecord.firstName);
+          localStorage.setItem("lastName", response.data.updatedRecord.lastName);
+          localStorage.setItem("phoneNumber", response.data.updatedRecord.phoneNumber);
+          localStorage.setItem("avatar", response.data.updatedRecord.avatar);
+          localStorage.setItem("userName", response.data.updatedRecord.userName);
+          localStorage.setItem("email", response.data.updatedRecord.email);
         })
         .catch((err) => {
           console.log(err);
