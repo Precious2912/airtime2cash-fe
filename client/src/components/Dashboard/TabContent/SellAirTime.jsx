@@ -54,7 +54,7 @@ const SellAirTime = () => {
         <div className="input-element">
           <label htmlFor="USSD">USSD</label>
           <StyledInput
-            type="USSD"
+            type="number"
             name="USSD"
             placeholder="*780*amount*09088756433*5000#"
           />
