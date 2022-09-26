@@ -28,7 +28,6 @@ const SellAirTime = () => {
               borderRadius: 0,
               colors: {
                 ...theme.colors,
-                // primary25: "#012a4a",
                 primary: "#de3d6d",
               },
             })}
@@ -37,7 +36,7 @@ const SellAirTime = () => {
         <div className="input-element">
           <label htmlFor="Phone Number">Phone Number</label>
           <StyledInput
-            type="Phone Number"
+            type="number"
             name="Phone Number"
             placeholder="Enter your Phone Number"
           />
@@ -45,7 +44,7 @@ const SellAirTime = () => {
         <div className="input-element">
           <label htmlFor="Amount to Sell">Amount to Sell</label>
           <StyledInput
-            type="Amount to Sell"
+            type="number"
             name="Amount to Sell"
             placeholder="NGN"
           />
@@ -54,7 +53,7 @@ const SellAirTime = () => {
         <div className="input-element">
           <label htmlFor="USSD">USSD</label>
           <StyledInput
-            type="USSD"
+            type="text"
             name="USSD"
             placeholder="*780*amount*09088756433*5000#"
           />
@@ -62,7 +61,7 @@ const SellAirTime = () => {
         <div className="input-element">
           <label htmlFor="Amount to Receive">Amount to Receive</label>
           <StyledInput
-            type="Amount to Receive"
+            type="number"
             name="Amount to Receive"
             placeholder="NGN"
           />
@@ -72,7 +71,7 @@ const SellAirTime = () => {
             Destination Phone Number
           </label>
           <StyledInput
-            type="Destination Phone Number"
+            type="number"
             name="Destination Phone Number"
             placeholder="Destination phone number"
           />
