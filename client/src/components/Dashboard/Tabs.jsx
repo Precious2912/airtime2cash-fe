@@ -24,7 +24,6 @@ const Tabs = () => {
   ];
    const [active, setActive] = useState(tabs[0]);
 
-
   return (
     <>
       <DashboardStyle>

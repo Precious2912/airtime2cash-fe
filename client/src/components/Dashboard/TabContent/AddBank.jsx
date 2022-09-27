@@ -57,6 +57,8 @@ export const AddBank = ({ show }) => {
     return bank.name;
   });
 
+
+
   const allBanks = [];
 
   banks.forEach((element) => {
@@ -98,6 +100,12 @@ export const AddBank = ({ show }) => {
    AddBank({
       ...data,
       bankName: data.bankName.label
+    }).then(res => {
+      if(res.status === 201){
+        setShowModal((p) => !p);
+      }
+    }).catch(err => {
+      console.log(err)
     })
   };
 
@@ -130,6 +138,7 @@ export const AddBank = ({ show }) => {
                 isClearable // enable isClearable to demonstrate extra error handling
                 isSearchable={true}
                 options={allBanks}
+                noOptionsMessage={() => "Bank not found"}
               />
             )}
           />
