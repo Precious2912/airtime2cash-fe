@@ -6,9 +6,6 @@ export const CustomStyles = {
     marginBottom: 15,
     marginTop: 10,
     fontSize: 13,
-    "&:hover": {
-      borderColor: "#de3d6d",
-    },
   }),
   dropdownIndicator: (base) => ({
     ...base,

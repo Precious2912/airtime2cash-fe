@@ -2,8 +2,9 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { ModalStyle } from "../../styles/DashboardStyles/TabStyles/modalStyle";
 import doneIcon from '../../assets/icon/doneicon.png'
+import ViewBank from "../Dashboard/TabContent/ViewBank";
 
-export const Modal = ({ setShowModal }) => {
+export const Modal = ({ setShowModal, goto }) => {
   const modalRef = useRef();
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
@@ -23,7 +24,10 @@ export const Modal = ({ setShowModal }) => {
                 Your bank account has been added successfully
               </p>
             </div>
-            <button className="done-btn" onClick={() => setShowModal(false)}>
+            <button className="done-btn" onClick={() => {
+              setShowModal(false)
+              return <ViewBank  />;
+              }}>
               Done
             </button>
           </div>

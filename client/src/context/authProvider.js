@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer, useState } from "react"; 
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -73,7 +73,6 @@ function reducer(state, action) {
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-    const [showModal, setShowModal] = useState(false);
     const [userbank, setUserBank] = useState([])
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -131,7 +130,6 @@ export const AuthProvider = ({ children }) => {
       await axios
         .post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, loginUser)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
@@ -293,10 +291,9 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  // useEffect (() =>{
-  //   getUserAccount(localStorage.getItem("id"))
-  
-  // }, []) 
+    useEffect(() => {
+      getUserAccount(`${localStorage.getItem("id")}`);
+    }, []);
 
   const updateProfile = async (formData) => {
     try {
@@ -362,8 +359,8 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
-      if (response.status === 'success') {
-        setShowModal(p => !p);
+      if (response.status === 201) {
+        return response
       }
     } catch (error) {
       toast.error(error.response.data.message);
@@ -382,7 +379,6 @@ export const AuthProvider = ({ children }) => {
          );
 
          if (response.status === 200) {
-          console.log('deleted!')
            toast.success(response.message)
          }
 
