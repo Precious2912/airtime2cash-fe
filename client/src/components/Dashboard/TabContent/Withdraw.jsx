@@ -3,34 +3,40 @@ import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import { ButtonWrapper, TabTitle, WithdrawWrapper } from "../../../styles/DashboardStyles/TabStyles/WithdrawStyles";
-import { UseAuth } from "../../../context/useAuth";
-
-const banks = [
-  { value: "First Bank", label: "First Bank" },
-  { value: "Access Bank", label: "Access Bank" },
-  { value: "Zenith Bank", label: "Zenith Bank" },
-];
+import useFetch from "../../../context/useFetch";
 
 const Withdraw = () => {
-const { getAllAccount, bState } = UseAuth();
-const [userBanks, setUserBanks] = useState([{value: "Select Bank", label: "Select Account"}]);
-  const [selectedOption, setSelectedOption] = useState(null);
+ 
+const [selectedOption, setSelectedOption] = useState(null);
+const [watchData, setWatchData] = useState(false);
+
+const  [bankList, setBankList] = useState([])
+const [accountnumber, setAccountnumber] = useState(null)
+const [accountName, setAccountName] = useState(null)
+const [amount, setAmount] = useState(0)
+
+const { result } =useFetch(`user/userAccount/${localStorage.getItem("id")}`);
+let bankArr = result?.map((bank) => bank.bankName);
+let banks = [...new Set(bankArr)];
+
+useEffect  (()=>{ 
+setBankList(banks?.map(val=>({ value: val, label: val })));
+}, [result])
+
+const handleSelectBank = (e) => {
+let newArr = result.filter((bank)=>{return bank.bankName === e.value});
+setAccountnumber(newArr?.map((val)=>({ value: val.accountNumber, label: val.accountNumber, accountName: val.accountName })));
+
+};
+
+const handleSelectAccount = (e) => {
+setSelectedOption(e);
+console.log(e)
+setAccountName(e.accountName)
+console.log(accountName)
 
 
-
-  // const getAllBanks = async () => {
-  //  await getAllAccount(localStorage.getItem("id"))
-  //  banks.push( { value: bState.data.data[0].accounts.bankName, label: bState.data.data[0].accounts.bankName} )
-  //   setUserBanks(banks)
-  // }
-
-
-useEffect (() =>{
-  getAllAccount(localStorage.getItem("id"))
-console.log(bState)
-
-}, []) 
-
+};
 
 
   return (
@@ -41,8 +47,8 @@ console.log(bState)
         <label>Select Account</label>
         <Select
             styles={CustomStyles}
-            onChange={setSelectedOption}
-            options={userBanks}
+            onChange={(e)=>handleSelectBank(e)}
+            options={bankList}
             defaultValue={{ label: "Select Bank", value: 0 }}
             theme={(theme) => ({
               ...theme,
@@ -57,13 +63,27 @@ console.log(bState)
         </div>
 
         <div className="form-group">
-        <label>Account Name</label>
-        <input required disabled value='Babatunde Ola' placeholder="Bank Name"/>
+        <label>Account Number</label>
+        {/* <input required type='number' disabled value='9234532567' placeholder="Account Number"/> */}  <Select
+            styles={CustomStyles}
+            onChange={(e)=>handleSelectAccount(e)}
+            options={accountnumber}
+            defaultValue={{ label: "Select Account Number", value: 0 }}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0, 
+              colors: {
+                ...theme.colors, 
+                primary: "#de3d6d",
+              },
+            })}
+          />
+
         </div>
 
         <div className="form-group">
-        <label>Account Number</label>
-        <input required type='number' disabled value='9234532567' placeholder="Account Number"/>
+        <label>Account Name</label>
+        <input required disabled value={accountName} placeholder="Bank Name"/>
         </div>
 
         <div className="form-group">
@@ -76,7 +96,7 @@ console.log(bState)
         <input required placeholder="Password"/>
         </div>
         <ButtonWrapper>
-        <Button borderRadius='0%' height='48px' width='198px'>Withdraw</Button>
+        <Button borderRadius='0%' disabled={true} height='48px' width='198px'>Withdraw</Button>
         </ButtonWrapper>
       </form>
     </WithdrawWrapper>
