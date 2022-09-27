@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { ModalStyle } from "../../styles/DashboardStyles/TabStyles/modalStyle";
-import doneIcon from '../../assets/icon/doneicon.svg'
+import doneIcon from '../../assets/icon/doneicon.png'
 
 export const Modal = ({ setShowModal }) => {
   const modalRef = useRef();
@@ -15,7 +15,7 @@ export const Modal = ({ setShowModal }) => {
     <ModalStyle>
       <div className="container" ref={modalRef} onClick={closeModal}>
         <div className="modal">
-          <img src={doneIcon} alt="Done" />
+          <img src={doneIcon} alt="Done" style={{backgroundColor: '#fff'}}/>
           <div className="modal-form">
             <div className="content">
               <p className="success">Bank Added Successfully</p>
