@@ -4,33 +4,43 @@ import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOp
 import StyledButton from '../../../styles/ButtonStyles'
 import Select from "react-select";
 import {sellAirtimeSchema} from "../../../Validations/SellAirtime"
+import Swal from "sweetalert2"
 
 const Network = [
   { value: "MTN", label: "MTN" },
   { value: "GLO", label: "GLO" },
   { value: "AIRTEL", label: "AIRTEL" },
 ];
+// const Sell = async (e) => {
+//   e.preventDefault()
+//   let formData = {
+//     Network:e.target[0].value,
+//     PhoneNumber:e.target[1].value,
+//     AmountToSell:e.target[2].value,
+//     USSD:e.target[3].value,
+//     AmountToReceieve:e.target[4].value,
+//     DestinationPhoneNumber:e.target[5].value
+//   };
+//   const isValid = await sellAirtimeSchema.isValid(formData)
+// }
 
 const SellAirTime = ()=>{
-  // async (e) => {
-  // e.preventDefault()
-  // let formData = {
-  //   PhoneNumber:e.target[0].value,
-  //   AmountToSell:e.target[1].value,
-  //   USSD:e.target[2].value,
-  //   AmountToReceieve:e.target[3].value,
-  //   DestinationPhoneNumber:e.target[4].value
-  // };
-  // const isValid = await sellAirtimeSchema.isValid(formData)
+    const handleClick = (e) => {
+      e.preventDefault();
+      Swal.fire('Airtime sold')
+    }
+   
+    const { getFieldDecorator } = props.form;
 
   const [selectedOption, setSelectedOption] = useState(null);
   return (
     <SellAirTimeWrapper>
-      <form action="" onsubmit={SellAirTime} className="form-group">
+      <form action="" onSubmit={(e) => handleClick(e)} className="form-group">
         <h5 className="SellAirtime">Sell Airtime</h5>
         <div className="input-element">
           <label>Network</label>
           <Select
+          
             styles={CustomStyles}
             onChange={setSelectedOption}
             options={Network}
@@ -43,11 +53,12 @@ const SellAirTime = ()=>{
                 primary: "#de3d6d",
               },
             })}
-          />
+            required/>
         </div>
         <div className="input-element">
-          <label htmlFor="Phone Number">Phone Number</label>
+          <label htmlFor="Phone Number" >Phone Number</label>
           <StyledInput
+          required
             type="number"
             name="PhoneNumber"
             placeholder="Enter your Phone Number"
@@ -56,6 +67,7 @@ const SellAirTime = ()=>{
         <div className="input-element">
           <label htmlFor="Amount to Sell">Amount to Sell</label>
           <StyledInput
+          required
             type="number"
             name="AmountToSell"
             placeholder="NGN"
@@ -64,7 +76,7 @@ const SellAirTime = ()=>{
 
         <div className="input-element">
           <label htmlFor="USSD">USSD</label>
-          <StyledInput
+          <StyledInput disabled
             type="text"
             name="USSD"
             placeholder="*780*amount*09088756433*5000#"
@@ -72,7 +84,7 @@ const SellAirTime = ()=>{
         </div>
         <div className="input-element">
           <label htmlFor="Amount to Receive">Amount to Receive</label>
-          <StyledInput
+          <StyledInput disabled
             type="number"
             name="AmountToReceive"
             placeholder="NGN"
@@ -82,13 +94,13 @@ const SellAirTime = ()=>{
           <label htmlFor="Destination Phone Number">
             Destination Phone Number
           </label>
-          <StyledInput
+          <StyledInput disabled
             type="number"
             name="DestinationPhoneNumber"
             placeholder="Destination phone number"
           />
         </div>
-        <StyledButton 
+        <StyledButton
         borderRadius="0%" 
         marginTop="3.5%" 
         width="198px" 
