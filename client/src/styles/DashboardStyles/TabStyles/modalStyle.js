@@ -72,8 +72,6 @@ export const ModalStyle = styled.div`
 
         background: rgba(226, 0, 16, 0.05);
 
-        font-family: "Inter";
-        font-style: normal;
         font-weight: 600;
         font-size: 14px;
         line-height: 17px;

@@ -68,6 +68,7 @@ export const AccountStyle = styled.div`
   & .remove-btn {
     padding: 10px;
     border: none;
+    cursor: pointer;
 
     background: rgba(0, 0, 0, 0.05);
     border-radius: 100px;

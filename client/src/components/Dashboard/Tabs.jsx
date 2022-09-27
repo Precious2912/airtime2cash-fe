@@ -22,18 +22,23 @@ const Tabs = () => {
     "Manage Bank Account",
     "Transaction History",
   ];
-  const [active, setActive] = useState(tabs[0]);
+   const [active, setActive] = useState(tabs[0]);
+
 
   return (
     <>
       <DashboardStyle>
         <div className="top"></div>
         <div className="dashboard">
-          {active === tabs[0] || active === tabs[1] ? (
+          {/* {active === tabs[0] || active === tabs[1] ? (
             <DashBoardWallet />
           ) : (
             <h1>{active}</h1>
-          )}
+          )} */}
+          {(active === tabs[0] || active === tabs[1]) && <DashBoardWallet />}
+          {active === tabs[2] && <h1>Manage Bank</h1>}
+          {active === tabs[3] && <h1>Transactions</h1>}
+
           <DashCard>
             <TabContent>
               {tabs.map((tab, index) => (

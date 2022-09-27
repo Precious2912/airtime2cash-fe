@@ -2,6 +2,7 @@ export const CustomStyles = {
   control: (base) => ({
     ...base,
     minHeight: 48,
+    borderRadius: 0,
     marginBottom: 15,
     marginTop: 10,
     fontSize: 13,
@@ -25,6 +26,5 @@ export const CustomStyles = {
     ...base,
     margin: 0,
     padding: 0,
-    color: "#c4c4c4",
   }),
 };
