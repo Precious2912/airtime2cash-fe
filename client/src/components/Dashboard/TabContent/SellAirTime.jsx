@@ -3,6 +3,7 @@ import { StyledInput, SellAirTimeWrapper } from "../../../styles/DashboardStyles
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import StyledButton from '../../../styles/ButtonStyles'
 import Select from "react-select";
+import {sellAirtimeSchema} from "../../../Validations/SellAirtime"
 
 const Network = [
   { value: "MTN", label: "MTN" },
@@ -10,11 +11,22 @@ const Network = [
   { value: "AIRTEL", label: "AIRTEL" },
 ];
 
-const SellAirTime = () => {
+const SellAirTime = ()=>{
+  // async (e) => {
+  // e.preventDefault()
+  // let formData = {
+  //   PhoneNumber:e.target[0].value,
+  //   AmountToSell:e.target[1].value,
+  //   USSD:e.target[2].value,
+  //   AmountToReceieve:e.target[3].value,
+  //   DestinationPhoneNumber:e.target[4].value
+  // };
+  // const isValid = await sellAirtimeSchema.isValid(formData)
+
   const [selectedOption, setSelectedOption] = useState(null);
   return (
     <SellAirTimeWrapper>
-      <form action="" className="form-group">
+      <form action="" onsubmit={SellAirTime} className="form-group">
         <h5 className="SellAirtime">Sell Airtime</h5>
         <div className="input-element">
           <label>Network</label>
@@ -37,7 +49,7 @@ const SellAirTime = () => {
           <label htmlFor="Phone Number">Phone Number</label>
           <StyledInput
             type="number"
-            name="Phone Number"
+            name="PhoneNumber"
             placeholder="Enter your Phone Number"
           />
         </div>
@@ -45,7 +57,7 @@ const SellAirTime = () => {
           <label htmlFor="Amount to Sell">Amount to Sell</label>
           <StyledInput
             type="number"
-            name="Amount to Sell"
+            name="AmountToSell"
             placeholder="NGN"
           />
         </div>
@@ -62,7 +74,7 @@ const SellAirTime = () => {
           <label htmlFor="Amount to Receive">Amount to Receive</label>
           <StyledInput
             type="number"
-            name="Amount to Receive"
+            name="AmountToReceive"
             placeholder="NGN"
           />
         </div>
@@ -72,7 +84,7 @@ const SellAirTime = () => {
           </label>
           <StyledInput
             type="number"
-            name="Destination Phone Number"
+            name="DestinationPhoneNumber"
             placeholder="Destination phone number"
           />
         </div>
