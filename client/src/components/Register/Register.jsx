@@ -66,7 +66,7 @@ export const Register = () => {
         </Link>
 
         <HeaderAndButton>
-          <Link to="/">
+          <Link to="/login">
             <Back>
               <img src={backicon} alt="logo" />
               Go back

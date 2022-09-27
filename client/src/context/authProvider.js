@@ -73,6 +73,8 @@ function reducer(state, action) {
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+    const [userbank, setUserBank] = useState([])
   const [state, dispatch] = useReducer(reducer, initialState);
   const [ bState, setBstate] = useState([])
 
@@ -274,6 +276,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getUserAccount = async (id) => {
+    try{
+      const response = await axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/user/userAccount/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        if (response.status === 200) {
+            setUserBank(response.data.data);
+          }
+    } catch(err) {
+        throw new Error(err)
+    }
+  }
+
   const updateProfile = async (formData) => {
     try {
       const form = {
@@ -321,6 +339,53 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const AddBank = async (formData) => {
+    try {
+      const form = {
+        bankName: formData.bankName,
+        accountNumber: formData.accountNumber,
+        accountName: formData.accountName,
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/account/createaccount`,
+        form,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (response.status === 'success') {
+        setShowModal(p => !p);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const deleteBank = async (id) => {
+       try {
+         const response = await axios.delete(
+           `${process.env.REACT_APP_BACKEND_URL}/account/deleteaccount/${id}`,
+           {
+             headers: {
+               Authorization: `Bearer ${localStorage.getItem("token")}`,
+             },
+           }
+         );
+
+         if (response.status === 200) {
+          console.log('deleted!')
+           toast.success(response.message)
+         }
+
+       } catch (error) {
+         console.log(error);
+         throw new Error(error)
+       }
+  }
+
   const getAllAccount = async (id) => {
     try {
       await axios
@@ -355,6 +420,10 @@ export const AuthProvider = ({ children }) => {
         updateProfile,
         getAllAccount,
         resetPassword,
+        AddBank,
+        getUserAccount,
+        deleteBank,
+        userbank,
         bState,
         logout,
         state,
