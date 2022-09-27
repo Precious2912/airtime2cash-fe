@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { UseAuth } from "../../../context/useAuth";
+import Swal from "sweetalert2";
 import {
   BankStyle,
   AccountStyle,
@@ -13,7 +14,27 @@ const ViewBank = ({ show }) => {
 
   useEffect(() => {
     getUserAccount(`${localStorage.getItem("id")}`);
+    // eslint-disable-next-line
   }, []);
+
+  const confirmDelete = (bankId, event) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const thisClicked = event.target.parentElement;
+        deleteBank(bankId);
+        thisClicked.closest("div").remove();
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
   return (
     <BankWrapper>
@@ -22,31 +43,29 @@ const ViewBank = ({ show }) => {
       </BankHeader>
       <BankStyle>
         <div className="accounts">
-          {userbank.map((user) => (
-            <>
-              {user.accounts.map((account) => (
-                <AccountStyle key={account.id}>
-                  <div className="content">
-                    <p>{account.bankName}</p>
-                    <p>{account.accountNumber}</p>
-                    <p>{account.accountName}</p>
-                  </div>
-                  <button
-                    type="submit"
-                    className="remove-btn"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const thisClicked = e.currentTarget;
-                      deleteBank(account.id);
-                      thisClicked.closest('div').remove();
-                      console.log("deleted");
-                    }}
-                  >
-                    Remove
-                  </button>
-                </AccountStyle>
-              ))}
-            </>
+          {userbank.length === 0 && (
+            <h3 style={{ color: "#012a4a"}}>
+              No bank added yet. Click button to add a bank
+            </h3>
+          )}
+          {userbank.map((account) => (
+            <AccountStyle key={account.id}>
+              <div className="content">
+                <p>{account.bankName}</p>
+                <p>{account.accountNumber}</p>
+                <p>{account.accountName}</p>
+              </div>
+              <button
+                id={account.id}
+                type="submit"
+                className="remove-btn"
+                onClick={(e) => {
+                  confirmDelete(account.id, e);
+                }}
+              >
+                Remove
+              </button>
+            </AccountStyle>
           ))}
           <StyleButton
             borderRadius="0px"
