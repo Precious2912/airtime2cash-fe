@@ -129,10 +129,10 @@ export const AuthProvider = ({ children }) => {
           if (res.status === 200) {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("id", res.data.id);
-            // localStorage.setItem("firstName", res.data.user_info.firstName);
-            // localStorage.setItem("lastName", res.data.user_info.lastName);
-            // localStorage.setItem("name", res.data.user_info.phoneNumber);
-            // localStorage.setItem("phoneNumber", res.data.user_info.email);
+            localStorage.setItem("firstName", res.data.user_info.firstName);
+            localStorage.setItem("lastName", res.data.user_info.lastName);
+            localStorage.setItem("name", res.data.user_info.phoneNumber);
+            localStorage.setItem("phoneNumber", res.data.user_info.email);
             localStorage.setItem("avatar", res.data.user_info.avatar);
             localStorage.setItem("userName", res.data.user_info.userName);
             dispatch({ type: "LOGIN", payload: res.data });

@@ -96,9 +96,10 @@ export const TabContent = styled.div`
 
 export const TabContentItem = styled.div`
   width: 100%;
-  height: 389px;
+  /* height: 389px; */
   box-sizing: border-box;
   /* Inside auto layout */
+  overflow-y: scroll;
 `;
 
 export const DashCard = styled.div`
