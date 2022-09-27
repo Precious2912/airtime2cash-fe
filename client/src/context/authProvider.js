@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -59,6 +59,12 @@ function reducer(state, action) {
         ...state,
         loggedIn: false,
       };
+    
+    case "GETALLACCOUNT":
+      return {
+        ...state,
+        bankAccounts: action.payload
+      }
 
     default:
       throw new Error();
@@ -68,6 +74,7 @@ function reducer(state, action) {
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [ bState, setBstate] = useState([])
 
   const register = async (formData) => {
     try {
@@ -314,6 +321,30 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getAllAccount = async (id) => {
+    try {
+      await axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/user/userAccount/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            // console.log(res);
+            // dispatch({ type: "GETALLACCOUNT", payload: res.data });
+            setBstate(res);
+            // console.log(bState);
+            // return res
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (err) {
+      throw new Error(`${err}`);
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
@@ -322,7 +353,9 @@ export const AuthProvider = ({ children }) => {
         getUser,
         forgotPassword,
         updateProfile,
+        getAllAccount,
         resetPassword,
+        bState,
         logout,
         state,
       }}

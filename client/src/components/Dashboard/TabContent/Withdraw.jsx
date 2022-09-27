@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import { ButtonWrapper, TabTitle, WithdrawWrapper } from "../../../styles/DashboardStyles/TabStyles/WithdrawStyles";
+import { UseAuth } from "../../../context/useAuth";
 
 const banks = [
   { value: "First Bank", label: "First Bank" },
@@ -11,7 +12,26 @@ const banks = [
 ];
 
 const Withdraw = () => {
+const { getAllAccount, bState } = UseAuth();
+const [userBanks, setUserBanks] = useState([{value: "Select Bank", label: "Select Account"}]);
   const [selectedOption, setSelectedOption] = useState(null);
+
+
+
+  // const getAllBanks = async () => {
+  //  await getAllAccount(localStorage.getItem("id"))
+  //  banks.push( { value: bState.data.data[0].accounts.bankName, label: bState.data.data[0].accounts.bankName} )
+  //   setUserBanks(banks)
+  // }
+
+
+useEffect (() =>{
+  getAllAccount(localStorage.getItem("id"))
+console.log(bState)
+
+}, []) 
+
+
 
   return (
     <WithdrawWrapper>
@@ -22,19 +42,14 @@ const Withdraw = () => {
         <Select
             styles={CustomStyles}
             onChange={setSelectedOption}
-            options={banks}
+            options={userBanks}
             defaultValue={{ label: "Select Bank", value: 0 }}
             theme={(theme) => ({
               ...theme,
-              borderRadius: 0,
-              // height: 200,
-              // minHeight: 200,
-              // paddingTop: 7,
-              // paddingBottom: 7,
+              borderRadius: 0, 
 
               colors: {
-                ...theme.colors,
-                // primary25: "#012a4a",
+                ...theme.colors, 
                 primary: "#de3d6d",
               },
             })}
