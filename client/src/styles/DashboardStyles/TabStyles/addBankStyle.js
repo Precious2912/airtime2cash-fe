@@ -1,4 +1,7 @@
 import styled from "styled-components";
+export const BankWrapper = styled.div`
+padding: 0 3%;
+`
 export const BankHeader = styled.div`
   width: 100%;
   display: flex;
@@ -65,6 +68,7 @@ export const AccountStyle = styled.div`
   & .remove-btn {
     padding: 10px;
     border: none;
+    cursor: pointer;
 
     background: rgba(0, 0, 0, 0.05);
     border-radius: 100px;

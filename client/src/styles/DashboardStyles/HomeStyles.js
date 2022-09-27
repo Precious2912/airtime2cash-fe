@@ -18,7 +18,7 @@ export const DashboardStyle = styled.div`
     margin: -13rem auto 0 auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
-    padding: 0 4%;
+    padding: 0 3%;
     /* height: 100vh; */
     & h1 {
       font-weight: 600;

@@ -1,7 +1,8 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { ResendVerification } from "../pages/ResendVerification";
 
 export const AuthContext = createContext();
 
@@ -66,6 +67,8 @@ function reducer(state, action) {
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
+    const [userbank, setUserBank] = useState([])
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const register = async (formData) => {
@@ -131,7 +134,7 @@ export const AuthProvider = ({ children }) => {
             // localStorage.setItem("name", res.data.user_info.phoneNumber);
             // localStorage.setItem("phoneNumber", res.data.user_info.email);
             localStorage.setItem("avatar", res.data.user_info.avatar);
-            localStorage.setItem("userName", res.data.user_info.userName); 
+            localStorage.setItem("userName", res.data.user_info.userName);
             dispatch({ type: "LOGIN", payload: res.data });
             toast.success(res.data.message, {
               autoClose: 3000,
@@ -143,12 +146,19 @@ export const AuthProvider = ({ children }) => {
             return;
           }
         })
-        .catch((err) => { 
-          toast.error(err.response.data.message, {
-            autoClose: 3000,
-          });
+        .catch((err) => {
+          if (err.response.data.message === "Please verify your email") {
+            toast.error(err.response.data.message, {
+              autoClose: 3000,
+            });
+            ResendVerification();
+          } else {
+            toast.error(err.response.data.message, {
+              autoClose: 3000,
+            });
+          }
         });
-    } catch (err) { 
+    } catch (err) {
       toast.error("Please kindly register", {
         autoClose: 3000,
       });
@@ -174,10 +184,13 @@ export const AuthProvider = ({ children }) => {
               autoClose: 3000,
             });
             dispatch({ type: "FORGOT_PASSWORD", payload: res.data });
-          }else{
-            toast.error("Unable to send verification Email check connectivity", {
-              autoClose: 3000,
-            });
+          } else {
+            toast.error(
+              "Unable to send verification Email check connectivity",
+              {
+                autoClose: 3000,
+              }
+            );
           }
         });
     } catch (err) {
@@ -202,7 +215,7 @@ export const AuthProvider = ({ children }) => {
           password
         )
         .then((res) => {
-          console.log(res)
+          console.log(res);
           if (res.status === 202) {
             dispatch({
               type: "RESET_PASSWORD",
@@ -221,7 +234,7 @@ export const AuthProvider = ({ children }) => {
       toast.error(err.response.data.message, {
         autoClose: 3000,
       });
-      if(err.response.data.Error){
+      if (err.response.data.Error) {
         toast.error(err.response.data.Error, {
           autoClose: 3000,
         });
@@ -256,6 +269,22 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getUserAccount = async (id) => {
+    try{
+      const response = await axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/user/userAccount/${id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+        if (response.status === 200) {
+            setUserBank(response.data.data);
+          }
+    } catch(err) {
+        throw new Error(err)
+    }
+  }
+
   const updateProfile = async (formData) => {
     try {
       const form = {
@@ -263,7 +292,7 @@ export const AuthProvider = ({ children }) => {
         lastName: formData.lastName || localStorage.getItem("lastName"),
         userName: formData.userName || localStorage.getItem("userName"),
         phoneNumber:
-        formData.phoneNumber || localStorage.getItem("phoneNumber"),
+          formData.phoneNumber || localStorage.getItem("phoneNumber"),
         avatar: formData.avatar || localStorage.getItem("avatar"),
       };
       const id = localStorage.getItem("id");
@@ -276,11 +305,23 @@ export const AuthProvider = ({ children }) => {
         .then((response) => {
           toast.success(response.data.message);
           console.log(response);
-          localStorage.setItem("firstName", response.data.updatedRecord.firstName);
-          localStorage.setItem("lastName", response.data.updatedRecord.lastName);
-          localStorage.setItem("phoneNumber", response.data.updatedRecord.phoneNumber);
+          localStorage.setItem(
+            "firstName",
+            response.data.updatedRecord.firstName
+          );
+          localStorage.setItem(
+            "lastName",
+            response.data.updatedRecord.lastName
+          );
+          localStorage.setItem(
+            "phoneNumber",
+            response.data.updatedRecord.phoneNumber
+          );
           localStorage.setItem("avatar", response.data.updatedRecord.avatar);
-          localStorage.setItem("userName", response.data.updatedRecord.userName);
+          localStorage.setItem(
+            "userName",
+            response.data.updatedRecord.userName
+          );
           localStorage.setItem("email", response.data.updatedRecord.email);
         })
         .catch((err) => {
@@ -291,6 +332,53 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const AddBank = async (formData) => {
+    try {
+      const form = {
+        bankName: formData.bankName,
+        accountNumber: formData.accountNumber,
+        accountName: formData.accountName,
+      };
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/account/createaccount`,
+        form,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (response.status === 'success') {
+        setShowModal(p => !p);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const deleteBank = async (id) => {
+       try {
+         const response = await axios.delete(
+           `${process.env.REACT_APP_BACKEND_URL}/account/deleteaccount/${id}`,
+           {
+             headers: {
+               Authorization: `Bearer ${localStorage.getItem("token")}`,
+             },
+           }
+         );
+
+         if (response.status === 200) {
+          console.log('deleted!')
+           toast.success(response.message)
+         }
+
+       } catch (error) {
+         console.log(error);
+         throw new Error(error)
+       }
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -300,6 +388,10 @@ export const AuthProvider = ({ children }) => {
         forgotPassword,
         updateProfile,
         resetPassword,
+        AddBank,
+        getUserAccount,
+        deleteBank,
+        userbank,
         logout,
         state,
       }}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { UseAuth } from "../../../context/useAuth";
 import {
   BankStyle,
   BankHeader,
@@ -26,9 +27,8 @@ const AddBankSchema = yup.object().shape({
     })
     .nullable() // for handling null value when clearing options via clicking "x"
     .required("Bank is required"),
-  // bank: yup.string().required(),
   accountName: yup.string().required(),
-  accountNumber: yup.number().required().positive().integer(),
+  accountNumber: yup.string().required()
 });
 
 export const AddBank = ({ show }) => {
@@ -77,17 +77,30 @@ export const AddBank = ({ show }) => {
     resolver: yupResolver(AddBankSchema),
   });
 
+  const {AddBank} = UseAuth();
+
+  const [formData, setFormData] = useState({
+    bankName: "",
+    accountNumber: "",
+    accountName: ""
+  })
+
+    const handleInputChange = (e) => {
+      e.preventDefault();
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }; 
+
   const onSubmit = (data) => {
-    console.log(data);
-    setShowModal((p) => !p);
+   AddBank({
+      ...data,
+      bankName: data.bankName.label
+    })
   };
 
-  const [selectedBank, setSelectedBank] = useState("");
-
-  // const handleBankChange = (selectedBank) => {
-  //   console.log(selectedBank);
-  //   setSelectedBank(selectedBank);
-  // };
 
   return (
     <>
@@ -98,33 +111,12 @@ export const AddBank = ({ show }) => {
       <BankStyle>
         <FormStyle onSubmit={handleSubmit(onSubmit)}>
           <StyledLabel>Bank Name</StyledLabel>
-          {/* <Select
-            name="bank"
-            styles={CustomStyles}
-            placeholder={"Select bank"}
-            onChange={(selectedOption) => {
-              handleBankChange(selectedOption);
-              console.log(selectedBank);
-            }}
-            value={selectedBank}
-            noOptionsMessage={() => "Bank not found"}
-            options={allBanks}
-            theme={(theme) => ({
-              ...theme,
-              borderRadius: 0,
-              colors: {
-                ...theme.colors,
-                primary: "#de3d6d",
-              },
-            })}
-          /> */}
           <Controller
             name="bankName"
             control={control}
             styles={CustomStyles}
             render={({ field }) => (
               <Select
-                // defaultValue={options[0]}
                 styles={CustomStyles}
                 placeholder={"Select bank"}
                 theme={(theme) => ({
@@ -137,9 +129,7 @@ export const AddBank = ({ show }) => {
                 })}
                 {...field}
                 isClearable // enable isClearable to demonstrate extra error handling
-                isSearchable={false}
-                // className="react-dropdown"
-                // classNamePrefix="dropdown"
+                isSearchable={true}
                 options={allBanks}
               />
             )}
@@ -154,8 +144,8 @@ export const AddBank = ({ show }) => {
             placeholder="Account name"
             type="text"
             name="accountName"
-            // value={accountName}
-            // onChange={handleInputChange}
+            value={formData.accountName}
+            onChange={handleInputChange}
           ></StyledInput>
           {errors.accountName && (
             <p style={{ color: "#de3d6d", fontSize: 12 }}>
@@ -169,8 +159,8 @@ export const AddBank = ({ show }) => {
             placeholder="Account Number"
             type="number"
             name="accountNumber"
-            // value={accountNumber}
-            // onChange={handleInputChange}
+            value={formData.accountNumber}
+            onChange={handleInputChange}
           ></StyledInput>
           {errors.accountNumber && (
             <p style={{ color: "#de3d6d", fontSize: 12 }}>
