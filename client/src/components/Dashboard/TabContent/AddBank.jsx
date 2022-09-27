@@ -121,10 +121,9 @@ export const AddBank = ({ show }) => {
                 placeholder={"Select bank"}
                 theme={(theme) => ({
                   ...theme,
-                  borderRadius: 0,
                   colors: {
                     ...theme.colors,
-                    primary: "#de3d6d",
+                    primary: "#0000ff",
                   },
                 })}
                 {...field}
