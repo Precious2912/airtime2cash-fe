@@ -29,11 +29,6 @@ const Tabs = () => {
       <DashboardStyle>
         <div className="top"></div>
         <div className="dashboard">
-          {/* {active === tabs[0] || active === tabs[1] ? (
-            <DashBoardWallet />
-          ) : (
-            <h1>{active}</h1>
-          )} */}
           {(active === tabs[0] || active === tabs[1]) && <DashBoardWallet />}
           {active === tabs[2] && <h1>Manage Bank</h1>}
           {active === tabs[3] && <h1>Transactions</h1>}

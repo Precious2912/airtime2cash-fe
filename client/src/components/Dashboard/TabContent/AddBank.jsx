@@ -186,7 +186,7 @@ export const AddBank = ({ show }) => {
           >
             Add Bank
           </StyleButton>
-          {showModal && <Modal setShowModal={setShowModal} />}
+          {showModal && <Modal setShowModal={setShowModal} show={show}/>}
         </FormStyle>
       </BankStyle>
     </>

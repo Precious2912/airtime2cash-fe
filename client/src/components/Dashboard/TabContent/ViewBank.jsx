@@ -8,6 +8,7 @@ import {
   BankWrapper,
 } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
 import StyleButton from "../../../styles/ButtonStyles";
+import backicon from "../../../assets/icon/backicon.svg";
 
 const ViewBank = ({ show }) => {
   const { getUserAccount, userbank, deleteBank } = UseAuth();
@@ -38,13 +39,17 @@ const ViewBank = ({ show }) => {
 
   return (
     <BankWrapper>
+      <img src={backicon} alt="Back" onClick={show} style={{
+        cursor: 'pointer',
+        width: '1rem',
+      }}/>
       <BankHeader>
         <h3 className="bank-acct">Bank Account</h3>
       </BankHeader>
       <BankStyle>
         <div className="accounts">
           {userbank.length === 0 && (
-            <h3 style={{ color: "#012a4a"}}>
+            <h3 style={{ color: "#012a4a" }}>
               No bank added yet. Click button to add a bank
             </h3>
           )}
