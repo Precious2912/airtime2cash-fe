@@ -8,6 +8,7 @@ import {
   BankWrapper,
 } from "../../../styles/DashboardStyles/TabStyles/addBankStyle";
 import StyleButton from "../../../styles/ButtonStyles";
+import backicon from "../../../assets/icon/backicon.svg";
 
 const ViewBank = ({ show }) => {
   const { getUserAccount, userbank, deleteBank } = UseAuth();
@@ -19,7 +20,7 @@ const ViewBank = ({ show }) => {
 
   const confirmDelete = (bankId, event) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure you want to remove the bank?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -31,20 +32,24 @@ const ViewBank = ({ show }) => {
         const thisClicked = event.target.parentElement;
         deleteBank(bankId);
         thisClicked.closest("div").remove();
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Bank has been removed.", "success");
       }
     });
   };
 
   return (
     <BankWrapper>
+      <img src={backicon} alt="Back" onClick={show} style={{
+        cursor: 'pointer',
+        width: '1rem',
+      }}/>
       <BankHeader>
         <h3 className="bank-acct">Bank Account</h3>
       </BankHeader>
       <BankStyle>
         <div className="accounts">
           {userbank.length === 0 && (
-            <h3 style={{ color: "#012a4a"}}>
+            <h3 style={{ color: "#012a4a" }}>
               No bank added yet. Click button to add a bank
             </h3>
           )}
