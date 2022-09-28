@@ -20,7 +20,7 @@ const ViewBank = ({ show }) => {
 
   const confirmDelete = (bankId, event) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: "Are you sure you want to remove the bank?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
@@ -32,7 +32,7 @@ const ViewBank = ({ show }) => {
         const thisClicked = event.target.parentElement;
         deleteBank(bankId);
         thisClicked.closest("div").remove();
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Deleted!", "Bank has been removed.", "success");
       }
     });
   };
