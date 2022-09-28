@@ -6,32 +6,50 @@ import {
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import StyledButton from "../../../styles/ButtonStyles";
 import Select from "react-select";
-// import {sellAirtimeSchema} from "../../../Validations/Forms"
 import Swal from "sweetalert2";
 
-const Network = [
-  { value: "MTN", label: "MTN" },
-  { value: "GLO", label: "GLO" },
-  { value: "AIRTEL", label: "AIRTEL" },
-];
-// const Sell = async (e) => {
-//   e.preventDefault()
-//   let formData = {
-//     Network:e.target[0].value,
-//     PhoneNumber:e.target[1].value,
-//     AmountToSell:e.target[2].value,
-//     USSD:e.target[3].value,
-//     AmountToReceieve:e.target[4].value,
-//     DestinationPhoneNumber:e.target[5].value
-//   };
-//   const isValid = await sellAirtimeSchema.isValid(formData)
-// }
+
 
 const SellAirTime = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    Swal.fire("Airtime sold");
-  };
+  const [checkNetwork, setCheckNetwork] = useState(false);
+  const Network = [
+    { value: "MTN", label: "MTN" },
+    { value: "GLO", label: "GLO" },
+    { value: "AIRTEL", label: "AIRTEL" },
+  ];
+  
+ const[formData, setFormData] = useState({
+    Network:"",
+    PhoneNumber:0,
+    AmountToSell:0,
+    // USSD:"",
+    // AmountToReceieve:0,
+    // DestinationPhoneNumber:e.target[5].value
+  });
+
+const [errors, setErrors] = useState({
+  Network:false,
+  PhoneNumber:false,
+  AmountToSell:false,
+});
+  const Sell = async (e) => {
+    e.preventDefault()
+    if(formData.Network === "" || formData.PhoneNumber === 0 || formData.AmountToSell === 0){
+      setErrors({
+        Network:formData.Network === "" ? true : false,
+        PhoneNumber:formData.PhoneNumber === 0 ? true : false,
+        AmountToSell:formData.AmountToSell === 0 ? true : false,
+      })
+    }else{
+      setErrors({
+        Network:false,
+        PhoneNumber:false,
+        AmountToSell:false,
+      })
+      Swal.fire("success","Airtime sold","success");
+    
+    }
+  }
 
   // const { getFieldDecorator } = props.form;
 
@@ -39,13 +57,16 @@ const SellAirTime = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   return (
     <SellAirTimeWrapper>
-      <form action="" onSubmit={(e) => handleClick(e)} className="form-group">
+      <form  onSubmit={Sell} className="form-group">
         <h5 className="SellAirtime">Sell Airtime</h5>
         <div className="input-element">
-          <label>Network</label>
+          <label>Network
+          {errors.Network && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Select Recharge Card Network</span>)}
+          </label>
           <Select
+          required
             styles={CustomStyles}
-            onChange={setSelectedOption}
+            onChange={(e)=>{setFormData({...formData, Network:e.value});setErrors({...errors, Network:true})}}
             options={Network}
             defaultValue={{ label: "Select Network", value: 0 }}
             theme={(theme) => ({
@@ -56,25 +77,39 @@ const SellAirTime = () => {
                 primary: "#de3d6d",
               },
             })}
-            required
           />
         </div>
         <div className="input-element">
-          <label htmlFor="Phone Number">Phone Number</label>
+          <label htmlFor="Phone Number">Phone Number
+          {errors.PhoneNumber && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Phone Number is required</span>)}
+          </label>
           <StyledInput
             required
             type="number"
             name="PhoneNumber"
             placeholder="Enter your Phone Number"
+            value={formData.PhoneNumber}
+            onKeyUp={(e) => {setErrors({...errors, PhoneNumber:true})}}
+            onChange={(e) =>{
+              setFormData({ ...formData, PhoneNumber: e.target.value.trim() });
+              setErrors({...errors, PhoneNumber:true})
+            }
+            }
           />
         </div>
         <div className="input-element">
-          <label htmlFor="Amount to Sell">Amount to Sell</label>
+          <label htmlFor="Amount to Sell">Amount to Sell
+          {errors.AmountToSell && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | This field is required</span>)}
+          </label>
           <StyledInput
             required
             type="number"
             name="AmountToSell"
             placeholder="NGN"
+            value={formData.AmountToSell}
+            onChange={(e) =>
+              setFormData({ ...formData, AmountToSell: e.target.value.trim() })
+            }
           />
         </div>
 

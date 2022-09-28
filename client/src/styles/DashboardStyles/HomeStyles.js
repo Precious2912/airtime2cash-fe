@@ -15,10 +15,10 @@ export const DashboardStyle = styled.div`
     flex-direction: column;
     width: 45rem;
     max-width: 100%;
-    margin: -13rem auto 0 auto;
+    margin: -13rem auto 10rem auto;
     background: #ffffff;
     border: 1px solid #d9d9d9;
-    padding: 0 3%;
+    padding: 0 3% 5% 3%;
     /* height: 100vh; */
     & h1 {
       font-weight: 600;

@@ -128,7 +128,7 @@ export const TabElement = styled.div`
   font-weight: 400;
   font-size: 14px;
   /* line-height: 17px; */
-  margin-top: 5%;
+  margin: 5% 3% 0 3%;
   color: #012a4a;
   cursor: pointer;
   /* flex: none; */

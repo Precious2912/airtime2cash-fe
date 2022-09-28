@@ -7,7 +7,7 @@ import {
   WrapperRight,
   ReceivedStyle,
   AmountStyle,
-} from "../../../styles/DashboardStyles/TabStyles/TransactionHistoryStyle";
+} from "../../../styles/DashboardStyles/TabStyles/TransactionHistoryStyle"; 
 import InfiniteScroll from "react-infinite-scroll-component";
 const TransactionHistory = ({ amount, date, transactionType }) => {
   const initialData = [
@@ -69,8 +69,8 @@ const TransactionHistory = ({ amount, date, transactionType }) => {
           <h3 style={{ textAlign: "center" }}>&#8593; Release to refresh</h3>
         }
       >
-        {transactions.map((transaction) => (
-          <TransactionWrapper>
+        {transactions.map((transaction,index) => (
+          <TransactionWrapper key={index}>
             <WrapperLeft>
               <TimeStyle>
                 <DayStyle>Today,</DayStyle> 10:15AM
