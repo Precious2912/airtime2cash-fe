@@ -2,9 +2,8 @@ import React, { useRef } from "react";
 import ReactDOM from "react-dom";
 import { ModalStyle } from "../../styles/DashboardStyles/TabStyles/modalStyle";
 import doneIcon from '../../assets/icon/doneicon.png'
-import ViewBank from "../Dashboard/TabContent/ViewBank";
 
-export const Modal = ({ setShowModal, goto }) => {
+export const Modal = ({ setShowModal, show }) => {
   const modalRef = useRef();
   const closeModal = (e) => {
     if (e.target === modalRef.current) {
@@ -26,7 +25,7 @@ export const Modal = ({ setShowModal, goto }) => {
             </div>
             <button className="done-btn" onClick={() => {
               setShowModal(false)
-              return <ViewBank  />;
+              show()
               }}>
               Done
             </button>
