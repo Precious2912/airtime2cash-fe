@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
 import * as yup from "yup";
+import Swal from "sweetalert2";
 import { WithdrawSchema } from "../../../Validations/WithdrawValidation";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import {
@@ -12,6 +13,7 @@ import {
 import useFetch from "../../../context/useFetch";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, useForm } from "react-hook-form";
+import ThreeDots from "react-loading-icons/dist/esm/components/three-dots";
 
 const Withdraw = () => {
   const [isValid, setIsValid] = useState(false);
@@ -20,6 +22,7 @@ const Withdraw = () => {
   const [bankList, setBankList] = useState([]);
   const [accountNumber, setAccountNumber] = useState(0);
   const [accountName, setAccountName] = useState("");
+  const [showLoading, setShowLoading] = useState(false);
   // const [amount, setAmount] = useState(0)
 
   const [formData, setFormData] = useState({
@@ -76,9 +79,19 @@ const Withdraw = () => {
 
   const Submit = async (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
-    console.log(formData);
+alert("hello")
     setIsValid(await WithdrawSchema.isValid(formData));
+    console.log(isValid);
+    if(isValid){
+    
+      setShowLoading(true)
+      console.log(formData)
+      Swal.fire(
+        'Success!',
+        'Transaction was successful!',
+        'success'
+      )
+    }
     // console.log(isValid);
     // setFormData({ ...formData, bank:"", accountNumber:null, accountName:"",  amount: 0 , password: "" });
   };
@@ -103,7 +116,9 @@ const Withdraw = () => {
           name="bank"
             styles={CustomStyles}
             noOptionsMessage={() => "Bank not found"}
+            value={formData.bank}
             onChange={(e) => handleSelectBank(e)}
+            // onChange={(e) => setFormData({ ...formData, bank: e.value.trim() })}
             options={bankList}
             defaultValue={{ label: "Select Bank", value: 1 }}
             theme={(theme) => ({
@@ -132,7 +147,7 @@ const Withdraw = () => {
             name="accountNumber"
             styles={CustomStyles}
             noOptionsMessage={() => "Account not found"}
-            // isDisabled={toggleEnable}
+            isDisabled={toggleEnable}
             type="number" 
             onChange={(e) => handleSelectAccountNumber(e)}
             options={accountNumber}
@@ -199,8 +214,9 @@ const Withdraw = () => {
           />
         </div>
         <ButtonWrapper>
-          <Button borderRadius="0%" type="submit" height="48px" width="198px">
-            Withdraw
+          <Button  disabled={showLoading} borderRadius="0%" type="submit" height="48px" width="198px">
+             {!showLoading ? <span>Withdraw</span>:
+              <ThreeDots height="1rem" fill="#DE3D6D" />}
           </Button>
         </ButtonWrapper>
       </form>
