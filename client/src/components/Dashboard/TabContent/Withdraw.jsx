@@ -44,7 +44,7 @@ const Withdraw = () => {
   const handleSelectBank = (e) => {
     setAccountNumber(null)
     let newArr = result.filter((bank) => {
-      return bank.bankName === e.value;
+      return bank.bankName === e.label;
     });
     setAccountNumber(
       newArr?.map((val) => ({
@@ -106,33 +106,40 @@ alert("hello")
           <label>Select Account
           {errors.bank && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Select your bank</span>)}
           </label> 
-          {/* <Controller
+          <Controller
           name="bank"
           control={control}
-          render={({ field }) => ( */}
+          styles={CustomStyles}
+          render={({ field }) => (
           <Select 
-          {...register("bank")}
+          // {...register("bank")}
 
-          name="bank"
+          // name="bank"
             styles={CustomStyles}
-            noOptionsMessage={() => "Bank not found"}
-            value={formData.bank}
-            onChange={(e) => handleSelectBank(e)}
+            placeholder={"Select bank"}
+            // noOptionsMessage={() => "Bank not found"}
+            // value={formData.bank}
+            // onChange={(e) => handleSelectBank(e)}
             // onChange={(e) => setFormData({ ...formData, bank: e.value.trim() })}
-            options={bankList}
-            defaultValue={{ label: "Select Bank", value: 1 }}
+            // options={bankList}
+            // defaultValue={{ label: "Select Bank", value: 1 }}
             theme={(theme) => ({
               ...theme,
-              borderRadius: 0,
+              // borderRadius: 0,
 
               colors: {
                 ...theme.colors,
                 primary: "#de3d6d",
               },
             })}
+            {...field}
+            isSearchable={true}
+            onChange={(e) => handleSelectBank(e)}
+            options={bankList}
+            noOptionsMessage={() => "Bank not found"}
           />
-          {/* // )}
-          // /> */}
+        )}
+        />
         </div>
 
         <div className="form-group">
