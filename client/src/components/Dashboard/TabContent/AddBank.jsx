@@ -16,20 +16,7 @@ import { Modal } from "../../modal/Modal";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
-const AddBankSchema = yup.object().shape({
-  bankName: yup
-    .object()
-    .shape({
-      label: yup.string().required("bank is required (from label)"),
-      value: yup.string().required("bank is required"),
-    })
-    .nullable() // for handling null value when clearing options via clicking "x"
-    .required("Bank is required"),
-  accountName: yup.string().required(),
-  accountNumber: yup.string().required()
-});
+import {AddBankSchema} from '../../../Validations/Forms'
 
 export const AddBank = ({ show }) => {
   const [showModal, setShowModal] = useState(false);
