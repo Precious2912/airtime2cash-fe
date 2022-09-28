@@ -3,7 +3,7 @@ import Select from "react-select";
 import Button from "../../../styles/ButtonStyles";
 import * as yup from "yup";
 import Swal from "sweetalert2";
-import { WithdrawSchema } from "../../../Validations/WithdrawValidation";
+import { WithdrawSchema } from "../../../Validations/FormValidation";
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import {
   ButtonWrapper,
@@ -33,6 +33,15 @@ const Withdraw = () => {
     password: "",
   });
 
+  const [errors, setErrors] = useState({
+    bank: false,
+    accountNumber: false,
+    accountName: false,
+    amount: false,
+    password: false,
+  });
+
+  // FETCHING BANK LIST
   const { result } = useFetch(`user/userAccount/${localStorage.getItem("id")}`);
   let bankArr = result?.map((bank) => bank.bankName);
   let banks = [...new Set(bankArr)];
@@ -55,7 +64,7 @@ const Withdraw = () => {
     );
     setFormData({ ...formData, bank: e.value.trim() });
     setToggleEnable(false);
- 
+
   };
 
   const handleSelectAccountNumber = (e) => {
@@ -68,32 +77,35 @@ const Withdraw = () => {
   };
 
 
-  const {
-    register,
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(WithdrawSchema),
-  });
 
-  const Submit = async (e) => {
+  const Submit = (e) => {
     e.preventDefault();
-alert("hello")
-    setIsValid(await WithdrawSchema.isValid(formData));
-    console.log(isValid);
-    if(isValid){
-    
-      setShowLoading(true)
-      console.log(formData)
-      Swal.fire(
-        'Success!',
-        'Transaction was successful!',
-        'success'
-      )
-    }
-    // console.log(isValid);
-    // setFormData({ ...formData, bank:"", accountNumber:null, accountName:"",  amount: 0 , password: "" });
+if(formData.bank === "" || formData.accountNumber === "" || formData.accountName === "" || formData.amount === 0 || formData.password === ""){
+  setErrors({
+    bank: formData.bank === "" ? true : false,
+    accountNumber: formData.accountNumber === "" ? true : false,
+    accountName: formData.accountName === "" ? true : false,
+    amount: formData.amount === 0 ? true : false,
+    password: formData.password === "" ? true : false,
+  })
+if(formData.amount === ""){
+  setErrors({...errors, amount: true})
+}
+}else{
+  setShowLoading(true);
+  console.log(formData);
+  setTimeout(() => {
+    setShowLoading(false);
+    Swal.fire(
+      'Success!',
+      'Transaction was successful!',
+      'success'
+    )
+    window.location.reload(true)
+
+  }, 3000);
+}
+
   };
 
   return (
@@ -101,28 +113,21 @@ alert("hello")
       <TabTitle>
         <b>Withdraw</b>
       </TabTitle>
-      <form onSubmit={handleSubmit(Submit)}>
+      <form name="withdrawform" onSubmit={Submit} autoComplete="off">
         <div className="form-group">
           <label>Select Account
           {errors.bank && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Select your bank</span>)}
-          </label> 
-          <Controller
+          </label>  
+          <Select  
           name="bank"
-          control={control}
-          styles={CustomStyles}
-          render={({ field }) => (
-          <Select 
-          // {...register("bank")}
-
-          // name="bank"
             styles={CustomStyles}
             placeholder={"Select bank"}
-            // noOptionsMessage={() => "Bank not found"}
+            noOptionsMessage={() => "Bank not found"}
             // value={formData.bank}
-            // onChange={(e) => handleSelectBank(e)}
+            onChange={(e) => handleSelectBank(e)}
             // onChange={(e) => setFormData({ ...formData, bank: e.value.trim() })}
-            // options={bankList}
-            // defaultValue={{ label: "Select Bank", value: 1 }}
+            options={bankList}
+            defaultValue={{ label: "Select Bank", value: 0 }}
             theme={(theme) => ({
               ...theme,
               // borderRadius: 0,
@@ -132,13 +137,7 @@ alert("hello")
                 primary: "#de3d6d",
               },
             })}
-            {...field}
-            isSearchable={true}
-            onChange={(e) => handleSelectBank(e)}
-            options={bankList}
-            noOptionsMessage={() => "Bank not found"}
-          />
-        )}
+           
         />
         </div>
 
@@ -147,10 +146,8 @@ alert("hello")
           {errors.accountNumber && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Select your bank</span>)}
           </label>
         
-          <Select 
-          {...register("accountNumber")}
-          
-          control={control} 
+          <Select  
+           
             name="accountNumber"
             styles={CustomStyles}
             noOptionsMessage={() => "Account not found"}
@@ -174,12 +171,11 @@ alert("hello")
 
         <div className="form-group">
           <label>Account Name  </label>
-          <input
-            {...register("accountName")}
+          <input 
             disabled
             value={formData.accountName}
             onChange={(e) =>
-              setFormData({ ...formData, accountName: e.accountName.trim() })
+              setFormData({ ...formData, accountName: e.target.value.trim() })
             }
             placeholder="Account Name"
           />
@@ -189,8 +185,8 @@ alert("hello")
           <label>Amount
           {errors.amount && ( <span style={{ color: "#de3d6d", fontSize: 12 }}> | Amount is required</span>)}
           </label>
-          <input
-            {...register("amount")}
+          <input 
+            name="amount"
             type="number"
             value={formData.amount}
             onChange={(e) =>
@@ -209,13 +205,13 @@ alert("hello")
             )}
           </label>
 
-          <input
-            {...register("password")}
+          <input 
             type="password"
             value={formData.password}
             onChange={(e) =>
               setFormData({ ...formData, password: e.target.value.trim() })
             }
+            autoComplete="off"
             name="password"
             placeholder="Password"
           />

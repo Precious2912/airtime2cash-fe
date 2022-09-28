@@ -16,7 +16,7 @@ import { Modal } from "../../modal/Modal";
 import Select from "react-select";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {AddBankSchema} from '../../../Validations/Forms'
+import {AddBankSchema} from '../../../Validations/FormValidation'
 
 export const AddBank = ({ show }) => {
   const [showModal, setShowModal] = useState(false);
@@ -105,7 +105,11 @@ export const AddBank = ({ show }) => {
       </BankHeader>
       <BankStyle>
         <FormStyle onSubmit={handleSubmit(onSubmit)}>
-          <StyledLabel>Bank Name</StyledLabel>
+          <StyledLabel>Bank Name
+          {errors.bankName && (
+            <span style={{ color: "#de3d6d", fontSize: 12 }}> | Bank is required</span>
+          )}
+          </StyledLabel>
           <Controller
             name="bankName"
             control={control}
@@ -131,11 +135,14 @@ export const AddBank = ({ show }) => {
               />
             )}
           />
-          {errors.bankName && (
-            <p style={{ color: "#de3d6d", fontSize: 12 }}>Bank is required</p>
-          )}
+         
 
-          <StyledLabel>Account Name</StyledLabel>
+          <StyledLabel>Account Name 
+          {errors.accountName && (
+            <span style={{ color: "#de3d6d", fontSize: 12 }}> | Account name is required
+            </span>
+          )}
+          </StyledLabel>
           <StyledInput
             {...register("accountName")}
             placeholder="Account name"
@@ -144,13 +151,14 @@ export const AddBank = ({ show }) => {
             value={formData.accountName}
             onChange={handleInputChange}
           ></StyledInput>
-          {errors.accountName && (
-            <p style={{ color: "#de3d6d", fontSize: 12 }}>
-              Account name is required
-            </p>
-          )}
+         
 
-          <StyledLabel> Account Number</StyledLabel>
+          <StyledLabel> Account Number 
+          {errors.accountNumber && (
+            <span style={{ color: "#de3d6d", fontSize: 12 }}> | Account number is required
+            </span>
+          )}
+          </StyledLabel>
           <StyledInput
             {...register("accountNumber")}
             placeholder="Account Number"
@@ -159,11 +167,7 @@ export const AddBank = ({ show }) => {
             value={formData.accountNumber}
             onChange={handleInputChange}
           ></StyledInput>
-          {errors.accountNumber && (
-            <p style={{ color: "#de3d6d", fontSize: 12 }}>
-              Account number is required
-            </p>
-          )}
+        
           <StyleButton
             type="submit"
             borderRadius="0px"
