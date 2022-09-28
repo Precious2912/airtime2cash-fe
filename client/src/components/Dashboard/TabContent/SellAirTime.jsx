@@ -6,7 +6,7 @@ import {
 import { CustomStyles } from "../../../styles/DashboardStyles/TabStyles/selectOptionStyle";
 import StyledButton from "../../../styles/ButtonStyles";
 import Select from "react-select";
-// import {sellAirtimeSchema} from "../../../Validations/Forms"
+import {sellAirtimeSchema} from "../../../Validations/Forms"
 import Swal from "sweetalert2";
 
 const Network = [
@@ -14,18 +14,19 @@ const Network = [
   { value: "GLO", label: "GLO" },
   { value: "AIRTEL", label: "AIRTEL" },
 ];
-// const Sell = async (e) => {
-//   e.preventDefault()
-//   let formData = {
-//     Network:e.target[0].value,
-//     PhoneNumber:e.target[1].value,
-//     AmountToSell:e.target[2].value,
-//     USSD:e.target[3].value,
-//     AmountToReceieve:e.target[4].value,
-//     DestinationPhoneNumber:e.target[5].value
-//   };
-//   const isValid = await sellAirtimeSchema.isValid(formData)
-// }
+const Sell = async (e) => {
+  e.preventDefault()
+  let formData = {
+    Network:e.target[0].value,
+    PhoneNumber:e.target[1].value,
+    AmountToSell:e.target[2].value,
+    USSD:e.target[3].value,
+    AmountToReceieve:e.target[4].value,
+    DestinationPhoneNumber:e.target[5].value
+  };
+  const isValid = await sellAirtimeSchema.isValid(formData)
+  console.log(formData)
+}
 
 const SellAirTime = () => {
   const handleClick = (e) => {
@@ -39,7 +40,7 @@ const SellAirTime = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   return (
     <SellAirTimeWrapper>
-      <form action="" onSubmit={(e) => handleClick(e)} className="form-group">
+      <form  onSubmit={Sell} className="form-group">
         <h5 className="SellAirtime">Sell Airtime</h5>
         <div className="input-element">
           <label>Network</label>

@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState, useEffect } from "react";
+import { createContext, useEffect, useReducer, useState } from "react"; 
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
@@ -59,6 +59,12 @@ function reducer(state, action) {
         ...state,
         loggedIn: false,
       };
+    
+    case "GETALLACCOUNT":
+      return {
+        ...state,
+        bankAccounts: action.payload
+      }
 
     default:
       throw new Error();
@@ -277,8 +283,11 @@ export const AuthProvider = ({ children }) => {
         })
         if (response.status === 200) {
             setUserBank(response.data.data);
+          console.log(userbank)
+
           }
     } catch(err) {
+      console.log(err)
         throw new Error(err)
     }
   }
@@ -387,12 +396,12 @@ export const AuthProvider = ({ children }) => {
         login,
         getUser,
         forgotPassword,
-        updateProfile,
+        updateProfile, 
         resetPassword,
         AddBank,
         getUserAccount,
         deleteBank,
-        userbank,
+        userbank, 
         logout,
         state,
       }}

@@ -12,10 +12,10 @@ const Button = styled.button`
   height: ${({ height }) => (height ? height : "auto")};
   width: ${({ width }) => (width ? width : "auto")};
   background-image: ${({ disabled }) =>
-    disabled ? "gray" : "linear-gradient(to right, #DE3D6D,#F5844C)"};
+    disabled ? "linear-gradient(to right, #EF9EB6, #F8A982)" : "linear-gradient(to right, #DE3D6D,#F5844C)"};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? "lightgray" : "#DE3D6D")};
+    background-color: ${({ disabled }) => (disabled ? "gray" : "#DE3D6D")};
   }
 `;
 

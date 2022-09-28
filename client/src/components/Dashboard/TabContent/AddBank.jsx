@@ -125,6 +125,8 @@ export const AddBank = ({ show }) => {
                 isClearable // enable isClearable to demonstrate extra error handling
                 isSearchable={true}
                 options={allBanks}
+         
+
                 noOptionsMessage={() => "Bank not found"}
               />
             )}
@@ -159,7 +161,7 @@ export const AddBank = ({ show }) => {
           ></StyledInput>
           {errors.accountNumber && (
             <p style={{ color: "#de3d6d", fontSize: 12 }}>
-              Account number is required{" "}
+              Account number is required
             </p>
           )}
           <StyleButton
