@@ -260,7 +260,7 @@ export const AuthProvider = ({ children }) => {
           }
         })
         .catch((err) => {
-          console.log(err);
+            throw new Error(`${err}`);
         });
     } catch (err) {
       throw new Error(`${err}`);
@@ -327,10 +327,10 @@ export const AuthProvider = ({ children }) => {
           localStorage.setItem("email", response.data.updatedRecord.email);
         })
         .catch((err) => {
-          console.log(err);
+            throw new Error(`${err}`);
         });
     } catch (error) {
-      console.log(error);
+        throw new Error(`${error}`);
     }
   };
 
@@ -375,7 +375,6 @@ export const AuthProvider = ({ children }) => {
          }
 
        } catch (error) {
-         console.log(error);
          throw new Error(error)
        }
   }
